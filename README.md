@@ -36,3 +36,12 @@ The project will be structured in directories following the convention above:
     - \lib # Contains external libraries
     - \docs # Contains documentation files
 ```
+
+### Branching Strategy
+The branching strategy will consist in 4 branch types:
+* `main` The stable version of the project
+* `develop` Branched from main. Merged into main when becomes a stable product.  
+* `feature` Branched from develop for each feature in development. Merged into develop when finished.
+* `hotfix` Branched from main to fix bugs. Merged into main when the bug is fixed. 
+
+
