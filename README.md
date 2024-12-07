@@ -20,3 +20,19 @@ type(scope): description
 #### Scopes
 The `scope` provides additional contextual information.
 * Is an **optional** part of the format
+
+### Project Structure
+The project will be structured in directories following the convention above:
+```
+- \Tetris
+    - .gitignore # Used for ignoring files in version control (e.g: \build)
+    - README.md # This file
+    - Makefile # Used to "automate" build process
+    - \build # Contains the build files
+    - \include # Contains all .hpp 
+        - class_1.hpp
+    - \src # Contains all .cpp
+        - class_1.cpp
+    - \lib # Contains external libraries
+    - \docs # Contains documentation files
+```
