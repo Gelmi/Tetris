@@ -6,12 +6,16 @@
 class Entity {
     private:
         SDL_Rect dst;
-        SDL_Surface* image;
+        char path[30];
         SDL_Texture* texture;
         SDL_Renderer* renderer;
+        unsigned int* tiles;
+        unsigned int w, h;
+        
+        int atPos(unsigned int x, unsigned int y);
 
     public:
-        Entity(SDL_Renderer* renderer, char path[30]);
+        Entity(SDL_Renderer* renderer, char path[30], unsigned int w, unsigned int h);
         ~Entity();
         void Draw();
         void setPosition(int x, int y);
