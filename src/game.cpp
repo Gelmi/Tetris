@@ -2,6 +2,8 @@
 #include <SDL.h>
 #include <iostream>
 #include "board.hpp"
+#include "tetromino.hpp"
+
 int Game::Run(){
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         std::cout << "Error initializing SDL: " << SDL_GetError() << std::endl;
@@ -20,7 +22,13 @@ int Game::Run(){
 		return false;
 	}
     Board board(renderer);
-    Entity tetromino(renderer, (char *)"assets/tetristile.bmp", 4, 4);
+    SDL_Color vermeio;
+    vermeio.r = 255;
+    vermeio.g = 0;
+    vermeio.b = 0;
+    vermeio.a = 255;
+    unsigned int shape[16] =  {0,0,0,0,0,1,0,0,0,1,1,0,0,0,1,0};
+    Tetromino tetromino(renderer, vermeio, shape);
     int close = 0;
     while(!close){
         SDL_Event event;
