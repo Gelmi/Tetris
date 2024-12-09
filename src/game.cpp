@@ -1,27 +1,25 @@
 #include "game.hpp"
 #include <SDL.h>
 #include <iostream>
-
+#include "entity.hpp"
 int Game::Run(){
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         std::cout << "Error initializing SDL: " << SDL_GetError() << std::endl;
         system("pause");
         return 1;
     }
-    window = SDL_CreateWindow("Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 720, 1280, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 480, 720, SDL_WINDOW_SHOWN);
     if(!window){
         std::cout << "Error creating window: " << SDL_GetError() << std::endl;
         system("pause");
         return 1;
     }
-    winSurface = SDL_GetWindowSurface(window);
-    if(!winSurface) {
-        std::cout << "Error getting surface: " << SDL_GetError() << std::endl;
-        system("pause");
-        return 1;
-    }
-    SDL_FillRect(winSurface, NULL, SDL_MapRGB(winSurface->format, 255, 255, 255));
-    SDL_UpdateWindowSurface(window);
+    SDL_Renderer* renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED );
+	if ( !renderer ) {
+        std::cout << "Error creating renderer: " << SDL_GetError() << std::endl;
+		return false;
+	}
+    Entity tile(renderer, (char *)"assets/boardtile.bmp");
     int close = 0;
     while(!close){
         SDL_Event event;
@@ -32,8 +30,12 @@ int Game::Run(){
                     break;
             }
         }
+        SDL_SetRenderDrawColor( renderer, 0, 0, 0, 255 );
+	    SDL_RenderClear( renderer );
+        tile.Draw();
+        SDL_RenderPresent( renderer );
     };
-    SDL_FreeSurface(winSurface);
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
     return 0;

@@ -28,5 +28,10 @@ $(BIN_PATH)/$(BIN_NAME): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $@ $(CC_SDL)
 
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.cpp
+	@mkdir -p $(BUILD_PATH)
+	@mkdir -p $(BIN_PATH)
+	@echo "Making symlink: $(BIN_NAME) -> $<"
+	rm -f $(BIN_NAME)
+	ln -s $(BIN_PATH)/$(BIN_NAME) $(BIN_NAME)
 	@echo "Compiling: $< -> $@"
 	$(CC) $(CC_FLAGS) $(CC_SDL) -c $< -o $@
