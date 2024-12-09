@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-W",
+      "-Wall",
+      "-ansi",
+      "-pedantic",
+      "-I",
+      "include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/game.o",
+      "src/game.cpp"
+    ],
+    "directory": "/home/gelmi/Documents/IN204/Tetris",
+    "file": "/home/gelmi/Documents/IN204/Tetris/src/game.cpp",
+    "output": "/home/gelmi/Documents/IN204/Tetris/build/game.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-W",
+      "-Wall",
+      "-ansi",
+      "-pedantic",
+      "-I",
+      "include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/main.o",
+      "src/main.cpp"
+    ],
+    "directory": "/home/gelmi/Documents/IN204/Tetris",
+    "file": "/home/gelmi/Documents/IN204/Tetris/src/main.cpp",
+    "output": "/home/gelmi/Documents/IN204/Tetris/build/main.o"
+  }
+]

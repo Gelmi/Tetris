@@ -1,9 +1,15 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <SDL.h>
+
 class Game {
     public:
-        void Run();
+        int Run();
+
+    private:
+        SDL_Surface* winSurface;
+        SDL_Window* window;
 } ;
 
 #endif 
