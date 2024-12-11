@@ -16,7 +16,8 @@ CC_FLAGS=-c         \
          -Wall      \
          -ansi      \
          -pedantic	\
-		 -I include
+		 -I include \
+		 -std=c++11
 
 # CC_SDL=`pkgconf --cflags --libs sdl2`
 CC_SDL := `sdl2-config --libs --cflags` -lSDL2_ttf

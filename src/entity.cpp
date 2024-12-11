@@ -52,7 +52,6 @@ void Entity::Draw() {
         std::cout << "Error creating texture: " << SDL_GetError() << std::endl;
     }
     SDL_SetTextureColorMod(tileTexture, color.r, color.g, color.b);
-    //SDL_SetTextureBlendMode(tileTexture, SDL_BLENDMODE_BLEND);
     SDL_FreeSurface(image);
     SDL_Rect tileRect;
     tileRect.w = 32;
