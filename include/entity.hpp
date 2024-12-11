@@ -4,18 +4,19 @@
 #include<SDL.h>
 
 class Entity {
-    private:
+    protected:
         SDL_Rect dst;
+        SDL_Color color;
         char path[30];
         SDL_Texture* texture;
         SDL_Renderer* renderer;
         unsigned int* tiles;
-        unsigned int w, h;
+        int w, h;
         
-        int atPos(unsigned int x, unsigned int y);
+        int atPos(int x, int y);
 
     public:
-        Entity(SDL_Renderer* renderer, char path[30], unsigned int w, unsigned int h);
+        Entity(SDL_Renderer* renderer, char path[30], int w, int h);
         ~Entity();
         void Draw();
         void setPosition(int x, int y);

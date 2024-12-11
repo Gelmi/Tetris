@@ -4,18 +4,23 @@
 #include<SDL.h>
 #include<iostream>
 
-Entity::Entity(SDL_Renderer* renderer, char path[30], unsigned int w, unsigned int h){
+Entity::Entity(SDL_Renderer* renderer, char path[30], int w, int h){
     this->renderer = renderer;
     this->w = w;
     this->h = h;
     tiles = new unsigned int[w * h];
-    for(unsigned int i = 0; i < w * h; i++) tiles[i] = 1;
+    for(int i = 0; i < (w * h); i++) tiles[i] = 1;
     strcpy(this->path, path);
     this->texture = SDL_CreateTexture(this->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, w*32, h*32);
+    SDL_SetTextureBlendMode(this->texture, SDL_BLENDMODE_BLEND);
     this->dst.h = h*32;
     this->dst.w = w*32;
     this->dst.x = 0;
     this->dst.y = 0;
+    color.r = 255;
+    color.g = 255;
+    color.b = 255;
+    color.a = 255;
 }
 
 Entity::~Entity(){
@@ -32,7 +37,7 @@ void Entity::setPosition(int x, int y) {
     dst.y = y;
 }
 
-int Entity::atPos(unsigned int x, unsigned int y) {
+int Entity::atPos(int x, int y) {
     return (y*this->h)+x;
 }
 
@@ -46,12 +51,13 @@ void Entity::Draw() {
     if(!tileTexture) {
         std::cout << "Error creating texture: " << SDL_GetError() << std::endl;
     }
+    SDL_SetTextureColorMod(tileTexture, color.r, color.g, color.b);
     SDL_FreeSurface(image);
     SDL_Rect tileRect;
     tileRect.w = 32;
     tileRect.h = 32;
-    for(unsigned int i = 0; i < this->w; i++) {
-        for(unsigned int j = 0; j < this->h; j++) {
+    for(int j = 0; j < this->h; j++) {
+        for(int i = 0; i < this->w; i++) {
             //std::cout << this->atPos(i, j) << std::endl;
             if(tiles[this->atPos(j, i)] != 0){
                 tileRect.x = i * 32;
