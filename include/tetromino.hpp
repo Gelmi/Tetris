@@ -18,7 +18,7 @@ class Tetromino : public Entity {
             this->color.g = 0;
             this->color.b = 0;
             this->color.a = 0;
-            unsigned int shape[16] = {0,0,0,0,0,1,1,0,0,1,1,0,0,0,0};
+            unsigned int shape[16] = {0,0,0,0,0,1,0,0,0,1,1,0,0,0,1,0};
             for(int i = 0; i < 16; i++) this->tiles[i] = shape[i];
         };
         void moveDir(int dir);

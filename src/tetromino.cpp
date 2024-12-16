@@ -25,4 +25,6 @@ void Tetromino::moveDir(int dir) {
 void Tetromino::moveTo(int x, int y) {
     this->x = x;
     this->y = y;
+    this->rect.x = x;
+    this->rect.y = y;
 }

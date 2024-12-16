@@ -12,17 +12,29 @@ MockServer::MockServer() {
 void MockServer::update(int command) {
     this->counter = this->counter + 1; 
     if(command == 0) {
+    } else if(command == 2) {
+        while(board.isPositionValid(tetromino) == 0){
+            tetromino.moveDir(0);
+        }
+        tetromino.moveDir(3);
     } else {
         tetromino.moveDir(command);
         int position = board.isPositionValid(tetromino);
         if(position != 0) tetromino.moveDir(-command);
-        if(position == 2) tetromino.moveTo(0,0);
+        if(position == 2) {
+            board.lockTetromino(tetromino);
+            tetromino.moveTo(0,0);
+        }
     }
     if(counter >= 1000){
         counter = 0;
         tetromino.moveDir(0);
-        if(board.isPositionValid(tetromino) != 0) tetromino.moveDir(3);
-
+        int position = board.isPositionValid(tetromino);
+        if(position != 0) {
+            tetromino.moveDir(3);
+            board.lockTetromino(tetromino);
+            tetromino.moveTo(0, 0);
+        }
     }
 }
 

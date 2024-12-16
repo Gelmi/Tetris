@@ -26,6 +26,9 @@ int Game::GetInput() {
                 break;
             case SDL_KEYDOWN:
                 switch(event.key.keysym.sym) {
+                    case SDLK_SPACE:
+                        return 2;
+                        break;
                     case SDLK_RIGHT: 
                         return -1;
                         break;
