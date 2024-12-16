@@ -6,7 +6,7 @@ class Game {
     public:
         int Run();
         void Setup();
-        void GetInput();
+        int GetInput();
         Game();
 
     private:

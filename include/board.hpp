@@ -2,11 +2,13 @@
 #define BOARD_HPP
 
 #include "entity.hpp"
+#include "tetromino.hpp"
 
 class Board : public Entity {
     public:
-        Board(SDL_Renderer * renderer):Entity(renderer, (char *)"assets/boardtile.bmp", 10, 20){};
-        bool isPositionValid(Entity Tetromino);
+        Board():Entity(10, 20){};
+        int isPositionValid(Tetromino Tetromino);
+        void lockTetromino(Tetromino Tetromino);
 };
 
 #endif

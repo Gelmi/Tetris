@@ -3,6 +3,7 @@
 #include <iostream>
 #include "gameview.hpp"
 #include "gamedata.hpp"
+#include "mockserver.hpp"
 
 Game::Game() {
     this->close = 0;
@@ -16,25 +17,45 @@ void Game::Setup() {
     this->close = 0;
 }
 
-void Game::GetInput() {
+int Game::GetInput() {
     SDL_Event event;
     while(SDL_PollEvent(&event)) {
         switch(event.type) {
             case SDL_QUIT:
                 this->close = 1;
                 break;
+            case SDL_KEYDOWN:
+                switch(event.key.keysym.sym) {
+                    case SDLK_RIGHT: 
+                        return -1;
+                        break;
+                    case SDLK_LEFT:
+                        return 1;
+                        break;
+                    case SDLK_UP:
+                        return 3;
+                        break;
+                    case SDLK_DOWN:
+                        return 0;
+                        break;
+                    default:
+                        return 0;
+                }
+                break;
         }
+        return 0;
     }
+    return 0;
 }
 
 int Game::Run(){ 
     Game::Setup();
     GameData gameData;
     GameView gameView;
-    gameData.x = 32;
-    gameData.y = 32;
+    MockServer mockServer = MockServer();
     while(!this->close){
-        Game::GetInput();     
+        mockServer.update(Game::GetInput());     
+        gameData = mockServer.getState();
         gameView.Draw(gameData);
     };
     SDL_Quit();

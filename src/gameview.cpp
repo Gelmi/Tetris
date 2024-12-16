@@ -1,6 +1,7 @@
 #include "gameview.hpp"
 #include <SDL.h>
 #include <iostream>
+#include "constants.hpp"
 
 GameView::GameView() {
     window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 640, SDL_WINDOW_SHOWN);
@@ -48,7 +49,7 @@ void GameView::Draw(GameData data) {
     SDL_RenderClear(renderer);        
     GameView::DrawBoard(data);
     GameView::DrawTetromino(data);
-    SDL_RenderPresent(renderer);
+    SDL_RenderPresent(renderer); 
 }
 
 int atPos(int x, int y, int h) {
@@ -60,23 +61,32 @@ void GameView::DrawBoard(GameData data) {
     SDL_SetRenderTarget(this->renderer, this->boardTexture);
     SDL_SetTextureColorMod(this->boardTileTexture, 255, 255, 255);
     SDL_Rect tileRect;
-    tileRect.w = 32;
-    tileRect.h = 32;
+    tileRect.w = TILE_SIZE;
+    tileRect.h = TILE_SIZE;
     for(int j = 0; j < 20; j++) {
         for(int i = 0; i < 10; i++) {
-            //std::cout << this->atPos(i, j) << std::endl;
-            if(data.board[atPos(j, i, 20)] != 0){
-                tileRect.x = i * 32;
-                tileRect.y = j * 32;
-                SDL_RenderCopy(renderer, this->boardTileTexture, NULL, &tileRect);
+            tileRect.x = i * TILE_SIZE;
+            tileRect.y = j * TILE_SIZE;
+            switch(data.board[atPos(i, j, 10)]){
+                case 0:
+                    SDL_RenderCopy(renderer, this->boardTileTexture, NULL, &tileRect);
+                    break;
+                case 1:
+                    SDL_SetTextureColorMod(this->tetrominoTileTexture, 255, 0, 0);
+                    SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                    break;
+                case 2: 
+                    SDL_SetTextureColorMod(this->tetrominoTileTexture, 0, 255, 0);
+                    SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                    break;
             }
         }
     }
     SDL_SetRenderTarget(this->renderer, NULL);
     tileRect.x = 0;
     tileRect.y = 0;
-    tileRect.w = 320;
-    tileRect.h = 640;
+    tileRect.w = 10 * TILE_SIZE;
+    tileRect.h = 20 * TILE_SIZE;
     SDL_RenderCopy(renderer, boardTexture, NULL, &tileRect);
 }
 
@@ -85,13 +95,13 @@ void GameView::DrawTetromino(GameData data) {
     SDL_SetRenderTarget(this->renderer, this->tetrominoTexture);
     SDL_SetTextureColorMod(this->tetrominoTileTexture, 255, 0, 0);
     SDL_Rect tileRect;
-    tileRect.w = 32;
-    tileRect.h = 32;
-    for(int j = 0; j < 16; j++) {
-        for(int i = 0; i < 16; i++) {
+    tileRect.w = TILE_SIZE;
+    tileRect.h = TILE_SIZE;
+    for(int j = 0; j < 4; j++) {
+        for(int i = 0; i < 4; i++) {
             if(data.tetromino[atPos(j, i, 4)] != 0){
-                tileRect.x = (i * 32);
-                tileRect.y = (j * 32);
+                tileRect.x = (i * TILE_SIZE);
+                tileRect.y = (j * TILE_SIZE);
                 SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
             }
         }
@@ -99,7 +109,7 @@ void GameView::DrawTetromino(GameData data) {
     SDL_SetRenderTarget(this->renderer, NULL);
     tileRect.x = data.x;
     tileRect.y = data.y;
-    tileRect.w = 128;
-    tileRect.h = 128;
+    tileRect.w = TILE_SIZE*4;
+    tileRect.h = TILE_SIZE*4;
     SDL_RenderCopy(renderer, this->tetrominoTexture, NULL, &tileRect);
 }
