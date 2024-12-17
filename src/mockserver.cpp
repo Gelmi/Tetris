@@ -2,11 +2,11 @@
 
 MockServer::MockServer() {
     this->board = Board();
-    this->tetromino = Tetromino();
+    this->tetromino = TetrominoI();
+    printf("%d\n", this->tetromino.getColor().r);
+    for(int i = 0; i< 16; i++) printf("%d ", this->tetromino.getTiles()[i]);
+    printf("\n");
     this->counter = 0;
-    this->board.getTiles()[199] = 1;
-    this->board.getTiles()[198] = 1;
-    this->board.getTiles()[197] = 2;
 }
 
 void MockServer::update(int command) {
@@ -42,8 +42,12 @@ GameData MockServer::getState(){
     GameData gameData;
     for(int i = 0; i < 200; i++) {
         gameData.board[i] = this->board.getTiles()[i];
-        if(i<16) gameData.tetromino[i] = this->tetromino.getTiles()[i];
+        if(i<16) {
+            gameData.tetromino[i] = this->tetromino.getTiles()[i];
+        }
     }
+    //printf("%d\n", this->tetromino.getColor().r);
+    gameData.color = this->tetromino.getColor();
     gameData.x = tetromino.getRect()->x;
     gameData.y = tetromino.getRect()->y;
     return gameData;

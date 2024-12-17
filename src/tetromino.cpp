@@ -28,3 +28,7 @@ void Tetromino::moveTo(int x, int y) {
     this->rect.x = x;
     this->rect.y = y;
 }
+
+SDL_Color Tetromino::getColor() {
+    return this->color;
+}

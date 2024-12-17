@@ -13,16 +13,18 @@ class Tetromino : public Entity {
             this->color.a = color.a;
             for(int i = 0; i < 16; i++) this->tiles[i] = shape[i];
         };
-        Tetromino() : Entity(4,4) {
-            this->color.r = 255;
-            this->color.g = 0;
-            this->color.b = 0;
-            this->color.a = 0;
-            unsigned int shape[16] = {0,0,0,0,0,1,0,0,0,1,1,0,0,0,1,0};
-            for(int i = 0; i < 16; i++) this->tiles[i] = shape[i];
-        };
         void moveDir(int dir);
         void moveTo(int x, int y);
+        SDL_Color getColor();
 }; 
+
+class TetrominoI : public Tetromino {
+    public:
+        TetrominoI() {
+            unsigned int shape[16] = {0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0};
+            SDL_Color color = {52, 235, 235, 255};
+            Tetromino(color, shape);
+        };
+};
 
 #endif
