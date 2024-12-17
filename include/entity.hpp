@@ -5,22 +5,19 @@
 
 class Entity {
     protected:
-        SDL_Rect dst;
+        SDL_Rect rect;
+        int x, y, h, w;
         SDL_Color color;
-        char path[30];
-        SDL_Texture* texture;
-        SDL_Renderer* renderer;
         unsigned int* tiles;
-        int w, h;
         
-        int atPos(int x, int y);
-
     public:
-        Entity(SDL_Renderer* renderer, char path[30], int w, int h);
-        ~Entity();
-        void Draw();
-        void setPosition(int x, int y);
-        void setSize(int w, int h);
+        Entity(int x, int y, int w, int h);
+        Entity(int w, int h) : Entity(0, 0, w, h) {};
+        SDL_Rect * getRect();
+        unsigned int* getTiles();
+        int getX();
+        int getY();
+        int atPos(int x, int y);
 };
 
 #endif  
