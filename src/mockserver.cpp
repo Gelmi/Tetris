@@ -17,6 +17,8 @@ void MockServer::update(int command) {
             tetromino.moveDir(0);
         }
         tetromino.moveDir(3);
+        board.lockTetromino(tetromino);
+        tetromino.moveTo(0,0);
     } else {
         tetromino.moveDir(command);
         int position = board.isPositionValid(tetromino);
