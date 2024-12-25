@@ -1,8 +1,9 @@
 #include "mockserver.hpp"
+#include <cstdlib>
 
 MockServer::MockServer() {
     this->board = new Board();
-    this->tetromino = new TetrominoI();
+    this->tetromino = Tetromino::create(rand() % 7 + 1);
     printf("%d\n", this->tetromino->getColor().r);
     for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
     printf("\n");
@@ -19,6 +20,10 @@ void MockServer::update(int command) {
         tetromino->moveDir(3);
         board->lockTetromino(*tetromino);
         tetromino->moveTo(0,0);
+        delete this->tetromino;
+        this->tetromino = Tetromino::create(rand() % 7 + 1);
+        printf("%d\n", rand() % 7);
+        for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
     } else {
         tetromino->moveDir(command);
         int position = board->isPositionValid(*tetromino);
@@ -26,6 +31,8 @@ void MockServer::update(int command) {
         if(position == 2) {
             board->lockTetromino(*tetromino);
             tetromino->moveTo(0,0);
+            delete this->tetromino;
+            this->tetromino = Tetromino::create(rand() % 7 + 1);
         }
     }
     if(counter >= 1000){
@@ -36,6 +43,8 @@ void MockServer::update(int command) {
             tetromino->moveDir(3);
             board->lockTetromino(*tetromino);
             tetromino->moveTo(0, 0);
+            delete this->tetromino;
+            this->tetromino = Tetromino::create(rand() % 7 + 1);
         }
     }
 }
