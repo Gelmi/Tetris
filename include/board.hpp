@@ -7,8 +7,8 @@
 class Board : public Entity {
     public:
         Board():Entity(10, 20){};
-        int isPositionValid(Tetromino Tetromino);
-        void lockTetromino(Tetromino Tetromino);
+        int isPositionValid(Tetromino * Tetromino);
+        void lockTetromino(Tetromino * Tetromino);
 };
 
 #endif
