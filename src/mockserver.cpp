@@ -12,8 +12,7 @@ MockServer::MockServer() {
 
 void MockServer::update(int command) {
     this->counter = this->counter + 1; 
-    if(command == 0) {
-    } else if(command == 2) {
+    if(command == 2) {
         while(board->isPositionValid(*tetromino) == 0){
             tetromino->moveDir(0);
         }
@@ -24,7 +23,7 @@ void MockServer::update(int command) {
         this->tetromino = Tetromino::create(rand() % 7 + 1);
         printf("%d\n", rand() % 7);
         for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
-    } else {
+    } else if (command == -1 || command == 1) {
         tetromino->moveDir(command);
         int position = board->isPositionValid(*tetromino);
         if(position != 0) tetromino->moveDir(-command);
@@ -34,6 +33,16 @@ void MockServer::update(int command) {
             delete this->tetromino;
             this->tetromino = Tetromino::create(rand() % 7 + 1);
         }
+    } else if (command == 3) {
+        tetromino->rotateLeft();
+        int position = board->isPositionValid(*tetromino);
+        if(position != 0) tetromino->rotateRight();
+        printf("Tetromino rot: %d\n", this->tetromino->getRotation());
+    } else if (command == 4) {
+        tetromino->rotateRight();         
+        int position = board->isPositionValid(*tetromino);
+        if(position != 0) tetromino->rotateLeft();
+        printf("Tetromino rot: %d\n", this->tetromino->getRotation());
     }
     if(counter >= 1000){
         counter = 0;
@@ -52,14 +61,14 @@ void MockServer::update(int command) {
 GameData MockServer::getState(){
     GameData gameData;
     for(int i = 0; i < 200; i++) {
-        gameData.board[i] = this->board->getTiles()[i];
-        if(i<16) {
-            gameData.tetromino[i] = this->tetromino->getTiles()[i];
+        gameData.board[i] = this->board->getTiles()[i];  
+    }
+    // Pass tetromino data to board
+    for(int j = 0; j < 4; j++){
+        for(int i = 0; i < 4; i++) {
+            gameData.board[this->board->atPos(this->tetromino->getX()+j, this->tetromino->getY()+i)]
+                = this->tetromino->getTiles()[this->tetromino->atPos(i,j)];  
         }
     }
-    //printf("%d\n", this->tetromino->getColor()->r);
-    gameData.color = this->tetromino->getColor();
-    gameData.x = tetromino->getRect()->x;
-    gameData.y = tetromino->getRect()->y;
     return gameData;
 }

@@ -20,4 +20,4 @@ class Entity {
         int atPos(int x, int y);
 };
 
-#endif  
+#endif

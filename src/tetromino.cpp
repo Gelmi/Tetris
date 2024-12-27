@@ -33,6 +33,37 @@ SDL_Color Tetromino::getColor() {
     return this->color;
 }
 
+int Tetromino::getRotation() {
+    return this->rotation;
+}
+
+void Tetromino::rotateLeft(){
+    this->rotation = (this->rotation + 3) % 4;
+}
+
+void Tetromino::rotateRight(){
+    this->rotation = (this->rotation + 1) % 4;
+}
+
+int Tetromino::atPos(int x, int y) {
+    switch(this->rotation) {
+        case 0:
+            return (y*4)+x;
+            break;
+        case 1:
+            return 12 + y - (x * 4);
+            break;
+        case 2:
+            return 15 - (y * 4) - x;
+            break;
+        case 3:
+            return 3 - y + (x * 4);
+            break;
+        default:
+            return (y*4)+x;
+    }
+}
+
 Tetromino * Tetromino::create(int type) {
     switch(type) {
         case 1:

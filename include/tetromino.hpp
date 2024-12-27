@@ -5,9 +5,12 @@
 #include "entity.hpp"
 
 class Tetromino : public Entity {
+    protected:
+        int rotation;
+
     public:
         Tetromino(SDL_Color color, std::array<unsigned int, 16> shape)
-            : Entity(4, 4) {
+            : Entity(4, 4), rotation(0) {
             this->color.r = color.r;
             this->color.g = color.g;
             this->color.b = color.b;
@@ -16,8 +19,12 @@ class Tetromino : public Entity {
         }; 
         void moveDir(int dir);
         void moveTo(int x, int y);
+        void rotateLeft();
+        void rotateRight();
         SDL_Color getColor();
+        int getRotation();
         static Tetromino * create(int type);
+        int atPos(int x, int y);
 }; 
 
 class TetrominoI : public Tetromino {
