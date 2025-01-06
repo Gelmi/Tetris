@@ -7,8 +7,8 @@
 
 class MockServer {
     private:
-        Board board;
-        Tetromino tetromino;
+        Board * board;
+        Tetromino * tetromino;
         int counter;
 
     public:

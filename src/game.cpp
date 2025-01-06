@@ -39,7 +39,7 @@ int Game::GetInput() {
                         return 3;
                         break;
                     case SDLK_DOWN:
-                        return 0;
+                        return 4;
                         break;
                     default:
                         return 0;
