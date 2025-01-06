@@ -1,5 +1,6 @@
 #include "mockserver.hpp"
 #include <cstdlib>
+#include "constants.hpp"
 
 MockServer::MockServer() {
     this->board = new Board();
@@ -12,7 +13,7 @@ MockServer::MockServer() {
 
 void MockServer::update(int command) {
     this->counter = this->counter + 1; 
-    if(command == 2) {
+    if(command == SPACE_BAR) {
         while(board->isPositionValid(tetromino) == 0){
             tetromino->moveDir(0);
         }
@@ -23,7 +24,7 @@ void MockServer::update(int command) {
         this->tetromino = Tetromino::create(rand() % 7 + 1);
         printf("%d\n", rand() % 7);
         for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
-    } else if (command == -1 || command == 1) {
+    } else if (command == ARROW_LEFT || command == ARROW_RIGHT) {
         tetromino->moveDir(command);
         int position = board->isPositionValid(tetromino);
         if(position != 0) tetromino->moveDir(-command);
@@ -33,12 +34,12 @@ void MockServer::update(int command) {
             delete this->tetromino;
             this->tetromino = Tetromino::create(rand() % 7 + 1);
         }
-    } else if (command == 3) {
+    } else if (command == ARROW_UP) {
         tetromino->rotateLeft();
         int position = board->isPositionValid(tetromino);
         if(position != 0) tetromino->rotateRight();
         printf("Tetromino rot: %d\n", this->tetromino->getRotation());
-    } else if (command == 4) {
+    } else if (command == ARROW_DOWN) {
         tetromino->rotateRight();         
         int position = board->isPositionValid(tetromino);
         if(position != 0) tetromino->rotateLeft();

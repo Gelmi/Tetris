@@ -29,37 +29,58 @@ class Tetromino : public Entity {
 
 class TetrominoI : public Tetromino {
     public:
-        TetrominoI() : Tetromino({0,255,255,255}, {0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0}) {}; 
+        TetrominoI() : Tetromino({0,255,255,255}, {0,0,0,0,
+                                                   1,1,1,1,
+                                                   0,0,0,0,
+                                                   0,0,0,0}) {}; 
 };
 
 class TetrominoO : public Tetromino {
     public:
-        TetrominoO() : Tetromino({255,255,0,255}, {0,0,0,0,0,2,2,0,0,2,2,0,0,0,0,0}) {}; 
+        TetrominoO() : Tetromino({255,255,0,255}, {0,0,0,0,
+                                                   0,2,2,0,
+                                                   0,2,2,0,
+                                                   0,0,0,0}) {}; 
 }; 
 
 class TetrominoT : public Tetromino {
     public:
-        TetrominoT() : Tetromino({128,0,128,255}, {0,0,0,0,0,3,0,0,0,3,3,0,0,3,0,0}) {}; 
+        TetrominoT() : Tetromino({128,0,128,255}, {0,0,0,0,
+                                                   0,3,0,0,
+                                                   0,3,3,0,
+                                                   0,3,0,0}) {}; 
 };
 
 class TetrominoJ : public Tetromino {
     public:
-        TetrominoJ() : Tetromino({0,0,255,255}, {0,0,0,0,0,0,4,0,4,4,4,0,0,0,0,0}) {}; 
+        TetrominoJ() : Tetromino({0,0,255,255}, {0,0,0,0,
+                                                 0,0,4,0,
+                                                 4,4,4,0,
+                                                 0,0,0,0}) {}; 
 };
 
 class TetrominoL : public Tetromino {
     public:
-        TetrominoL() : Tetromino({255,127,0,255}, {0,0,0,0,5,5,5,0,0,0,5,0,0,0,0,0}) {}; 
+        TetrominoL() : Tetromino({255,127,0,255}, {0,0,0,0,
+                                                   5,5,5,0,
+                                                   0,0,5,0,
+                                                   0,0,0,0}) {}; 
 };
 
 class TetrominoS : public Tetromino {
     public:
-        TetrominoS() : Tetromino({0,255,0,255}, {0,0,0,0,0,0,6,0,0,6,6,0,0,6,0,0}) {}; 
+        TetrominoS() : Tetromino({0,255,0,255}, {0,0,0,0,
+                                                 0,0,6,0,
+                                                 0,6,6,0,
+                                                 0,6,0,0}) {}; 
 };
 
 class TetrominoZ : public Tetromino {
     public:
-        TetrominoZ() : Tetromino({255,0,0,255}, {0,0,0,0,0,7,0,0,0,7,7,0,0,0,7,0}) {}; 
+        TetrominoZ() : Tetromino({255,0,0,255}, {0,0,0,0,
+                                                 0,7,0,0,
+                                                 0,7,7,0,
+                                                 0,0,7,0}) {}; 
 };
 
 #endif
