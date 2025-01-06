@@ -15,6 +15,7 @@ class MockServer {
         MockServer();
         void update(int command);
         GameData getState();
+        void lockAndLoad();
         
 };
 
