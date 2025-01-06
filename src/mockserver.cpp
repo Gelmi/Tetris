@@ -8,11 +8,10 @@ MockServer::MockServer() {
     printf("%d\n", this->tetromino->getColor().r);
     for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
     printf("\n");
-    this->counter = 0;
+    this->counter = SDL_GetTicks();
 }
 
-void MockServer::update(int command) {
-    this->counter = this->counter + 1; 
+void MockServer::update(int command) { 
     if(command == SPACE_BAR) {
         while(board->isPositionValid(tetromino) == 0){
             tetromino->moveDir(0);
@@ -45,8 +44,8 @@ void MockServer::update(int command) {
         if(position != 0) tetromino->rotateLeft();
         printf("Tetromino rot: %d\n", this->tetromino->getRotation());
     }
-    if(counter >= 1000){
-        counter = 0;
+    if(SDL_GetTicks() - this->counter >= 1000){
+        counter = SDL_GetTicks();
         tetromino->moveDir(0);
         int position = board->isPositionValid(tetromino);
         if(position != 0) {
