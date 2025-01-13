@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include "gamedata.hpp"
+#include "application.hpp"
 
 class GameView {
     private:
@@ -17,7 +18,9 @@ class GameView {
         void DrawTetromino(GameData data);
 
     public:
-        GameView();
+        GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer); // Novo construtor
+
+        void Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer);
         ~GameView();
         void Draw(GameData data);
         
