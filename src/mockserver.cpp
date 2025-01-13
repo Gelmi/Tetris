@@ -16,6 +16,7 @@ void MockServer::lockAndLoad() {
     this->tetromino->moveTo(0,0);
     delete this->tetromino;
     this->tetromino = Tetromino::create(rand() % 7 + 1);
+    // Line Clear Function
 }
 
 void MockServer::update(int command) { 
@@ -59,6 +60,9 @@ void MockServer::update(int command) {
 
 GameData MockServer::getState(){
     GameData gameData;
+    gameData.score = this->board->getScore();
+    gameData.level = this->board->getLevel();
+    gameData.rows = this->board->getRows();
     for(int i = 0; i < 200; i++) {
         gameData.board[i] = this->board->getTiles()[i];  
     }

@@ -2,8 +2,13 @@
 #include <SDL.h>
 #include <iostream>
 #include "constants.hpp"
+#include <SDL_ttf.h>
 
 GameView::GameView() {
+    if(TTF_Init() == -1){
+	    fprintf(stderr, "Erreur d'initialisation de TTF_Init : %s\n", TTF_GetError());
+	    exit(EXIT_FAILURE);
+    }
     window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 640, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if(!window){
@@ -33,6 +38,11 @@ GameView::GameView() {
         std::cout << "Error creating texture: " << SDL_GetError() << std::endl;
     }
     SDL_FreeSurface(imageT);
+    this->font = TTF_OpenFont("./assets/Roboto.ttf", 20);
+    if (font == NULL) {
+        fprintf(stderr, "error: font not found\n");
+        exit(EXIT_FAILURE);
+    }
 }
 
 GameView::~GameView() {
@@ -48,11 +58,25 @@ void GameView::Draw(GameData data) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);        
     GameView::DrawBoard(data);
-    SDL_RenderPresent(renderer); 
+    GameView::DrawStats(data);
+    SDL_RenderPresent(this->renderer); 
 }
 
 int atPos(int x, int y, int h) {
     return (y*h)+x;
+}
+
+void GameView::DrawStats(GameData data) {
+    std::string score_text = "Score: " + std::to_string(data.score) + ", " +
+                             "Level: " + std::to_string(data.level) + ", " +
+                             "Rows: " + std::to_string(data.rows);
+    SDL_Color textColor = { 255, 255, 255, 255 };
+    SDL_Surface* textSurface = TTF_RenderText_Solid(this->font, score_text.c_str(), textColor);
+    SDL_Texture* text = SDL_CreateTextureFromSurface(this->renderer, textSurface);
+    int text_width = textSurface->w;
+    int text_height = textSurface->h;
+    SDL_Rect renderQuad = { 325, 20, text_width, text_height };
+    SDL_RenderCopy(this->renderer, text, NULL, &renderQuad);
 }
 
 void GameView::DrawBoard(GameData data) {
@@ -96,6 +120,10 @@ void GameView::DrawBoard(GameData data) {
                     break;
                 case 7: 
                     SDL_SetTextureColorMod(this->tetrominoTileTexture, 255, 0, 0);
+                    SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                    break;
+                case 8:
+                    SDL_SetTextureColorMod(this->tetrominoTileTexture, 200, 200, 200);
                     SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
                     break;
             }
