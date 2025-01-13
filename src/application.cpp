@@ -1,4 +1,7 @@
 #include "application.hpp"
+#include "menu.hpp"
+#include "game.hpp"
+#include "credits.hpp"
 #include <iostream>
 
 Application::Application() : window(nullptr), renderer(nullptr) {
@@ -36,3 +39,46 @@ SDL_Window* Application::GetWindow() const {
 SDL_Renderer* Application::GetRenderer() const {
     return renderer;
 }
+
+void Application::Run(){
+
+ bool running = true;
+
+    // Criação dos objetos fora do loop
+    Menu menu(window, renderer);
+    Credits credits(window, renderer);
+
+    // Loop principal de navegação entre telas
+    while (running) {
+        menu.Setup(window, renderer);
+        credits.Setup(window, renderer);
+
+        int menuChoice = menu.showmenu();
+
+        switch (menuChoice) {
+            case 0: { // Jogo Single Player
+                Game game(window, renderer);
+                game.Run();
+                break;
+            }
+            case 1: { // Placeholder para Multiplayer
+                std::cout << "Multiplayer ainda não implementado." << std::endl;
+                break;
+            }
+            case 2: { // Créditos
+                credits.ShowCredits();
+                // Retornar ao menu após os créditos
+                break;
+            }
+            case 3: { // Sair
+                std::cout << "Exiting the game. Goodbye!" << std::endl;
+                running = false;
+                break;
+            }
+            default:
+                std::cout << "Escolha inválida." << std::endl;
+                break;
+        }
+    }
+}
+

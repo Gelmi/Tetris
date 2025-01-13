@@ -49,23 +49,24 @@ int Menu::showmenu() {
 
     Uint32 time;
     int x, y;
-    const int NUMMENU = 3;
-    const char* labels[NUMMENU] = {"Single Player", "Multiplayer", "Exit"};
+    const int NUMMENU = 4;
+    const char* labels[NUMMENU] = {"Single Player", "Multiplayer", "Credits", "Exit"};
     SDL_Surface* menus[NUMMENU];
     // bool selected[NUMMENU] = {0, 0};
     SDL_Color color[2] = {{255, 255, 255, 255}, {255, 0, 0, 255}};
 
     menus[0] = TTF_RenderText_Solid(font, labels[0], color[0]); // Game
     menus[1] = TTF_RenderText_Solid(font, labels[1], color[0]); // Multiplayer
-    menus[2] = TTF_RenderText_Solid(font, labels[2], color[0]); // Exit
+    menus[2] = TTF_RenderText_Solid(font, labels[2], color[0]); // Multiplayer
+    menus[3] = TTF_RenderText_Solid(font, labels[3], color[0]); // Exit
+
 
     SDL_Rect pos[NUMMENU];
-    pos[0].x = screen->clip_rect.w / 2 - menus[0]->clip_rect.w / 2;
-    pos[0].y = screen->clip_rect.h / 2 - menus[0]->clip_rect.h * 2;
-    pos[1].x = screen->clip_rect.w / 2 - menus[1]->clip_rect.w / 2;
-    pos[1].y = screen->clip_rect.h / 2;
-    pos[2].x = screen->clip_rect.w / 2 - menus[2]->clip_rect.w / 2;
-    pos[2].y = screen->clip_rect.h / 2 + menus[1]->clip_rect.h * 2;
+    for (int i = 0; i < NUMMENU; ++i) {
+        pos[i].x = screen->clip_rect.w / 2 - menus[i]->clip_rect.w / 2;
+        pos[i].y = screen->clip_rect.h / 2 - menus[0]->clip_rect.h * (2 - i) * 2;
+    }
+
 
     SDL_Event event;
 
@@ -77,6 +78,7 @@ int Menu::showmenu() {
                     SDL_FreeSurface(menus[0]);
                     SDL_FreeSurface(menus[1]);
                     SDL_FreeSurface(menus[2]);
+                    SDL_FreeSurface(menus[3]);
                     return 1;
                 case SDL_MOUSEBUTTONDOWN:
                     x = event.button.x;
@@ -86,6 +88,7 @@ int Menu::showmenu() {
                             SDL_FreeSurface(menus[0]);
                             SDL_FreeSurface(menus[1]);
                             SDL_FreeSurface(menus[2]);
+                            SDL_FreeSurface(menus[3]);
                             return i;
                         }
                     }
