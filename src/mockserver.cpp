@@ -11,6 +11,7 @@ MockServer::MockServer() {
     for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
     printf("\n");
     this->counter = SDL_GetTicks();
+    this->hasSwaped = false;
 }
 
 void MockServer::lockAndLoad() {
@@ -19,6 +20,7 @@ void MockServer::lockAndLoad() {
     delete this->tetromino;
     this->tetromino = this->nextTetromino;
     this->nextTetromino = Tetromino::create(rand() % 7 + 1);
+    this->hasSwaped = false;
     // Line Clear Function
 }
 
@@ -48,6 +50,15 @@ void MockServer::update(int command, GameData data) {
             tetromino->rotateRight();         
             position = board->isPositionValid(tetromino);
             if(position != 0) tetromino->rotateLeft();
+            break;
+        case 5:
+            if(!hasSwaped) { 
+                Tetromino * temp = this->tetromino;
+                this->nextTetromino->moveTo(this->tetromino->getX(), this->tetromino->getY());
+                this->tetromino = this->nextTetromino;
+                this->nextTetromino = temp;
+                this->hasSwaped = true;
+            }
             break;
     }
     if(SDL_GetTicks() - this->counter >= pow(0.8-((data.level)*0.007), data.level)*1000){

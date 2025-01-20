@@ -9,6 +9,7 @@ class MockServer {
     private:
         Board * board;
         Tetromino * tetromino, * nextTetromino;
+        bool hasSwaped;
         int counter;
 
     public:
