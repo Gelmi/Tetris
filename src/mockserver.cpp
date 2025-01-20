@@ -1,6 +1,7 @@
 #include "mockserver.hpp"
 #include <cstdlib>
 #include "constants.hpp"
+#include <math.h>
 
 MockServer::MockServer() {
     this->board = new Board();
@@ -19,7 +20,7 @@ void MockServer::lockAndLoad() {
     // Line Clear Function
 }
 
-void MockServer::update(int command) { 
+void MockServer::update(int command, GameData data) { 
     int position;
     switch(command) {
         case SPACE_BAR:
@@ -47,7 +48,7 @@ void MockServer::update(int command) {
             if(position != 0) tetromino->rotateLeft();
             break;
     }
-    if(SDL_GetTicks() - this->counter >= 1000){
+    if(SDL_GetTicks() - this->counter >= pow(0.8-((data.level)*0.007), data.level)*1000){
         counter = SDL_GetTicks();
         tetromino->moveDir(0);
         int position = board->isPositionValid(tetromino);

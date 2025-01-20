@@ -77,6 +77,8 @@ void GameView::DrawStats(GameData data) {
     int text_height = textSurface->h;
     SDL_Rect renderQuad = { 325, 20, text_width, text_height };
     SDL_RenderCopy(this->renderer, text, NULL, &renderQuad);
+    SDL_FreeSurface(textSurface);
+    SDL_DestroyTexture(text);
 }
 
 void GameView::DrawBoard(GameData data) {
