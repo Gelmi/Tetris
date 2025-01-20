@@ -1,12 +1,7 @@
-#include "application.hpp"
-#include <iostream>
+#include "game.hpp"
 
 int main() {
-    Application app;
-    app.Run();
-
-            
+    Game game;
+    return game.Run();
 }
-
-
 

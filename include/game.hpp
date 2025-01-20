@@ -2,18 +2,15 @@
 #define GAME_HPP
 #include <SDL.h>
 
-class Game : public View {
+class Game {
     public:
         int Run();
         void Setup();
         int GetInput();
-        Game(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer)
-        : View(sharedWindow, sharedRenderer), close(false) {}
+        Game();
 
     private:
         int close{0};
-        SDL_Window* window;       // Janela principal
-        SDL_Renderer* renderer; 
 } ;
 
 #endif 
