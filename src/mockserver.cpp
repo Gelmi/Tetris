@@ -5,7 +5,8 @@
 
 MockServer::MockServer() {
     this->board = new Board();
-    this->tetromino = Tetromino::create(rand() % 7 + 1);
+    this->tetromino = Tetromino::create(rand() % 7 + 2);
+    this->nextTetromino = Tetromino::create(rand() % 7 + 2);
     printf("%d\n", this->tetromino->getColor().r);
     for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
     printf("\n");
@@ -16,7 +17,8 @@ void MockServer::lockAndLoad() {
     this->board->lockTetromino(this->tetromino);
     this->tetromino->moveTo(0,0);
     delete this->tetromino;
-    this->tetromino = Tetromino::create(rand() % 7 + 1);
+    this->tetromino = this->nextTetromino;
+    this->nextTetromino = Tetromino::create(rand() % 7 + 1);
     // Line Clear Function
 }
 
@@ -74,6 +76,7 @@ GameData MockServer::getState(){
                 gameData.board[this->board->atPos(this->tetromino->getX()+j, this->tetromino->getY()+i)]
                     = this->tetromino->getTiles()[this->tetromino->atPos(i,j)];
             }
+            gameData.tiles[this->nextTetromino->atPos(i,j)] = this->nextTetromino->getTiles()[this->nextTetromino->atPos(i,j)];
         }
     }
     return gameData;

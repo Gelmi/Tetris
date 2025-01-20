@@ -59,6 +59,7 @@ void GameView::Draw(GameData data) {
     SDL_RenderClear(renderer);        
     GameView::DrawBoard(data);
     GameView::DrawStats(data);
+    GameView::DrawNextTetromino(data);
     SDL_RenderPresent(this->renderer); 
 }
 
@@ -84,6 +85,8 @@ void GameView::DrawStats(GameData data) {
 void GameView::DrawBoard(GameData data) {
     SDL_SetTextureBlendMode(this->boardTexture, SDL_BLENDMODE_BLEND);
     SDL_SetRenderTarget(this->renderer, this->boardTexture);
+    SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
+    SDL_RenderClear(this->renderer);
     SDL_SetTextureColorMod(this->boardTileTexture, 255, 255, 255);
     SDL_Rect tileRect;
     tileRect.w = TILE_SIZE;
@@ -137,4 +140,65 @@ void GameView::DrawBoard(GameData data) {
     tileRect.w = 10 * TILE_SIZE;
     tileRect.h = 20 * TILE_SIZE;
     SDL_RenderCopy(renderer, boardTexture, NULL, &tileRect);
+}
+
+void GameView::DrawNextTetromino(GameData data) {
+    SDL_SetTextureBlendMode(this->tetrominoTexture, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderTarget(this->renderer, this->tetrominoTexture);
+    SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
+    SDL_RenderClear(this->renderer);
+    SDL_Rect tileRect;
+    tileRect.w = TILE_SIZE;
+    tileRect.h = TILE_SIZE;
+    for(int j = 0; j < 4; j++) {
+        for(int i = 0; i < 4; i++) {
+            if(data.tiles[atPos(j, i, 4)] != 0){
+                tileRect.x = (i * TILE_SIZE);
+                tileRect.y = (j * TILE_SIZE);
+                switch(data.tiles[atPos(i, j, 4)]){
+                    case 0:
+                        SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                        break;
+                    case 1:
+                        SDL_SetTextureColorMod(this->tetrominoTileTexture, 0, 255, 255);
+                        SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                        break;
+                    case 2: 
+                        SDL_SetTextureColorMod(this->tetrominoTileTexture, 255, 255, 0);
+                        SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                        break;
+                    case 3: 
+                        SDL_SetTextureColorMod(this->tetrominoTileTexture, 128, 0, 128);
+                        SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                        break;
+                    case 4: 
+                        SDL_SetTextureColorMod(this->tetrominoTileTexture, 0, 0, 255);
+                        SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                        break;
+                    case 5: 
+                        SDL_SetTextureColorMod(this->tetrominoTileTexture, 255, 127, 0);
+                        SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                        break;
+                    case 6: 
+                        SDL_SetTextureColorMod(this->tetrominoTileTexture, 0, 255, 0);
+                        SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                        break;
+                    case 7: 
+                        SDL_SetTextureColorMod(this->tetrominoTileTexture, 255, 0, 0);
+                        SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                        break;
+                    case 8:
+                        SDL_SetTextureColorMod(this->tetrominoTileTexture, 200, 200, 200);
+                        SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
+                        break;
+                }
+            }
+        }
+    }
+    SDL_SetRenderTarget(this->renderer, NULL);
+    tileRect.x = 340;
+    tileRect.y = 100;
+    tileRect.w = TILE_SIZE*4;
+    tileRect.h = TILE_SIZE*4;
+    SDL_RenderCopy(renderer, this->tetrominoTexture, NULL, &tileRect);
 }

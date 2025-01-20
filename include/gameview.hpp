@@ -18,6 +18,7 @@ class GameView {
         void DrawBoard(GameData data);
         void DrawTetromino(GameData data);
         void DrawStats(GameData data);
+        void DrawNextTetromino(GameData data);
 
     public:
         GameView();

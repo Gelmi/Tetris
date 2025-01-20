@@ -8,7 +8,7 @@
 class MockServer {
     private:
         Board * board;
-        Tetromino * tetromino;
+        Tetromino * tetromino, * nextTetromino;
         int counter;
 
     public:
