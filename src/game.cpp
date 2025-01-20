@@ -4,7 +4,7 @@
 #include "gameview.hpp"
 #include "gamedata.hpp"
 #include "mockserver.hpp"
-#include "application.hpp"
+
 Game::Game() {
     this->close = 0;
 }
@@ -54,7 +54,7 @@ int Game::GetInput() {
 int Game::Run(){ 
     Game::Setup();
     GameData gameData;
-    GameView gameView(window, renderer);
+    GameView gameView;
     MockServer mockServer = MockServer();
     while(!this->close){
         mockServer.update(Game::GetInput());     
