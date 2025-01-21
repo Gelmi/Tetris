@@ -9,8 +9,10 @@ protected:
     SDL_Renderer* renderer;
 
 public:
-    View(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer)
-        : window(sharedWindow), renderer(sharedRenderer) {}
+    View(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
+        window = sharedWindow;
+        renderer = sharedRenderer;
+    }
 
     virtual ~View() {}
 

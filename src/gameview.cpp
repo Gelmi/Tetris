@@ -8,16 +8,10 @@ GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer;
 
-    if (!window) {
-        window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 640, SDL_WINDOW_SHOWN);
-        renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    }
-
     if (!window || !renderer) {
         std::cerr << "Error creating GameView: " << SDL_GetError() << std::endl;
         exit(1);
     }
-
 
     this->boardTexture = SDL_CreateTexture(this->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 10*32, 20*32);
     SDL_Surface * image = SDL_LoadBMP("assets/boardtile.bmp");

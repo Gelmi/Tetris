@@ -10,14 +10,14 @@ Application::Application() : window(nullptr), renderer(nullptr) {
         exit(1);
     }
 
-    window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+    this->window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, SDL_WINDOW_SHOWN);
     if (!window) {
         std::cerr << "Error creating window (Application): " << SDL_GetError() << std::endl;
         SDL_Quit();
         exit(1);
     }
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    this->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!renderer) {
         std::cerr << "Error creating renderer: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
@@ -27,17 +27,17 @@ Application::Application() : window(nullptr), renderer(nullptr) {
 }
 
 Application::~Application() {
-    if (renderer) SDL_DestroyRenderer(renderer);
-    if (window) SDL_DestroyWindow(window);
+    if (this->renderer) SDL_DestroyRenderer(this->renderer);
+    if (this->window) SDL_DestroyWindow(this->window);
     SDL_Quit();
 }
 
 SDL_Window* Application::GetWindow() const {
-    return window;
+    return this->window;
 }
 
 SDL_Renderer* Application::GetRenderer() const {
-    return renderer;
+    return this->renderer;
 }
 
 void Application::Run(){
@@ -45,20 +45,20 @@ void Application::Run(){
  bool running = true;
 
     // Criação dos objetos fora do loop
-    Menu menu(window, renderer);
-    Credits credits(window, renderer);
-
+    Menu * menu = new Menu(this->window, this->renderer);
+    Credits * credits = new Credits(this->window, this->renderer);
+    Game * game = new Game(this->window, this->renderer);
     // Loop principal de navegação entre telas
-    while (running) {
-        menu.Setup(window, renderer);
-        credits.Setup(window, renderer);
+    menu->Setup(window, renderer);
+    credits->Setup(window, renderer);
+    game->Setup(window, renderer);
 
-        int menuChoice = menu.showmenu();
+    while (running) {
+        int menuChoice = menu->showmenu();
 
         switch (menuChoice) {
             case 0: { // Jogo Single Player
-                Game game(window, renderer);
-                game.Run();
+                game->Run();
                 break;
             }
             case 1: { // Placeholder para Multiplayer
@@ -66,7 +66,7 @@ void Application::Run(){
                 break;
             }
             case 2: { // Créditos
-                credits.ShowCredits();
+                credits->ShowCredits();
                 // Retornar ao menu após os créditos
                 break;
             }

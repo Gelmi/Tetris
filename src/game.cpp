@@ -5,16 +5,13 @@
 #include "gamedata.hpp"
 #include "mockserver.hpp"
 #include "application.hpp"
-Game::Game() {
-    this->close = 0;
-}
 
-void Game::Setup() {
-    if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-        std::cout << "Error initializing SDL: " << SDL_GetError() << std::endl;
-        system("pause");
-    }
+void Game::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
+    this->window = sharedWindow;
+    this->renderer = sharedRenderer; 
     this->close = 0;
+    if(!window) std::cerr << "Game Didnt Receive Window" << SDL_GetError() << std::endl;
+    if(!renderer) std::cerr << "Game Didnt Receive Renderer" << SDL_GetError() << std::endl;
 }
 
 int Game::GetInput() {
@@ -52,14 +49,13 @@ int Game::GetInput() {
 }
 
 int Game::Run(){ 
-    Game::Setup();
     GameData gameData;
-    GameView gameView(window, renderer);
-    MockServer mockServer = MockServer();
+    GameView * gameView = new GameView(this->window, this->renderer);
+    MockServer * mockServer = new MockServer();
     while(!this->close){
-        mockServer.update(Game::GetInput());     
-        gameData = mockServer.getState();
-        gameView.Draw(gameData);
+        mockServer->update(Game::GetInput());     
+        gameData = mockServer->getState();
+        gameView->Draw(gameData);
     };
     SDL_Quit();
     return 0;

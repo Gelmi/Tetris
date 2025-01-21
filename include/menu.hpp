@@ -5,7 +5,7 @@
 #include <SDL_ttf.h>
 #include "view.hpp"
 
-class Menu : public View{
+class Menu : public View {
 public:
 
     Menu(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer)
