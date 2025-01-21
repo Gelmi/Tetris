@@ -39,7 +39,7 @@ server: $(SRC_PATH)/server.cpp
 
 $(BIN_PATH)/$(BIN_NAME): $(OBJECTS)
 	@echo "Linking: $@"
-	$(CC) $(OBJECTS) -o $@ $(CC_SDL)
+	$(CC) $(OBJECTS) -o $@ $(CC_SDL) $(CC_ENET)
 
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.cpp
 	@mkdir -p $(BUILD_PATH)

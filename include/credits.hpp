@@ -8,7 +8,8 @@
 
 class Credits : public View {
 public:
-    Credits(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) : View(sharedWindow, sharedRenderer) {};
+    Credits(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) 
+        : View(sharedWindow, sharedRenderer) {};
     ~Credits();
 
     void Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer);

@@ -3,6 +3,7 @@
 #include "game.hpp"
 #include "credits.hpp"
 #include <iostream>
+#include "multiplayer.hpp"
 
 Application::Application() : window(nullptr), renderer(nullptr) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -47,9 +48,11 @@ int Application::Run(){
     // Criação dos objetos fora do loop
     Menu * menu = new Menu(this->window, this->renderer);
     Credits * credits = new Credits(this->window, this->renderer);
+    Multiplayer * multiplayer = new Multiplayer(this->window, this->renderer);
     // Loop principal de navegação entre telas
     menu->Setup(window, renderer);
     credits->Setup(window, renderer);
+    multiplayer->Setup(window, renderer);
 
     while (running) {
         int menuChoice = menu->showmenu();
@@ -63,7 +66,7 @@ int Application::Run(){
                 break;
             }
             case 1: { // Placeholder para Multiplayer
-                std::cout << "Multiplayer ainda não implementado." << std::endl;
+                multiplayer->Run();
                 break;
             }
             case 2: { // Créditos
