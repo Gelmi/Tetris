@@ -21,7 +21,7 @@ class GameView {
         void DrawNextTetromino(GameData data);
 
     public:
-        GameView();
+        GameView(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer);
         ~GameView();
         void Draw(GameData data);
         

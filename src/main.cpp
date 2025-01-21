@@ -1,7 +1,7 @@
-#include "game.hpp"
+#include "application.hpp"
 
 int main() {
-    Game game;
-    return game.Run();
+    Application app;
+    return app.Run();
 }
 
