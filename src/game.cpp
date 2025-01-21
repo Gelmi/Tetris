@@ -58,6 +58,5 @@ int Game::Run(){
         gameData = mockServer->getState();
         gameView->Draw(gameData);
     };
-    SDL_Quit();
     return 0;
 }

@@ -79,7 +79,7 @@ int Menu::showmenu() {
                     SDL_FreeSurface(menus[1]);
                     SDL_FreeSurface(menus[2]);
                     SDL_FreeSurface(menus[3]);
-                    return 1;
+                    return 3;
                 case SDL_MOUSEBUTTONDOWN:
                     x = event.button.x;
                     y = event.button.y;
