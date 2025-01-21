@@ -2,7 +2,6 @@
 #define APPLICATION_HPP
 
 #include <SDL.h>
-#include "view.hpp"
 
 class Application {
 private:

@@ -4,7 +4,6 @@
 #include "gameview.hpp"
 #include "gamedata.hpp"
 #include "mockserver.hpp"
-#include "application.hpp"
 
 void Game::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
