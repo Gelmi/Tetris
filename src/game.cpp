@@ -41,6 +41,8 @@ int Game::GetInput() {
                     case SDLK_DOWN:
                         return 4;
                         break;
+                    case SDLK_c:
+                        return 5;
                     default:
                         return 0;
                 }
@@ -57,7 +59,7 @@ int Game::Run(){
     GameView gameView;
     MockServer mockServer = MockServer();
     while(!this->close){
-        mockServer.update(Game::GetInput());     
+        mockServer.update(Game::GetInput(), gameData);     
         gameData = mockServer.getState();
         gameView.Draw(gameData);
     };

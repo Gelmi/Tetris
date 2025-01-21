@@ -1,65 +1,82 @@
 #include "mockserver.hpp"
 #include <cstdlib>
 #include "constants.hpp"
+#include <math.h>
 
 MockServer::MockServer() {
     this->board = new Board();
-    this->tetromino = Tetromino::create(rand() % 7 + 1);
+    this->tetromino = Tetromino::create(rand() % 7 + 2);
+    this->nextTetromino = Tetromino::create(rand() % 7 + 2);
     printf("%d\n", this->tetromino->getColor().r);
     for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
     printf("\n");
     this->counter = SDL_GetTicks();
+    this->hasSwaped = false;
 }
 
-void MockServer::update(int command) { 
-    if(command == SPACE_BAR) {
-        while(board->isPositionValid(tetromino) == 0){
-            tetromino->moveDir(0);
-        }
-        tetromino->moveDir(3);
-        board->lockTetromino(tetromino);
-        tetromino->moveTo(0,0);
-        delete this->tetromino;
-        this->tetromino = Tetromino::create(rand() % 7 + 1);
-        printf("%d\n", rand() % 7);
-        for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
-    } else if (command == ARROW_LEFT || command == ARROW_RIGHT) {
-        tetromino->moveDir(command);
-        int position = board->isPositionValid(tetromino);
-        if(position != 0) tetromino->moveDir(-command);
-        if(position == 2) {
-            board->lockTetromino(tetromino);
-            tetromino->moveTo(0,0);
-            delete this->tetromino;
-            this->tetromino = Tetromino::create(rand() % 7 + 1);
-        }
-    } else if (command == ARROW_UP) {
-        tetromino->rotateLeft();
-        int position = board->isPositionValid(tetromino);
-        if(position != 0) tetromino->rotateRight();
-        printf("Tetromino rot: %d\n", this->tetromino->getRotation());
-    } else if (command == ARROW_DOWN) {
-        tetromino->rotateRight();         
-        int position = board->isPositionValid(tetromino);
-        if(position != 0) tetromino->rotateLeft();
-        printf("Tetromino rot: %d\n", this->tetromino->getRotation());
+void MockServer::lockAndLoad() {
+    this->board->lockTetromino(this->tetromino);
+    this->tetromino->moveTo(0,0);
+    delete this->tetromino;
+    this->tetromino = this->nextTetromino;
+    this->nextTetromino = Tetromino::create(rand() % 7 + 1);
+    this->hasSwaped = false;
+    // Line Clear Function
+}
+
+void MockServer::update(int command, GameData data) { 
+    int position;
+    switch(command) {
+        case SPACE_BAR:
+            while(board->isPositionValid(tetromino) == 0){
+                tetromino->moveDir(0);
+            }
+            tetromino->moveDir(3);
+            MockServer::lockAndLoad();
+            break;
+        case ARROW_LEFT:
+        case ARROW_RIGHT:
+            tetromino->moveDir(command);
+            position = board->isPositionValid(tetromino);
+            if(position != 0) tetromino->moveDir(-command);
+            if(position == 2) MockServer::lockAndLoad();            
+            break;
+        case ARROW_UP: 
+            tetromino->rotateLeft();
+            position = board->isPositionValid(tetromino);
+            if(position != 0) tetromino->rotateRight();
+            break;
+        case ARROW_DOWN:
+            tetromino->rotateRight();         
+            position = board->isPositionValid(tetromino);
+            if(position != 0) tetromino->rotateLeft();
+            break;
+        case 5:
+            if(!hasSwaped) { 
+                Tetromino * temp = this->tetromino;
+                this->nextTetromino->moveTo(this->tetromino->getX(), this->tetromino->getY());
+                this->tetromino = this->nextTetromino;
+                this->nextTetromino = temp;
+                this->hasSwaped = true;
+            }
+            break;
     }
-    if(SDL_GetTicks() - this->counter >= 1000){
+    if(SDL_GetTicks() - this->counter >= pow(0.8-((data.level)*0.007), data.level)*1000){
         counter = SDL_GetTicks();
         tetromino->moveDir(0);
         int position = board->isPositionValid(tetromino);
         if(position != 0) {
             tetromino->moveDir(3);
-            board->lockTetromino(tetromino);
-            tetromino->moveTo(0, 0);
-            delete this->tetromino;
-            this->tetromino = Tetromino::create(rand() % 7 + 1);
+            MockServer::lockAndLoad();
         }
     }
 }
 
 GameData MockServer::getState(){
     GameData gameData;
+    gameData.score = this->board->getScore();
+    gameData.level = this->board->getLevel();
+    gameData.rows = this->board->getRows();
     for(int i = 0; i < 200; i++) {
         gameData.board[i] = this->board->getTiles()[i];  
     }
@@ -70,6 +87,7 @@ GameData MockServer::getState(){
                 gameData.board[this->board->atPos(this->tetromino->getX()+j, this->tetromino->getY()+i)]
                     = this->tetromino->getTiles()[this->tetromino->atPos(i,j)];
             }
+            gameData.tiles[this->nextTetromino->atPos(i,j)] = this->nextTetromino->getTiles()[this->nextTetromino->atPos(i,j)];
         }
     }
     return gameData;

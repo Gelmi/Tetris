@@ -2,6 +2,7 @@
 #define GAMEVIEW_HPP
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include "gamedata.hpp"
 
 class GameView {
@@ -12,9 +13,12 @@ class GameView {
         SDL_Texture * boardTileTexture;
         SDL_Texture * tetrominoTexture;
         SDL_Texture * tetrominoTileTexture;
-        
+        TTF_Font * font;
+
         void DrawBoard(GameData data);
         void DrawTetromino(GameData data);
+        void DrawStats(GameData data);
+        void DrawNextTetromino(GameData data);
 
     public:
         GameView();

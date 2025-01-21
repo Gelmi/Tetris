@@ -8,13 +8,15 @@
 class MockServer {
     private:
         Board * board;
-        Tetromino * tetromino;
+        Tetromino * tetromino, * nextTetromino;
+        bool hasSwaped;
         int counter;
 
     public:
         MockServer();
-        void update(int command);
+        void update(int command, GameData data);
         GameData getState();
+        void lockAndLoad();
         
 };
 
