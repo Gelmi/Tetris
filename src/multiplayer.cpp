@@ -43,12 +43,21 @@ int Multiplayer::Run() {
     bool running = true;
     while(running) {
         while (SDL_PollEvent(&sdlEvent)) {
-            if (sdlEvent.type == SDL_QUIT) {
-                running = false;
+            switch(sdlEvent.type) {
+                case SDL_QUIT:
+                    running = false;
+                    break;
+                case SDL_KEYDOWN:
+                    switch(sdlEvent.key.keysym.sym){
+                        case SDLK_SPACE:
+                            ENetPacket *packet = enet_packet_create("Teste", strlen("Teste") + 1, ENET_PACKET_FLAG_RELIABLE);
+                            enet_peer_send(peer, 0, packet);
+                            break;
+                    }
             }
         }
 
-        eventStatus = enet_host_service(client, &event, 50000);
+        eventStatus = enet_host_service(client, &event, 500);
 
         if(eventStatus>0) {
             switch(event.type) {
@@ -71,14 +80,6 @@ int Multiplayer::Run() {
                     event.peer->data = NULL;
                     break;
             }
-        }
-
-        printf("Say > ");
-        gets(message);
-
-        if (strlen(message) > 0) {
-            ENetPacket *packet = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
-            enet_peer_send(peer, 0, packet);
         }
     }
 }

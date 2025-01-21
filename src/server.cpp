@@ -35,6 +35,7 @@ int main() {
                     break;
                 case ENET_EVENT_TYPE_RECEIVE:
                     std::cout << "(Server) Message from client : " << event.packet->data << "\n";
+                    enet_host_broadcast(server, 0, event.packet);
                     break;
                 case ENET_EVENT_TYPE_DISCONNECT:
                     std::cout << "(Server) " << event.peer->data << " disconnected\n";
