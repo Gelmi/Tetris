@@ -4,7 +4,7 @@
 #include "constants.hpp"
 #include <SDL_ttf.h>
 
-GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
+GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer, float scaleX, float scaleY) {
     if(TTF_Init() == -1){
 	    fprintf(stderr, "Erreur d'initialisation de TTF_Init : %s\n", TTF_GetError());
 	    exit(EXIT_FAILURE);
@@ -18,7 +18,7 @@ GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
         exit(1);
     }
 
-    this->boardTexture = SDL_CreateTexture(this->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 10*32, 20*32);
+    this->boardTexture = SDL_CreateTexture(this->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 10*32*scaleX, 20*32*scaleY);
     SDL_Surface * image = SDL_LoadBMP("assets/boardtile.bmp");
     if(!image) {
         std::cout << "Error loading image boardtile.bmp" << SDL_GetError() << std::endl;
@@ -28,7 +28,7 @@ GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
         std::cout << "Error creating texture: " << SDL_GetError() << std::endl;
     }
     SDL_FreeSurface(image);
-    this->tetrominoTexture = SDL_CreateTexture(this->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 4*32, 4*32);
+    this->tetrominoTexture = SDL_CreateTexture(this->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 4*32 *scaleX, 4*32 * scaleY);
     SDL_Surface * imageT = SDL_LoadBMP("assets/tetristile.bmp");
     if(!imageT) {
         std::cout << "Error loading image boardtile.bmp" << SDL_GetError() << std::endl;
@@ -74,8 +74,8 @@ void GameView::DrawStats(GameData data) {
     SDL_Color textColor = { 255, 255, 255, 255 };
     SDL_Surface* textSurface = TTF_RenderText_Solid(this->font, score_text.c_str(), textColor);
     SDL_Texture* text = SDL_CreateTextureFromSurface(this->renderer, textSurface);
-    int text_width = textSurface->w;
-    int text_height = textSurface->h;
+    int text_width = textSurface->w * scaleX;
+    int text_height = textSurface->h * scaleY;
     SDL_Rect renderQuad = { 325, 20, text_width, text_height };
     SDL_RenderCopy(this->renderer, text, NULL, &renderQuad);
     SDL_FreeSurface(textSurface);
@@ -89,12 +89,12 @@ void GameView::DrawBoard(GameData data) {
     SDL_RenderClear(this->renderer);
     SDL_SetTextureColorMod(this->boardTileTexture, 255, 255, 255);
     SDL_Rect tileRect;
-    tileRect.w = TILE_SIZE;
-    tileRect.h = TILE_SIZE;
+    tileRect.w = TILE_SIZE * scaleX;
+    tileRect.h = TILE_SIZE * scaleX;
     for(int j = 0; j < 20; j++) {
         for(int i = 0; i < 10; i++) {
-            tileRect.x = i * TILE_SIZE;
-            tileRect.y = j * TILE_SIZE;
+            tileRect.x = i * TILE_SIZE * scaleX;
+            tileRect.y = j * TILE_SIZE * scaleY;
             switch(data.board[atPos(i, j, 10)]){
                 case 0:
                     SDL_RenderCopy(renderer, this->boardTileTexture, NULL, &tileRect);
@@ -137,8 +137,8 @@ void GameView::DrawBoard(GameData data) {
     SDL_SetRenderTarget(this->renderer, NULL);
     tileRect.x = 0;
     tileRect.y = 0;
-    tileRect.w = 10 * TILE_SIZE;
-    tileRect.h = 20 * TILE_SIZE;
+    tileRect.w = 10 * TILE_SIZE * scaleX;
+    tileRect.h = 20 * TILE_SIZE * scaleY;
     SDL_RenderCopy(renderer, boardTexture, NULL, &tileRect);
 }
 
@@ -148,13 +148,13 @@ void GameView::DrawNextTetromino(GameData data) {
     SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
     SDL_RenderClear(this->renderer);
     SDL_Rect tileRect;
-    tileRect.w = TILE_SIZE;
-    tileRect.h = TILE_SIZE;
+    tileRect.w = TILE_SIZE * scaleX;
+    tileRect.h = TILE_SIZE * scaleY;
     for(int j = 0; j < 4; j++) {
         for(int i = 0; i < 4; i++) {
             if(data.tiles[atPos(j, i, 4)] != 0){
-                tileRect.x = (i * TILE_SIZE);
-                tileRect.y = (j * TILE_SIZE);
+                tileRect.x = (i * TILE_SIZE * scaleX);
+                tileRect.y = (j * TILE_SIZE * scaleY);
                 switch(data.tiles[atPos(i, j, 4)]){
                     case 0:
                         SDL_RenderCopy(renderer, this->tetrominoTileTexture, NULL, &tileRect);
@@ -196,9 +196,9 @@ void GameView::DrawNextTetromino(GameData data) {
         }
     }
     SDL_SetRenderTarget(this->renderer, NULL);
-    tileRect.x = 340;
-    tileRect.y = 100;
-    tileRect.w = TILE_SIZE*4;
-    tileRect.h = TILE_SIZE*4;
+    tileRect.x = 340 * scaleX;
+    tileRect.y = 100 * scaleY;
+    tileRect.w = TILE_SIZE*4 * scaleX;
+    tileRect.h = TILE_SIZE*4 * scaleY;
     SDL_RenderCopy(renderer, this->tetrominoTexture, NULL, &tileRect);
 }

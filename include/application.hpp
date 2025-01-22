@@ -7,6 +7,7 @@ class Application {
 private:
     SDL_Window* window;
     SDL_Renderer* renderer;
+    SDL_Event e;
 
 public:
     // Application(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) : View(sharedWindow, sharedRenderer) {};
@@ -16,6 +17,12 @@ public:
 
     SDL_Window* GetWindow() const;
     SDL_Renderer* GetRenderer() const;
+
+    
+    int windowWidth = 800;  // Valores padrão iniciais
+    int windowHeight = 600; // Valores padrão iniciais
+    float scaleX = 1.0f;
+    float scaleY = 1.0f;
 };
 
 #endif

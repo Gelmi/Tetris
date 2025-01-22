@@ -5,9 +5,11 @@
 #include "gamedata.hpp"
 #include "mockserver.hpp"
 
-void Game::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
+void Game::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer, float scaleX, float scaleY) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer; 
+    this->scaleX = scaleX;
+    this->scaleY = scaleX;
     this->close = 0;
     if(!window) std::cerr << "Game Didnt Receive Window" << SDL_GetError() << std::endl;
     if(!renderer) std::cerr << "Game Didnt Receive Renderer" << SDL_GetError() << std::endl;
@@ -51,7 +53,7 @@ int Game::GetInput() {
 
 int Game::Run(){ 
     GameData gameData;
-    GameView * gameView = new GameView(this->window, this->renderer);
+    GameView * gameView = new GameView(this->window, this->renderer, scaleX, scaleY);
     MockServer * mockServer = new MockServer();
     while(!this->close){
         mockServer->update(Game::GetInput(), gameData);     
