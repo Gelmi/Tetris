@@ -20,7 +20,7 @@ public:
 
     
     int windowWidth = 800;  // Valores padrão iniciais
-    int windowHeight = 600; // Valores padrão iniciais
+    int windowHeight = 640; // Valores padrão iniciais
     float scaleX = 1.0f;
     float scaleY = 1.0f;
 };

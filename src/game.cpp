@@ -56,6 +56,12 @@ int Game::Run(){
     GameView * gameView = new GameView(this->window, this->renderer, scaleX, scaleY);
     MockServer * mockServer = new MockServer();
     while(!this->close){
+        int windowHeight = 0;
+        int windowWidth = 0;
+        SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+        scaleX = windowWidth / 800.0f; 
+        scaleY = windowHeight / 640.0f; 
+        // std::cout << "Window resized: " << windowWidth << "x" << windowHeight << std::endl;
         mockServer->update(Game::GetInput(), gameData);     
         gameData = mockServer->getState();
         gameView->Draw(gameData);

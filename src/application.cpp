@@ -25,7 +25,7 @@ Application::Application() : window(nullptr), renderer(nullptr) {
         exit(1);
     }
 
-    SDL_RenderSetLogicalSize(renderer, 800, 600);
+    SDL_RenderSetLogicalSize(renderer, 800, 640);
 }
 
 Application::~Application() {
@@ -48,8 +48,10 @@ int Application::Run(){
 //  bool fullscreen = false;
 
     SDL_GetWindowSize(window, &windowWidth, &windowHeight);
-    scaleX = windowWidth / 800.0f; // Base de 800 pixels
-    scaleY = windowHeight / 600.0f; // Base de 600 pixels
+    scaleX = windowWidth / 800.0f; 
+    scaleY = windowHeight / 640.0f; 
+
+    std::cout << "Window sized: " << scaleX << "x" << scaleY << std::endl;
 
     // Criação dos objetos fora do loop
     Menu * menu = new Menu(this->window, this->renderer);
@@ -60,6 +62,7 @@ int Application::Run(){
 
     while (running) {
         int menuChoice = menu->showmenu();
+        std::cout << "Window sized: " << scaleX << "x" << scaleY << std::endl;
 
         switch (menuChoice) {
             case 0: { // Jogo Single Player    
