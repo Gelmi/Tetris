@@ -1,11 +1,11 @@
-#ifndef GAMEVIEW_HPP
-#define GAMEVIEW_HPP
+#ifndef MULTIGAMEVIEW_HPP
+#define MULTIGAMEVIEW_HPP
 
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include "gamedata.hpp"
 
-class GameView {
+class MultiGameView {
     private:
         SDL_Renderer * renderer;
         SDL_Window * window;
@@ -19,10 +19,11 @@ class GameView {
         void DrawTetromino(GameData data);
         void DrawStats(GameData data);
         void DrawNextTetromino(GameData data);
+        int atPos(int x, int y, int h);
 
     public:
-        GameView(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer);
-        ~GameView();
+        MultiGameView(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer);
+        ~MultiGameView();
         void Draw(GameData data);
         void DrawBoardOp(GameData data);
         

@@ -7,9 +7,6 @@ MockServer::MockServer() {
     this->board = new Board();
     this->tetromino = Tetromino::create(rand() % 7 + 2);
     this->nextTetromino = Tetromino::create(rand() % 7 + 2);
-    printf("%d\n", this->tetromino->getColor().r);
-    for(int i = 0; i< 16; i++) printf("%d ", this->tetromino->getTiles()[i]);
-    printf("\n");
     this->counter = SDL_GetTicks();
     this->hasSwaped = false;
 }

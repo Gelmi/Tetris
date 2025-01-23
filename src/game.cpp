@@ -4,6 +4,7 @@
 #include "gameview.hpp"
 #include "gamedata.hpp"
 #include "mockserver.hpp"
+#include "constants.hpp"
 
 void Game::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
@@ -23,19 +24,19 @@ int Game::GetInput() {
             case SDL_KEYDOWN:
                 switch(event.key.keysym.sym) {
                     case SDLK_SPACE:
-                        return 2;
+                        return SPACE_BAR;
                         break;
                     case SDLK_RIGHT: 
-                        return -1;
+                        return ARROW_RIGHT;
                         break;
                     case SDLK_LEFT:
-                        return 1;
+                        return ARROW_LEFT;
                         break;
                     case SDLK_UP:
-                        return 3;
+                        return ARROW_UP;
                         break;
                     case SDLK_DOWN:
-                        return 4;
+                        return ARROW_DOWN;
                         break;
                     case SDLK_c:
                         return 5;

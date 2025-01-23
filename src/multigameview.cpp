@@ -1,10 +1,10 @@
-#include "gameview.hpp"
+#include "multigameview.hpp"
 #include <SDL.h>
 #include <iostream>
 #include "constants.hpp"
 #include <SDL_ttf.h>
 
-GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
+MultiGameView::MultiGameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     if(TTF_Init() == -1){
 	    fprintf(stderr, "Erreur d'initialisation de TTF_Init : %s\n", TTF_GetError());
 	    exit(EXIT_FAILURE);
@@ -14,7 +14,7 @@ GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->renderer = sharedRenderer;
 
     if (!window || !renderer) {
-        std::cerr << "Error creating GameView: " << SDL_GetError() << std::endl;
+        std::cerr << "Error creating MultiGameView: " << SDL_GetError() << std::endl;
         exit(1);
     }
 
@@ -45,7 +45,7 @@ GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     }
 }
 
-GameView::~GameView() {
+MultiGameView::~MultiGameView() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_DestroyTexture(this->boardTileTexture);
@@ -54,20 +54,21 @@ GameView::~GameView() {
     SDL_DestroyTexture(this->tetrominoTileTexture);
 }
 
-void GameView::Draw(GameData data) {
+void MultiGameView::Draw(GameData data) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);        
-    GameView::DrawBoard(data);
-    GameView::DrawStats(data);
-    GameView::DrawNextTetromino(data);
+    MultiGameView::DrawBoard(data);
+    MultiGameView::DrawStats(data);
+    MultiGameView::DrawNextTetromino(data);
+    MultiGameView::DrawBoardOp(data);
     SDL_RenderPresent(this->renderer); 
 }
 
-int atPos(int x, int y, int h) {
+int MultiGameView::atPos(int x, int y, int h) {
     return (y*h)+x;
 }
 
-void GameView::DrawStats(GameData data) {
+void MultiGameView::DrawStats(GameData data) {
     std::string score_text = "Score: " + std::to_string(data.score) + ", " +
                              "Level: " + std::to_string(data.level) + ", " +
                              "Rows: " + std::to_string(data.rows);
@@ -82,7 +83,7 @@ void GameView::DrawStats(GameData data) {
     SDL_DestroyTexture(text);
 }
 
-void GameView::DrawBoard(GameData data) {
+void MultiGameView::DrawBoard(GameData data) {
     SDL_SetTextureBlendMode(this->boardTexture, SDL_BLENDMODE_BLEND);
     SDL_SetRenderTarget(this->renderer, this->boardTexture);
     SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
@@ -142,7 +143,7 @@ void GameView::DrawBoard(GameData data) {
     SDL_RenderCopy(renderer, boardTexture, NULL, &tileRect);
 }
 
-void GameView::DrawNextTetromino(GameData data) {
+void MultiGameView::DrawNextTetromino(GameData data) {
     SDL_SetTextureBlendMode(this->tetrominoTexture, SDL_BLENDMODE_BLEND);
     SDL_SetRenderTarget(this->renderer, this->tetrominoTexture);
     SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
@@ -203,19 +204,19 @@ void GameView::DrawNextTetromino(GameData data) {
     SDL_RenderCopy(renderer, this->tetrominoTexture, NULL, &tileRect);
 }
 
-void GameView::DrawBoardOp(GameData data) {
+void MultiGameView::DrawBoardOp(GameData data) {
     SDL_SetTextureBlendMode(this->boardTexture, SDL_BLENDMODE_BLEND);
     SDL_SetRenderTarget(this->renderer, this->boardTexture);
     SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
     SDL_RenderClear(this->renderer);
     SDL_SetTextureColorMod(this->boardTileTexture, 255, 255, 255);
     SDL_Rect tileRect;
-    tileRect.w = TILE_SIZE/2;
-    tileRect.h = TILE_SIZE/2;
+    tileRect.w = TILE_SIZE_OP;
+    tileRect.h = TILE_SIZE_OP;
     for(int j = 0; j < 20; j++) {
         for(int i = 0; i < 10; i++) {
-            tileRect.x = i * TILE_SIZE/2;
-            tileRect.y = j * TILE_SIZE/2;
+            tileRect.x = i * TILE_SIZE_OP;
+            tileRect.y = j * TILE_SIZE_OP;
             switch(data.boardOp[atPos(i, j, 10)]){
                 case 0:
                     SDL_RenderCopy(renderer, this->boardTileTexture, NULL, &tileRect);
@@ -257,9 +258,8 @@ void GameView::DrawBoardOp(GameData data) {
     }
     SDL_SetRenderTarget(this->renderer, NULL);
     tileRect.x = 340;
-    tileRect.y = 340;
-    tileRect.w = 10 * TILE_SIZE/2;
-    tileRect.h = 20 * TILE_SIZE/2;
+    tileRect.y = 280;
+    tileRect.w = 10 * TILE_SIZE_OP;
+    tileRect.h = 20 * TILE_SIZE_OP;
     SDL_RenderCopy(renderer, boardTexture, NULL, &tileRect);
-    SDL_RenderPresent(this->renderer); 
 }

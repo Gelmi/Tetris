@@ -6,8 +6,12 @@ BIN_PATH = $(BUILD_PATH)/bin
 
 BIN_NAME = tetris
 
-SOURCES = $(filter-out $(SRC_PATH)/server.cpp, $(shell find $(SRC_PATH) -name '*.cpp' | sort -k 1nr | cut -f2-))
+
+SOURCES = $(filter-out $(SRC_PATH)/server_main.cpp, $(shell find $(SRC_PATH) -name '*.cpp' | sort -k 1nr | cut -f2-))
 OBJECTS = $(SOURCES:$(SRC_PATH)/%.cpp=$(BUILD_PATH)/%.o)
+SERVER_SOURCES = $(filter-out $(SRC_PATH)/main.cpp, $(shell find $(SRC_PATH) -name '*.cpp' | sort -k 1nr | cut -f2-))
+SERVER_OBJECTS = $(SERVER_SOURCES:$(SRC_PATH)/%.cpp=$(BUILD_PATH)/%.o)
+
 
 CC=g++
 
@@ -32,10 +36,13 @@ CC_SDL := `sdl2-config --libs --cflags` -lSDL2_ttf
 
 CC_ENET := `pkg-config libenet --cflags --libs`
 
-all: $(BIN_PATH)/$(BIN_NAME) 
+all: server client
 
-server: $(SRC_PATH)/server.cpp
-	$(CC) -o server $< $(CC_ENET)
+server: $(SERVER_OBJECTS)
+	@echo "Linking: $@"
+	$(CC) $(SERVER_OBJECTS) -o $@ $(CC_SDL) $(CC_ENET)
+
+client: $(BIN_PATH)/$(BIN_NAME) 
 
 $(BIN_PATH)/$(BIN_NAME): $(OBJECTS)
 	@echo "Linking: $@"

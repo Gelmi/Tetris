@@ -5,7 +5,7 @@
 #include <iostream>
 #include "multiplayer.hpp"
 
-Application::Application() : window(nullptr), renderer(nullptr) {
+Application::Application() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "Error initializing SDL: " << SDL_GetError() << std::endl;
         exit(1);
