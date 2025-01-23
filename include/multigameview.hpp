@@ -19,13 +19,14 @@ class MultiGameView {
         void DrawTetromino(GameData data);
         void DrawStats(GameData data);
         void DrawNextTetromino(GameData data);
+        void DrawBoardOp(GameData data);
         int atPos(int x, int y, int h);
 
     public:
         MultiGameView(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer);
         ~MultiGameView();
         void Draw(GameData data);
-        void DrawBoardOp(GameData data);
+        void DrawWait(GameData data);
         
 };
 

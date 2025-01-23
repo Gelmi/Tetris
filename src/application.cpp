@@ -48,11 +48,9 @@ int Application::Run(){
     // Criação dos objetos fora do loop
     Menu * menu = new Menu(this->window, this->renderer);
     Credits * credits = new Credits(this->window, this->renderer);
-    Multiplayer * multiplayer = new Multiplayer(this->window, this->renderer);
     // Loop principal de navegação entre telas
     menu->Setup(window, renderer);
     credits->Setup(window, renderer);
-    multiplayer->Setup(window, renderer);
 
     while (running) {
         int menuChoice = menu->showmenu();
@@ -65,8 +63,11 @@ int Application::Run(){
                 delete game;
                 break;
             }
-            case 1: { // Placeholder para Multiplayer
+            case 1: { // Placeholder para Multiplayer 
+                Multiplayer * multiplayer = new Multiplayer(this->window, this->renderer);
+                multiplayer->Setup(window, renderer);
                 multiplayer->Run();
+                delete multiplayer;
                 break;
             }
             case 2: { // Créditos

@@ -8,6 +8,9 @@
 
 Multiplayer::~Multiplayer() {
     enet_deinitialize();
+    delete this->gameData;
+    delete this->client;
+    delete this->peer;
 }
 
 void Multiplayer::Setup(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer) {
@@ -146,15 +149,20 @@ int Multiplayer::Run() {
    
     MultiGameView * gameView = new MultiGameView(this->window, this->renderer);
 
-
     if(Multiplayer::connect() == EXIT_FAILURE) return 0;
 
     while(this->running) {  
+        printf("1\n");
         Multiplayer::pollSDLEvent(peer);
+        printf("2\n");
         Multiplayer::handleServer();
         if(connected) {
+            printf("3\n");
             gameView->Draw(*(this->gameData));
-            gameView->DrawBoardOp(*(this->gameData));
+        } else {
+            gameView->DrawWait(*(this->gameData));
         }
     }
+
+    return 0;
 }

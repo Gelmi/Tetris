@@ -13,6 +13,7 @@ struct ClientData {
     uint32_t m3;
     uint8_t m4[200];
     uint8_t m5[200];
+    uint8_t padding[2];
 };
 
 class Multiplayer : public View {

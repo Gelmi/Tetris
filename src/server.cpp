@@ -6,13 +6,11 @@
 #include "tetromino.hpp"
 
 // PROXIMOS PASSOS:
-// COMEÇAR A CONSTRUIR O SERVIDOR:
-// MAKE FILE COM OS INCLUDES DIVERSOS PARA O SERVER
-// INSTANCIAR DOIS BOARDS
-// COMO CONSTRUIR CLIENT DATA APARTIR DA CLASSE BOARD
-// DEPOIS RENDERIZAR ESSAS DUAS DATAS SOBRE O CLIENT
-// TESTAR COM O MOVIMENTO DE UM QUADRADO
-// POSSIVELMENTE CRIAR UMA CLASSE NETWORKMANAGER
+// Terminar de implementar as funções handleCommand e lock and load;
+// Implementar a visualização da proxima peça
+// Implementar a pontuação no servidor
+// Implementar o fim do jogo (tela)
+// Implementar o começo do jogo (tela e espera)
 
 Server::Server() {
     //Initialize Enet
@@ -32,7 +30,17 @@ Server::Server() {
     Tetromino * tetromino2 = Tetromino::create(rand() % 7 + 2);
     this->tetrominos.push_back(tetromino2);
 
+    Tetromino * tetromino3 = Tetromino::create(rand() % 7 + 2);
+    this->nextTetrominos.push_back(tetromino3);
+
+    Tetromino * tetromino4 = Tetromino::create(rand() % 7 + 2);
+    this->nextTetrominos.push_back(tetromino4);
+
     players = 0;
+
+    hasSwaped = false;
+
+    counter = false;
 
 }
 
@@ -121,21 +129,24 @@ int Server::Run() {
                 case ENET_EVENT_TYPE_CONNECT: {
                     std::cout << "(Server) We got a new connection from " << event.peer->address.host << 
                     " with id " << event.peer->connectID << "\n";
-                    //this->clients.push_back(event.peer->connectID);
                     this->clients[players] = event.peer->connectID;
                     players++;
-                    ClientData clientData;
-                    clientData.messageType = 13;
-                    clientData.m2 = event.peer->connectID;
-                    ENetPacket *packet = enet_packet_create(&clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
+                    ClientData * clientData = (ClientData *) malloc(sizeof(ClientData));
+                    clientData->messageType = 13;
+                    clientData->m2 = event.peer->connectID;
+                    ENetPacket *packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
                     enet_peer_send(event.peer, 0, packet);
+                    Server::getData(clientData, 0);  
+                    packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
+                    enet_host_broadcast(server, 0, packet);
                     break; }
                 case ENET_EVENT_TYPE_RECEIVE: {
                     ClientData * clientData = reinterpret_cast<ClientData*>(event.packet->data);
                     std::cout << "(Server) Message from client " << event.peer->connectID << " : " 
                         << static_cast<int>(clientData->m1) << "\n";
-                    Server::handleCommands(static_cast<int>(clientData->m1), event.peer->connectID);
 
+                    //Setar uma flag como true fazer esses comandos la embaixo depois setar como false
+                    Server::handleCommands(static_cast<int>(clientData->m1), event.peer->connectID);
                     Server::getData(clientData, event.peer->connectID);  
                     ENetPacket *packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
                     enet_host_broadcast(server, 0, packet);
@@ -144,9 +155,12 @@ int Server::Run() {
                 case ENET_EVENT_TYPE_DISCONNECT: {
                     std::cout << "(Server) " << event.peer->connectID << " disconnected\n";
                     event.peer->data = NULL;
+                    players--;
                     break; }
             }
         }
+        //Colocar aqui o handleCommands -> ele será responsável
+        //por enviar os pacotes caso haja algum moviemento
     }
     return 1;
 }
