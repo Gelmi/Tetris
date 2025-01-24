@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include "constants.hpp"
 #include "multigameview.hpp"
+#include "tetromino.hpp"
 
 Multiplayer::~Multiplayer() {
     enet_deinitialize();
@@ -58,26 +59,24 @@ void Multiplayer::pollSDLEvent(ENetPeer * peer) {
                 ClientData clientData;
                 clientData.messageType = 12;
                 switch(sdlEvent.key.keysym.sym){
-                    case SDLK_SPACE: {
+                    case SDLK_SPACE:
                         clientData.m1 = SPACE_BAR;
                         break;
-                    }
-                    case SDLK_UP: {
+                    case SDLK_UP:
                         clientData.m1 = ARROW_UP;
                         break;
-                    }
-                    case SDLK_DOWN: {
+                    case SDLK_DOWN:
                         clientData.m1 = ARROW_DOWN;
                         break;
-                    }
-                    case SDLK_LEFT: {
+                    case SDLK_LEFT:
                         clientData.m1 = ARROW_LEFT;
                         break;
-                    }
-                    case SDLK_RIGHT: {
+                    case SDLK_RIGHT:
                         clientData.m1 = ARROW_RIGHT;
                         break;
-                    }
+                    case SDLK_c:
+                        clientData.m1 = SWAP;
+                        break;
 
                 }
                 printf("Enviando pacote\n");
@@ -128,21 +127,25 @@ void Multiplayer::handleServer() {
 }
 
 void Multiplayer::clientToGame(ClientData * clientData){
-    this->gameData->score = 0;
-    this->gameData->level = 0;
-    this->gameData->rows = 0;
+    Tetromino * tetromino;
     if(connectID == clientData->m2) {
+        this->gameData->level = static_cast<int>(clientData->m6);
+        this->gameData->score = clientData->m8;
+        tetromino = Tetromino::create(static_cast<int>(clientData->m10));
         for(int i = 0; i < 200; i++) {
             this->gameData->board[i] = clientData->m4[i];
             this->gameData->boardOp[i] = clientData->m5[i];
         } 
     } else {
+        this->gameData->level = static_cast<int>(clientData->m7);
+        this->gameData->score = clientData->m9;
+        tetromino = Tetromino::create(static_cast<int>(clientData->m11));
         for(int i = 0; i < 200; i++) {
             this->gameData->board[i] = clientData->m5[i];
             this->gameData->boardOp[i] = clientData->m4[i];
         }
     }
-    for(int i = 0; i < 16; i++) this->gameData->tiles[i] = 0;
+    for(int i = 0; i < 16; i++) this->gameData->tiles[i] = tetromino->getTiles()[i];
 }
 
 int Multiplayer::Run() {  
@@ -152,17 +155,16 @@ int Multiplayer::Run() {
     if(Multiplayer::connect() == EXIT_FAILURE) return 0;
 
     while(this->running) {  
-        printf("1\n");
         Multiplayer::pollSDLEvent(peer);
-        printf("2\n");
         Multiplayer::handleServer();
         if(connected) {
-            printf("3\n");
             gameView->Draw(*(this->gameData));
         } else {
             gameView->DrawWait(*(this->gameData));
         }
     }
+    
+    enet_peer_disconnect_now(peer, 0);
 
     return 0;
 }

@@ -57,15 +57,10 @@ MultiGameView::~MultiGameView() {
 void MultiGameView::Draw(GameData data) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);        
-    printf("4\n");
     MultiGameView::DrawBoard(data);
-    printf("5\n");
     MultiGameView::DrawStats(data);
-    printf("6\n");
     MultiGameView::DrawNextTetromino(data);
-    printf("7\n");
     MultiGameView::DrawBoardOp(data);
-    printf("8\n");
     SDL_RenderPresent(this->renderer); 
 }
 
@@ -82,28 +77,16 @@ int MultiGameView::atPos(int x, int y, int h) {
 
 void MultiGameView::DrawStats(GameData data) {
     std::string score_text = "Score: " + std::to_string(data.score) + ", " +
-                             "Level: " + std::to_string(data.level) + ", " +
-                             "Rows: " + std::to_string(data.rows);
-        printf("9\n");
+                             "Level: " + std::to_string(data.level);
     SDL_Color textColor = { 255, 255, 255, 255 };
-        printf("10\n");
     SDL_Surface* textSurface = TTF_RenderText_Solid(this->font, score_text.c_str(), textColor);
-        printf("11\n");
-    if(textSurface == NULL) printf("tonulo\n");    
     SDL_Texture* text = SDL_CreateTextureFromSurface(this->renderer, textSurface);
-        printf("12\n");
     int text_width = textSurface->w;
-        printf("13\n");
     int text_height = textSurface->h;
-        printf("14\n");
     SDL_Rect renderQuad = { 325, 20, text_width, text_height };
-        printf("15\n");
     SDL_RenderCopy(this->renderer, text, NULL, &renderQuad);
-        printf("16\n");
     SDL_FreeSurface(textSurface);
-        printf("17\n");
     SDL_DestroyTexture(text);
-        printf("18\n");
 }
 
 void MultiGameView::DrawBoard(GameData data) {

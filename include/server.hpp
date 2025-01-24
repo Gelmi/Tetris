@@ -5,14 +5,16 @@
 #include "board.hpp"
 #include <vector>
 #include "constants.hpp"
+#include <chrono>
 
 struct ClientData {
     int8_t messageType;
     int8_t m1;
-    uint32_t m2;
-    uint32_t m3;
-    uint8_t m4[200];
-    uint8_t m5[200];
+    uint32_t m2, m3;
+    uint8_t m4[200], m5[200];
+    uint8_t m6, m7;
+    uint32_t m8, m9;
+    uint8_t m10, m11;
     uint8_t padding[2];
 };
 
@@ -22,16 +24,21 @@ class Server {
         std::vector<Board*> boards;
         std::vector<Tetromino*> tetrominos;
         std::vector<Tetromino*> nextTetrominos;
+        uint8_t nextIndex[2];
         uint32_t clients[2];
         int players;
         bool hasSwaped;
-        int counter;
+        bool bothConnected;
+        bool gameEnd;
+        std::chrono::steady_clock::time_point counter;
 
         void getData(ClientData * clientData, uint32_t connectID);
         void handleCommands(int command, uint32_t connectID);
         bool initServer();
         int idToIndex(uint32_t connectID);
-        void lockAndLoad();
+        void lockAndLoad(int index);
+        void tryDescend();
+        void restartGame();
 
     public: 
         Server();

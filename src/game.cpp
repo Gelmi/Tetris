@@ -39,7 +39,7 @@ int Game::GetInput() {
                         return ARROW_DOWN;
                         break;
                     case SDLK_c:
-                        return 5;
+                        return SWAP;
                     default:
                         return 0;
                 }

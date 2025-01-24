@@ -48,7 +48,7 @@ void MockServer::update(int command, GameData data) {
             position = board->isPositionValid(tetromino);
             if(position != 0) tetromino->rotateLeft();
             break;
-        case 5:
+        case SWAP:
             if(!hasSwaped) { 
                 Tetromino * temp = this->tetromino;
                 this->nextTetromino->moveTo(this->tetromino->getX(), this->tetromino->getY());

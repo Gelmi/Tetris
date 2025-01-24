@@ -9,10 +9,11 @@
 struct ClientData {
     int8_t messageType;
     int8_t m1;
-    uint32_t m2;
-    uint32_t m3;
-    uint8_t m4[200];
-    uint8_t m5[200];
+    uint32_t m2, m3;
+    uint8_t m4[200], m5[200];
+    uint8_t m6, m7;
+    uint32_t m8, m9;
+    uint8_t m10, m11;
     uint8_t padding[2];
 };
 

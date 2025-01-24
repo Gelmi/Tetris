@@ -13,6 +13,7 @@ class Board : public Entity {
         void lockTetromino(Tetromino * Tetromino);
         void cleanRows(Tetromino * Tetromino);
         void addScore(int n);
+        bool checkIfEnded();
         int getLevel() { return level; };
         int getScore() { return score; };
         int getRows() { return rows; };

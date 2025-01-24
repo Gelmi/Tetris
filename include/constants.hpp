@@ -9,6 +9,7 @@
 #define ARROW_DOWN 4
 #define ARROW_LEFT 1
 #define ARROW_RIGHT -1
+#define SWAP 5
 
 #define COMMAND_MESSAGE 12
 #define CONNECT_MESSAGE 13
