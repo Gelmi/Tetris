@@ -4,7 +4,7 @@
 #include "constants.hpp"
 #include <SDL_ttf.h>
 
-GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer, float scaleX, float scaleY) {
+GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     if(TTF_Init() == -1){
 	    fprintf(stderr, "Erreur d'initialisation de TTF_Init : %s\n", TTF_GetError());
 	    exit(EXIT_FAILURE);
@@ -17,6 +17,10 @@ GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer, float
         std::cerr << "Error creating GameView: " << SDL_GetError() << std::endl;
         exit(1);
     }
+
+    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+    scaleX = windowWidth / 800.0f; 
+    scaleY = windowHeight / 640.0f; 
 
     this->boardTexture = SDL_CreateTexture(this->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 10*32*scaleX, 20*32*scaleY);
     SDL_Surface * image = SDL_LoadBMP("assets/boardtile.bmp");

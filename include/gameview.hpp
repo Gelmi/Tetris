@@ -22,12 +22,12 @@ class GameView {
 
     public:
         // GameView(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer);
-        GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer, float scaleX, float scaleY);
+        GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer);
         ~GameView();
         void Draw(GameData data);
 
-        int windowWidth = 0;
-        int windowHeight = 0;
+        int windowWidth = 800;
+        int windowHeight = 640;
 
     float scaleX = 1.0f;
     float scaleY = 1.0f;

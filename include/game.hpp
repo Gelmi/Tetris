@@ -6,10 +6,11 @@
 class Game : public View {
     public:
         int Run();
-        void Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer, float scaleX, float scaleY);
+        void Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer);
         int GetInput();
-        Game(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer, float scaleX, float scaleY) 
-        : View(sharedWindow, sharedRenderer), close(false), scaleX(scaleX), scaleY(scaleY) {}
+        Game(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) 
+        : View(sharedWindow, sharedRenderer), close(false) {}
+        ~Game();
 
         // std::cout << "Construtor chamado: scaleX = " << scaleX << ", scaleY = " << scaleY << std::endl;
 
@@ -17,8 +18,7 @@ class Game : public View {
         int close{0};
         SDL_Window* window;      
         SDL_Renderer* renderer;
-        float scaleX = 1.0f;
-        float scaleY = 1.0f;
+
 } ;
 
 #endif 

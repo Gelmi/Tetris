@@ -47,11 +47,10 @@ int Application::Run(){
  bool running = true;
 //  bool fullscreen = false;
 
-    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
-    scaleX = windowWidth / 800.0f; 
-    scaleY = windowHeight / 640.0f; 
+    // SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+    // scaleX = windowWidth / 800.0f; 
+    // scaleY = windowHeight / 640.0f; 
 
-    std::cout << "Window sized: " << scaleX << "x" << scaleY << std::endl;
 
     // Criação dos objetos fora do loop
     Menu * menu = new Menu(this->window, this->renderer);
@@ -62,12 +61,11 @@ int Application::Run(){
 
     while (running) {
         int menuChoice = menu->showmenu();
-        std::cout << "Window sized: " << scaleX << "x" << scaleY << std::endl;
 
         switch (menuChoice) {
-            case 0: { // Jogo Single Player    
-                Game * game = new Game(this->window, this->renderer, scaleX, scaleY);
-                game->Setup(window, renderer, scaleX, scaleY);
+            case 0: { // Jogo Single Player  
+                Game * game = new Game(this->window, this->renderer);
+                game->Setup(window, renderer);
                 game->Run();
                 delete game;
                 break;
@@ -92,21 +90,6 @@ int Application::Run(){
         }
     
 
-        while (SDL_PollEvent(&e)) {
-             std::cout << "Evento detectado!" << std::endl; 
-            if (e.type == SDL_WINDOWEVENT) {
-                if (e.window.event == SDL_WINDOWEVENT_RESIZED) {
-                    windowWidth = e.window.data1;
-                    windowHeight = e.window.data2;
-
-                    // Atualizar escala
-                    scaleX = windowWidth / 800.0f; // 800 é a largura base
-                    scaleY = windowHeight / 600.0f; // 600 é a altura base
-
-                    std::cout << "Window resized: " << windowWidth << "x" << windowHeight << std::endl;
-                }
-            }
-        }
     }
 
     // Limpeza final
