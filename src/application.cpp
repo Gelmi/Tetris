@@ -67,7 +67,6 @@ int Application::Run(){
                 Game * game = new Game(this->window, this->renderer);
                 game->Setup(window, renderer);
                 game->Run();
-                delete game;
                 break;
             }
             case 1: { // Placeholder para Multiplayer
@@ -85,7 +84,7 @@ int Application::Run(){
                 break;
             }
             default:
-                std::cout << "Escolha inválida." << std::endl;
+                std::cout << "Escolha inválida. AAA" << std::endl;
                 break;
         }
     

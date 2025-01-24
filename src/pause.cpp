@@ -147,12 +147,3 @@ int Pause::showpause() {
 
     return false;
 }
-
-
-
-
-
-Pause::~Pause() {
-    TTF_Quit(); // Encerra a biblioteca SDL_ttf
-    SDL_Quit(); // Encerra o SDL
-}

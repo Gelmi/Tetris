@@ -10,12 +10,12 @@ class Game : public View {
         int GetInput();
         Game(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) 
         : View(sharedWindow, sharedRenderer), close(false) {}
-        ~Game();
 
         // std::cout << "Construtor chamado: scaleX = " << scaleX << ", scaleY = " << scaleY << std::endl;
 
     private:
         int close{0};
+        bool running;
         SDL_Window* window;      
         SDL_Renderer* renderer;
 

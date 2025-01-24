@@ -14,8 +14,6 @@ public:
     int showpause();
 
     // Menu() = default;
-    ~Pause();
-
 private:
     int close{0};
     SDL_Window* window{nullptr};

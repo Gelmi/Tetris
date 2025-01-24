@@ -50,8 +50,6 @@ GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
 }
 
 GameView::~GameView() {
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
     SDL_DestroyTexture(this->boardTileTexture);
     SDL_DestroyTexture(this->boardTexture);
     SDL_DestroyTexture(this->tetrominoTexture);
