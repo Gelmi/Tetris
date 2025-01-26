@@ -19,6 +19,7 @@ void MultiGameView::Draw(GameData data) {
 
 void MultiGameView::DrawWaitConnection() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);        
     std::string score_text = "Waiting for connection to server";
     SDL_Color textColor = { 255, 255, 255, 255 };
     SDL_Surface* textSurface = TTF_RenderText_Solid(this->font, score_text.c_str(), textColor);

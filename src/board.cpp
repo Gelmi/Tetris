@@ -5,14 +5,13 @@ int Board::isPositionValid(Tetromino * Tetromino) {
         for(int i = 0; i < 4; i++) {
             if(Tetromino->getTiles()[Tetromino->atPos(i, j)] != 0){    
                 //Bateu nas laterais
-                if(Tetromino->getX() + j >= 0 && Tetromino->getY() + i >= 0) {
-                    if(Tetromino->getX() + j < 0 || Tetromino->getX() + j > 9 ) {
-                        return 1;
-                    }
-                    //Bateu em algum bloco ou embaixo
-                    if(Tetromino->getY() + i > 19 || this->tiles[this->atPos(Tetromino->getX()+j, Tetromino->getY()+i)] != 0){ 
-                        return 2;
-                    }
+                if(Tetromino->getX() + j < 0 || Tetromino->getX() + j > 9 ) {
+                    return 1;
+                }
+                //Bateu em algum bloco ou embaixo
+                if(Tetromino->getX() + j > 0 && Tetromino->getY() + i > 0
+                    && Tetromino->getY() + i > 19 || this->tiles[this->atPos(Tetromino->getX()+j, Tetromino->getY()+i)] != 0){ 
+                    return 2;
                 }
             }
         }

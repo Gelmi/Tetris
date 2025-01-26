@@ -55,8 +55,7 @@ int Pause::showpause() {
     bool running = true;
 
     while (running) {
-        int windowWidth, windowHeight;
-        SDL_GetWindowSize(this->window, &windowWidth, &windowHeight);
+        int windowWidth = 800, windowHeight = 640;
 
         // Calcula dinamicamente as posições dos menus
         for (int i = 0; i < NUMMENU; ++i) {

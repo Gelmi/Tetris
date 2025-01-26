@@ -35,6 +35,8 @@ Application::Application() {
         SDL_Quit();
         exit(1);
     }
+
+    SDL_RenderSetLogicalSize(renderer, 800, 640);
 }
 
 Application::~Application() {

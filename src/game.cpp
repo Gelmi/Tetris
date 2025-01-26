@@ -93,7 +93,7 @@ int Game::Run(){
         while(!running) Game::PauseMenu();
         lose = mockServer->update(Game::GetInput(), gameData);     
         gameData = mockServer->getState();
-        gameView->Draw(gameData);
+        if(!this->close) gameView->Draw(gameData);
         if(lose) Game::gameEndMenu();
     };
     return 0;
