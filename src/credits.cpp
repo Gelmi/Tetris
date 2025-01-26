@@ -90,4 +90,7 @@ Credits::~Credits() {
         TTF_CloseFont(font);
         font = nullptr;
     }
+
+    //     TTF_Quit(); // Encerra a biblioteca SDL_ttf
+    // SDL_Quit(); // Encerra o SDL
 }

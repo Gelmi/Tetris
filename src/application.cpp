@@ -45,22 +45,17 @@ SDL_Renderer* Application::GetRenderer() const {
 int Application::Run(){
 
  bool running = true;
-//  bool fullscreen = false;
-
-    // SDL_GetWindowSize(window, &windowWidth, &windowHeight);
-    // scaleX = windowWidth / 800.0f; 
-    // scaleY = windowHeight / 640.0f; 
-
-
     // Criação dos objetos fora do loop
     Menu * menu = new Menu(this->window, this->renderer);
     Credits * credits = new Credits(this->window, this->renderer);
     // Loop principal de navegação entre telas
+
     menu->Setup(window, renderer);
     credits->Setup(window, renderer);
 
     while (running) {
         int menuChoice = menu->showmenu();
+
 
         switch (menuChoice) {
             case 0: { // Jogo Single Player  

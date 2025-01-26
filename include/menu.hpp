@@ -21,6 +21,7 @@ private:
     SDL_Window* window{nullptr};
     SDL_Surface* screen{nullptr};
     SDL_Renderer* renderer{nullptr};
+        TTF_Font* font;
 };
 
 #endif
