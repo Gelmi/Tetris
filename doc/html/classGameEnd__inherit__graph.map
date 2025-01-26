@@ -1,5 +1,0 @@
-<map id="GameEnd" name="GameEnd">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,159,139,384"/>
-<area shape="rect" id="Node000002" href="$classView.html" title=" " alt="" coords="30,5,114,111"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,124,75,158,69,158,69,124"/>
-</map>

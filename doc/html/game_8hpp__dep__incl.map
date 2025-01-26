@@ -1,7 +1,0 @@
-<map id="/home/gelmi/Tetris/include/game.hpp" name="/home/gelmi/Tetris/include/game.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="92,5,235,45"/>
-<area shape="rect" id="Node000002" href="$application_8cpp.html" title="This file handles the start of the main looping." alt="" coords="5,93,153,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,57,100,95,96,91,133,53"/>
-<area shape="rect" id="Node000003" href="$game_8cpp.html" title="This file handles the settings of the game looping." alt="" coords="177,93,320,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,53,232,91,228,95,190,57"/>
-</map>

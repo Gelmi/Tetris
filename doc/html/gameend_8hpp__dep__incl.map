@@ -1,9 +1,0 @@
-<map id="/home/gelmi/Tetris/include/gameend.hpp" name="/home/gelmi/Tetris/include/gameend.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="160,5,327,45"/>
-<area shape="rect" id="Node000002" href="$game_8cpp.html" title="This file handles the settings of the game looping." alt="" coords="5,93,148,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,54,114,96,112,91,194,49"/>
-<area shape="rect" id="Node000003" href="$gameend_8cpp.html" title="This file handles the end screen." alt="" coords="172,93,315,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,59,246,93,241,93,241,59"/>
-<area shape="rect" id="Node000004" href="$multiplayer_8cpp.html" title="This file handles the conexion of multiplayer mode." alt="" coords="339,93,489,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="294,49,378,91,375,96,292,54"/>
-</map>

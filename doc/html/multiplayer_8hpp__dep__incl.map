@@ -1,7 +1,0 @@
-<map id="/home/gelmi/Tetris/include/multiplayer.hpp" name="/home/gelmi/Tetris/include/multiplayer.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="77,5,255,45"/>
-<area shape="rect" id="Node000002" href="$application_8cpp.html" title="This file handles the start of the main looping." alt="" coords="5,93,153,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,57,100,95,97,91,135,53"/>
-<area shape="rect" id="Node000003" href="$multiplayer_8cpp.html" title="This file handles the conexion of multiplayer mode." alt="" coords="177,93,328,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,53,235,91,232,95,193,57"/>
-</map>
