@@ -15,9 +15,9 @@ class MockServer {
 
     public:
         MockServer();
-        void update(int command, GameData data);
+        bool update(int command, GameData data);
         GameData getState();
-        void lockAndLoad();
+        bool lockAndLoad();
         
 };
 

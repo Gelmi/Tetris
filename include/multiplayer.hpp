@@ -44,6 +44,7 @@ class Multiplayer : public View {
         int connect();
         void handleServer();
         void clientToGame(ClientData * clientData);
+        void gameEndMenu();
 };
 
 #endif

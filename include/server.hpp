@@ -44,6 +44,7 @@ class Server {
         void sendStateToClients();
         void sendConnectMessage(ENetPeer * peer);
         void sendStartMessage();
+        bool sendEndMessage(int index);
 
     public: 
         Server();

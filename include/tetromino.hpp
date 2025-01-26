@@ -10,7 +10,7 @@ class Tetromino : public Entity {
 
     public:
         Tetromino(SDL_Color color, std::array<unsigned int, 16> shape)
-            : Entity(4, 4), rotation(0) {
+            : Entity(3, 0, 4, 4), rotation(0) {
             this->color.r = color.r;
             this->color.g = color.g;
             this->color.b = color.b;

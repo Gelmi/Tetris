@@ -5,6 +5,9 @@
 #include "gamedata.hpp"
 #include "mockserver.hpp"
 #include "constants.hpp"
+#include "gameend.hpp"
+#include "pause.hpp"
+#include <memory>
 
 void Game::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
@@ -19,7 +22,7 @@ int Game::GetInput() {
     while(SDL_PollEvent(&event)) {
         switch(event.type) {
             case SDL_QUIT:
-                this->close = 1;
+                this->close = true;
                 break;
             case SDL_KEYDOWN:
                 switch(event.key.keysym.sym) {
@@ -40,6 +43,11 @@ int Game::GetInput() {
                         break;
                     case SDLK_c:
                         return SWAP;
+                        break;
+                    case SDLK_ESCAPE:
+                        this->running = false;
+                        return 0;
+                        break;
                     default:
                         return 0;
                 }
@@ -50,14 +58,43 @@ int Game::GetInput() {
     return 0;
 }
 
+void Game::PauseMenu() {
+    std::unique_ptr<Pause> pause = std::make_unique<Pause>(this->window, this->renderer);
+    pause->Setup(this->window, this->renderer);
+    int pausechoice = pause->showpause();
+    switch (pausechoice) {
+        case 0:
+            this->running = true;
+            break;
+        case 1:
+            this->close = true;
+            this->running = true;
+            break;
+    }
+}
+
+void Game::gameEndMenu() {
+    std::unique_ptr<GameEnd> gameEnd = std::make_unique<GameEnd>(this->window, this->renderer);
+    gameEnd->Setup(this->window, this->renderer);
+    int choice = gameEnd->showgameend();
+    switch (choice) {
+        case 1:
+            this->close = true;
+            this->running = true;
+            break;
+    }
+}
+
 int Game::Run(){ 
     GameData gameData;
     std::unique_ptr<GameView> gameView = std::make_unique<GameView>(this->window, this->renderer);
     std::unique_ptr<MockServer> mockServer = std::make_unique<MockServer>();
     while(!this->close){
-        mockServer->update(Game::GetInput(), gameData);     
+        while(!running) Game::PauseMenu();
+        lose = mockServer->update(Game::GetInput(), gameData);     
         gameData = mockServer->getState();
         gameView->Draw(gameData);
+        if(lose) Game::gameEndMenu();
     };
     return 0;
 }

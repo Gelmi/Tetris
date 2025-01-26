@@ -78,12 +78,12 @@ bool Server::initServer() {
 
 void Server::lockAndLoad(int index) {
     boards[(index+1)%2]->addRows(this->boards[index]->lockTetromino(this->tetrominos[index]));
-    if(!Server::checkIfEnded()) {
-        this->tetrominos[index] = this->nextTetrominos[index];
-        this->nextIndex[index] = rand() % 7 + 2;
-        this->nextTetrominos[index] = Tetromino::create(static_cast<int>(this->nextIndex[index]));
-        this->hasSwaped[index] = false;
-    }
+    this->tetrominos[index] = this->nextTetrominos[index];
+    this->nextIndex[index] = rand() % 7 + 2;
+    this->nextTetrominos[index] = Tetromino::create(static_cast<int>(this->nextIndex[index]));
+    this->hasSwaped[index] = false;
+    if(this->boards[index]->isPositionValid(this->tetrominos[index]) == 2) gameEnd = true;
+    Server::sendEndMessage(index);
 }
 
 void Server::getData(ClientData * clientData) {
@@ -181,6 +181,24 @@ void Server::tryDescend() {
         }
         sendStateToClients();
     } 
+}
+
+bool Server::sendEndMessage(int index) {
+    std::unique_ptr<ClientData> clientData = std::make_unique<ClientData>();
+    clientData->messageType = RESULTS_MESSAGE;
+    clientData->m2 = clients[0];
+    clientData->m3 = clients[1];
+    clientData->m6 = 0;
+    clientData->m7 = 0;
+    if(index == 0) clientData->m6 = 1; 
+    else clientData->m7 = 1;
+    if(gameEnd) {
+        ENetPacket * packet = enet_packet_create(clientData.get(), sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
+        enet_host_broadcast(server, 0, packet);
+        printf("Enviei\n");
+    }
+    printf("Result: %d, %d\n", clientData->m6, clientData->m7);
+    return gameEnd;
 }
 
 bool Server::checkIfEnded() {

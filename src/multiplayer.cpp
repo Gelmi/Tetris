@@ -6,6 +6,9 @@
 #include "constants.hpp"
 #include "multigameview.hpp"
 #include "tetromino.hpp"
+#include "gameend.hpp"
+#include <string>
+#include <memory>
 
 Multiplayer::~Multiplayer() {
     enet_deinitialize();
@@ -154,6 +157,22 @@ void Multiplayer::clientToGame(ClientData * clientData){
     for(int i = 0; i < 16; i++) this->gameData->tiles[i] = tetromino->getTiles()[i];
 }
 
+void Multiplayer::gameEndMenu() {
+    std::unique_ptr<GameEnd> gameEnd = std::make_unique<GameEnd>(this->window, this->renderer);
+    gameEnd->Setup(this->window, this->renderer);
+    if(this->gameData->result) {
+        gameEnd->changeText("You win!");
+        printf("Ganhei!\n");
+    }
+    int choice = gameEnd->showgameend();
+    switch (choice) {
+        case 1:
+            this->close = true;
+            this->running = true;
+            break;
+    }
+}
+
 int Multiplayer::Run() {  
    
     MultiGameView * gameView = new MultiGameView(this->window, this->renderer);
@@ -166,7 +185,8 @@ int Multiplayer::Run() {
         if(connected) {
             gameView->Draw(*(this->gameData));
             if(!running) gameView->DrawWaitStart();
-            if(results) gameView->DrawResults(*(this->gameData));
+            //if(results) gameView->DrawResults(*(this->gameData));
+            if(results) Multiplayer::gameEndMenu();
         } else {
             gameView->DrawWaitConnection();
         }
