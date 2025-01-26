@@ -1,3 +1,13 @@
+/**
+ * @file game.cpp
+ * @author Gabriel et Guilherme
+ * @brief Ce fichier mis en place la boucle de le joue
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "game.hpp"
 #include <SDL.h>
 #include <iostream>

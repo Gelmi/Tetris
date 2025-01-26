@@ -1,0 +1,56 @@
+\label{index_md__home_corsi_Tetris_README}%
+\Hypertarget{index_md__home_corsi_Tetris_README}%
+\hypertarget{index_autotoc_md1}{}\doxysection{Project Guidelines}\label{index_autotoc_md1}
+\hypertarget{index_autotoc_md2}{}\doxysubsection{Commit Convention}\label{index_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type(scope): description}
+
+\end{DoxyCode}
+ \hypertarget{index_autotoc_md3}{}\doxysubsubsection{Types}\label{index_autotoc_md3}
+
+\begin{DoxyItemize}
+\item API relevant changes
+\begin{DoxyItemize}
+\item {\ttfamily feat} Commits, that adds or remove a new feature
+\item {\ttfamily fix} Commits, that fixes a bug
+\end{DoxyItemize}
+\item {\ttfamily refactor} Commits, that rewrite/restructure your code, however does not change any API behaviour
+\begin{DoxyItemize}
+\item {\ttfamily perf} Commits are special {\ttfamily refactor} commits, that improve performance
+\end{DoxyItemize}
+\item {\ttfamily style} Commits, that do not affect the meaning (white-\/space, formatting, missing semi-\/colons, etc)
+\item {\ttfamily test} Commits, that add missing tests or correcting existing tests
+\item {\ttfamily docs} Commits, that affect documentation only
+\item {\ttfamily build} Commits, that affect build components like build tool, ci pipeline, dependencies, project version, ...
+\item {\ttfamily ops} Commits, that affect operational components like infrastructure, deployment, backup, recovery, ...
+\item {\ttfamily chore} Miscellaneous commits e.\+g. modifying {\ttfamily .gitignore}
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysubsubsection{Scopes}\label{index_autotoc_md4}
+The {\ttfamily scope} provides additional contextual information.
+\begin{DoxyItemize}
+\item Is an {\bfseries{optional}} part of the format
+\end{DoxyItemize}\hypertarget{index_autotoc_md5}{}\doxysubsection{Project Structure}\label{index_autotoc_md5}
+The project will be structured in directories following the convention above\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/ \(\backslash\)Tetris}
+\DoxyCodeLine{    -\/ .gitignore \# Used for ignoring files in version control (e.g: \(\backslash\)build)}
+\DoxyCodeLine{    -\/ README.md \# This file}
+\DoxyCodeLine{    -\/ Makefile \# Used to "{}automate"{} build process}
+\DoxyCodeLine{    -\/ \(\backslash\)build \# Contains the build files}
+\DoxyCodeLine{    -\/ \(\backslash\)include \# Contains all .hpp }
+\DoxyCodeLine{        -\/ class\_1.hpp}
+\DoxyCodeLine{    -\/ \(\backslash\)src \# Contains all .cpp}
+\DoxyCodeLine{        -\/ class\_1.cpp}
+\DoxyCodeLine{    -\/ \(\backslash\)lib \# Contains external libraries}
+\DoxyCodeLine{    -\/ \(\backslash\)docs \# Contains documentation files}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md6}{}\doxysubsection{Branching Strategy}\label{index_autotoc_md6}
+The branching strategy will consist in 4 branch types\+:
+\begin{DoxyItemize}
+\item {\ttfamily main} The stable version of the project
+\item {\ttfamily develop} Branched from main. Merged into main when becomes a stable product. ~\newline
+
+\item {\ttfamily feature} Branched from develop for each feature in development. Merged into develop when finished.
+\item {\ttfamily hotfix} Branched from main to fix bugs. Merged into main when the bug is fixed. 
+\end{DoxyItemize}

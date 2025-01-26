@@ -1,3 +1,14 @@
+/**
+ * @file application.cpp
+ * @author Gabriel et Guilherme
+ * @brief Ce fichier démarre le boucle principal
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "application.hpp"
 #include "menu.hpp"
 #include "game.hpp"
@@ -42,13 +53,17 @@ SDL_Renderer* Application::GetRenderer() const {
     return this->renderer;
 }
 
+/**
+ * @brief Cette fonction est la boucle principal de navegation parmi des écrans
+ * 
+ * @return int 
+ */
 int Application::Run(){
 
  bool running = true;
-    // Criação dos objetos fora do loop
+    /// Creation des objects dehors la boucle
     Menu * menu = new Menu(this->window, this->renderer);
     Credits * credits = new Credits(this->window, this->renderer);
-    // Loop principal de navegação entre telas
 
     menu->Setup(window, renderer);
     credits->Setup(window, renderer);
@@ -58,22 +73,22 @@ int Application::Run(){
 
 
         switch (menuChoice) {
-            case 0: { // Jogo Single Player  
+            case 0: {/// Game
                 Game * game = new Game(this->window, this->renderer);
                 game->Setup(window, renderer);
                 game->Run();
                 break;
             }
-            case 1: { // Placeholder para Multiplayer
+            case 1: { /// Multiplayer
                 std::cout << "Multiplayer ainda não implementado." << std::endl;
                 break;
             }
-            case 2: { // Créditos
+            case 2: { /// Credits
                 credits->ShowCredits();
-                // Retornar ao menu após os créditos
+
                 break;
             }
-            case 3: { // Sair
+            case 3: { ///  Sortir
                 std::cout << "Exiting the game. Goodbye!" << std::endl;
                 running = false;
                 break;
@@ -86,7 +101,7 @@ int Application::Run(){
 
     }
 
-    // Limpeza final
+    // Nettoyage final
     delete menu;
     delete credits;
 

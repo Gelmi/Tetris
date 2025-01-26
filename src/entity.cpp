@@ -1,5 +1,14 @@
+/**
+ * @file entity.cpp
+ * @author Gabriel et Guilherme
+ * @brief Ce fichier gère le positionnement des pièces
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "entity.hpp"
-
 #include<cstring>
 #include<SDL.h>
 #include "constants.hpp"

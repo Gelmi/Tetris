@@ -1,3 +1,14 @@
+/**
+ * @file board.cpp
+ * @author Gabriel et Guilherme
+ * @brief Ce fichier mis en place le tableau 
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "board.hpp"
 
 int Board::isPositionValid(Tetromino * Tetromino) {

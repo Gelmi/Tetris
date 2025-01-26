@@ -1,3 +1,13 @@
+/**
+ * @file mockserver.cpp
+ * @author Gabriel et Guilherme
+ * @brief Ce fichier fait de jointure entre des partie de le joue
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "mockserver.hpp"
 #include <cstdlib>
 #include "constants.hpp"

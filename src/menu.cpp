@@ -376,9 +376,6 @@ int Menu::showmenu() {
 }
 
 
-
-
-
 Menu::~Menu() {
     // TTF_Quit(); // Encerra a biblioteca SDL_ttf
     // SDL_Quit(); // Encerra o SDL

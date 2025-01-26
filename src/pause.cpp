@@ -1,3 +1,13 @@
+/**
+ * @file pause.cpp
+ * @author Gabriel et Guilherme
+ * @brief Ce fichier mis en place l'ecran de pause
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "view.hpp"
 #include "pause.hpp"
 #include <iostream>

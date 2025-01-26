@@ -1,3 +1,13 @@
+/**
+ * @file gameview.cpp
+ * @author Gabriel et Guilherme
+ * @brief Ce fichier mis en place l'ecran de joue
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "gameview.hpp"
 #include <SDL.h>
 #include <iostream>
