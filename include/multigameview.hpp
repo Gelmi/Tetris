@@ -19,8 +19,9 @@ class MultiGameView : public GameView {
             };
         ~MultiGameView();
         void Draw(GameData data);
-        void DrawWaitConnection(GameData data);
-        void DrawWaitStart(GameData data);
+        void DrawWaitConnection();
+        void DrawWaitStart();
+        void DrawResults(GameData data);
 
     private:
         TTF_Font* font;

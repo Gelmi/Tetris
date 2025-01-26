@@ -6,12 +6,10 @@ int Board::isPositionValid(Tetromino * Tetromino) {
             if(Tetromino->getTiles()[Tetromino->atPos(i, j)] != 0){    
                 //Bateu nas laterais
                 if(Tetromino->getX() + j < 0 || Tetromino->getX() + j > 9 ) {
-                    //printf("%d\n", Tetromino->getY()+i);
                     return 1;
                 }
                 //Bateu em algum bloco ou embaixo
                 if(Tetromino->getY() + i > 19 || this->tiles[this->atPos(Tetromino->getX()+j, Tetromino->getY()+i)] != 0){ 
-                    //printf("Block found in: %d, %d\n", Tetromino->getX()+j, Tetromino->getY()+i);
                     return 2;
                 }
             }

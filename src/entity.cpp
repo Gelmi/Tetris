@@ -3,6 +3,7 @@
 #include<cstring>
 #include<SDL.h>
 #include "constants.hpp"
+#include <stdio.h>
 
 Entity::Entity(int x, int y, int w, int h){
     this->x = x;

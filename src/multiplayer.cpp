@@ -21,6 +21,7 @@ void Multiplayer::Setup(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer
     this->connected = false;
     this->close = false;
     this->gameData = new GameData();
+    this->results = false;
 }
 
 int Multiplayer::connect() {
@@ -111,11 +112,12 @@ void Multiplayer::handleServer() {
                 }
                 if(clientData->messageType == WIN_MESSAGE) printf("Ganhei\n");
                 if(clientData->messageType == LOSE_MESSAGE) printf("Perdi\n");
+                if(clientData->messageType == RESULTS_MESSAGE) this->results = true;
                 enet_packet_destroy(event.packet);
                 break;
             }
             case ENET_EVENT_TYPE_DISCONNECT: {
-                printf("(Client) %s disconnected.\n", event.peer->data);
+                printf("(Client) %u disconnected.\n", event.peer->connectID);
 
                 event.peer->data = NULL;
                 this->connected = false;
@@ -157,11 +159,13 @@ int Multiplayer::Run() {
         Multiplayer::pollSDLEvent(peer);
         Multiplayer::handleServer();
         if(connected) {
-            if(!running) gameView->DrawWaitStart(*(this->gameData));
-            else gameView->Draw(*(this->gameData));
+            gameView->Draw(*(this->gameData));
+            if(!running) gameView->DrawWaitStart();
+            if(results) gameView->DrawResults(*(this->gameData));
         } else {
-            gameView->DrawWaitConnection(*(this->gameData));
+            gameView->DrawWaitConnection();
         }
+        SDL_RenderPresent(this->renderer);
     }
     
     enet_peer_disconnect_now(peer, 0);

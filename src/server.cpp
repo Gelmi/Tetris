@@ -78,7 +78,6 @@ bool Server::initServer() {
 
 void Server::lockAndLoad(int index) {
     this->boards[index]->lockTetromino(this->tetrominos[index]);
-    delete this->tetrominos[index];
     if(!Server::checkIfEnded()) {
         this->tetrominos[index] = this->nextTetrominos[index];
         this->nextIndex[index] = rand() % 7 + 2;
@@ -180,11 +179,7 @@ void Server::tryDescend() {
                 Server::lockAndLoad(id);
             }
         }
-        ClientData * clientData = (ClientData *) malloc(sizeof(ClientData));
-        Server::getData(clientData);  
-        ENetPacket *packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
-        enet_host_broadcast(this->server, 0, packet);
-        delete clientData;
+        sendStateToClients();
     } 
 }
 
@@ -203,8 +198,8 @@ bool Server::checkIfEnded() {
         gameEnd = true;
         clientData->m7 = 1; 
     }
-    ENetPacket * packet = enet_packet_create(clientData.get(), sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
     if(gameEnd) {
+        ENetPacket * packet = enet_packet_create(clientData.get(), sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
         enet_host_broadcast(server, 0, packet);
         printf("Enviei\n");
     }
@@ -234,6 +229,52 @@ void Server::restartGame() {
     this->gameEnd = false;
 };
 
+ClientData * Server::createClientData(){
+    ClientData * clientData = (ClientData *) malloc(sizeof(ClientData));
+    clientData->messageType = 0; 
+    clientData->m1 = 0;
+    clientData->m2 = 0;
+    clientData->m3 = 0;
+    clientData->m6 = 0;
+    clientData->m7 = 0;
+    clientData->m8 = 0;
+    clientData->m9 = 0;
+    clientData->m10 = 0;
+    clientData->m11 = 0;
+    clientData->padding[0] = 0;
+    clientData->padding[1] = 0;
+    for(int i = 0; i < 200; i++){
+        clientData->m4[i] = 0;
+        clientData->m5[i] = 0;
+    }
+    return clientData;
+}
+
+void Server::sendStateToClients() {
+    std::unique_ptr<ClientData> clientData = std::make_unique<ClientData>();
+    Server::getData(clientData.get());  
+    ENetPacket * packet = enet_packet_create(clientData.get(), sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
+    enet_host_broadcast(server, 0, packet);
+    enet_host_flush(server);
+}
+
+void Server::sendConnectMessage(ENetPeer * peer) {
+    ClientData * clientData = (ClientData *) malloc(sizeof(ClientData));
+    clientData->messageType = 13;
+    clientData->m2 = peer->connectID;
+    ENetPacket * packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
+    enet_peer_send(peer, 0, packet);
+    enet_host_flush(server);
+}
+
+void Server::sendStartMessage() {
+    std::unique_ptr<ClientData> clientData = std::make_unique<ClientData>();
+    clientData->messageType = START_MESSAGE;
+    ENetPacket * packet = enet_packet_create(clientData.get(), sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
+    enet_host_broadcast(server, 0, packet);
+    enet_host_flush(server);
+}
+
 int Server::Run() {
     if(!Server::initServer()) {
         return 0;
@@ -241,9 +282,7 @@ int Server::Run() {
 
     int eventStatus;
     ENetEvent event;
-    ClientData * clientData;
-    ENetPacket * packet;
-
+    int limite = 1;
     while(1) {
         eventStatus = enet_host_service(server, &event, 0);
 
@@ -254,36 +293,29 @@ int Server::Run() {
                     " with id " << event.peer->connectID << "\n";
                     this->clients[players] = event.peer->connectID;
                     players++;
+
                     if(!gameEnd && players == 2) {
                         bothConnected = true;
                         gameEnd= false;
                         const auto old{std::chrono::steady_clock::now()};
                         while ((std::chrono::duration_cast<std::chrono::milliseconds> (std::chrono::steady_clock::now()-old)) < std::chrono::milliseconds(3000));
-                        clientData->messageType = START_MESSAGE; packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
-                        enet_host_broadcast(server, 0, packet);
-                    }
-                    clientData = (ClientData *) malloc(sizeof(ClientData));
+                        sendStartMessage();
+                        
+                    } 
 
-                    clientData->messageType = 13;
-                    clientData->m2 = event.peer->connectID;
-                    packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
-                    enet_peer_send(event.peer, 0, packet);
+                    sendConnectMessage(event.peer);
+                    //sendStateToClients();
 
-                    Server::getData(clientData);  
-                    packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
-                    enet_host_broadcast(server, 0, packet);
-                    delete clientData;
+                    enet_packet_destroy(event.packet);
                     break; }
                 case ENET_EVENT_TYPE_RECEIVE: {
                     if(bothConnected && !gameEnd) {
-                        clientData = reinterpret_cast<ClientData*>(event.packet->data);
+                        ClientData * clientData = reinterpret_cast<ClientData*>(event.packet->data);
                         std::cout << "(Server) Message from client " << event.peer->connectID << " : " 
                             << static_cast<int>(clientData->m1) << "\n";
                         Server::handleCommands(static_cast<int>(clientData->m1), event.peer->connectID);
-
-                        Server::getData(clientData);  
-                        packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
-                        enet_host_broadcast(server, 0, packet);
+                        sendStateToClients();    
+                        enet_packet_destroy(event.packet);
                     }
                     break; }
                 case ENET_EVENT_TYPE_DISCONNECT: {
@@ -301,7 +333,5 @@ int Server::Run() {
         }
         if(bothConnected && !gameEnd)Server::tryDescend();
     }
-    delete clientData;
-    delete packet;
     return 1;
 }

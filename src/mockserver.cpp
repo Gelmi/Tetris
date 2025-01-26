@@ -2,21 +2,21 @@
 #include <cstdlib>
 #include "constants.hpp"
 #include <math.h>
+#include <memory>
 
 MockServer::MockServer() {
-    this->board = new Board();
-    this->tetromino = Tetromino::create(rand() % 7 + 2);
-    this->nextTetromino = Tetromino::create(rand() % 7 + 2);
+    this->board = std::make_unique<Board>();
+    this->tetromino.reset(Tetromino::create(rand() % 7 + 2));
+    this->nextTetromino.reset(Tetromino::create(rand() % 7 + 2));
     this->counter = SDL_GetTicks();
     this->hasSwaped = false;
 }
 
 void MockServer::lockAndLoad() {
-    this->board->lockTetromino(this->tetromino);
+    this->board->lockTetromino(this->tetromino.get());
     this->tetromino->moveTo(0,0);
-    delete this->tetromino;
     this->tetromino = this->nextTetromino;
-    this->nextTetromino = Tetromino::create(rand() % 7 + 1);
+    this->nextTetromino.reset(Tetromino::create(rand() % 7 + 1));
     this->hasSwaped = false;
     // Line Clear Function
 }
@@ -25,7 +25,7 @@ void MockServer::update(int command, GameData data) {
     int position;
     switch(command) {
         case SPACE_BAR:
-            while(board->isPositionValid(tetromino) == 0){
+            while(board->isPositionValid(tetromino.get()) == 0){
                 tetromino->moveDir(0);
             }
             tetromino->moveDir(3);
@@ -34,26 +34,25 @@ void MockServer::update(int command, GameData data) {
         case ARROW_LEFT:
         case ARROW_RIGHT:
             tetromino->moveDir(command);
-            position = board->isPositionValid(tetromino);
+            position = board->isPositionValid(tetromino.get());
             if(position != 0) tetromino->moveDir(-command);
             if(position == 2) MockServer::lockAndLoad();            
             break;
         case ARROW_UP: 
             tetromino->rotateLeft();
-            position = board->isPositionValid(tetromino);
+            position = board->isPositionValid(tetromino.get());
             if(position != 0) tetromino->rotateRight();
             break;
         case ARROW_DOWN:
             tetromino->rotateRight();         
-            position = board->isPositionValid(tetromino);
+            position = board->isPositionValid(tetromino.get());
             if(position != 0) tetromino->rotateLeft();
             break;
         case SWAP:
             if(!hasSwaped) { 
-                Tetromino * temp = this->tetromino;
                 this->nextTetromino->moveTo(this->tetromino->getX(), this->tetromino->getY());
-                this->tetromino = this->nextTetromino;
-                this->nextTetromino = temp;
+                this->tetromino->moveTo(0,0);
+                this->tetromino.swap(this->nextTetromino);
                 this->hasSwaped = true;
             }
             break;
@@ -61,7 +60,7 @@ void MockServer::update(int command, GameData data) {
     if(SDL_GetTicks() - this->counter >= pow(0.8-((data.level)*0.007), data.level)*1000){
         counter = SDL_GetTicks();
         tetromino->moveDir(0);
-        int position = board->isPositionValid(tetromino);
+        int position = board->isPositionValid(tetromino.get());
         if(position != 0) {
             tetromino->moveDir(3);
             MockServer::lockAndLoad();

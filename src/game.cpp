@@ -52,8 +52,8 @@ int Game::GetInput() {
 
 int Game::Run(){ 
     GameData gameData;
-    GameView * gameView = new GameView(this->window, this->renderer);
-    MockServer * mockServer = new MockServer();
+    std::unique_ptr<GameView> gameView = std::make_unique<GameView>(this->window, this->renderer);
+    std::unique_ptr<MockServer> mockServer = std::make_unique<MockServer>();
     while(!this->close){
         mockServer->update(Game::GetInput(), gameData);     
         gameData = mockServer->getState();

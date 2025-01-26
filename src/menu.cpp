@@ -3,56 +3,31 @@
 #include <iostream>
 
 void Menu::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cout << "Error initializing SDL: " << SDL_GetError() << std::endl;
-        exit(1);
-    }
-
-    if (TTF_Init() < 0) {
-        std::cout << "Error initializing TTF: " << TTF_GetError() << std::endl;
-        SDL_Quit();
-        exit(1);
-    }
-
     this->window = sharedWindow;
     this->renderer = sharedRenderer;
-
-    if (!this->window) {
-        std::cout << "Error creating window (menu): " << SDL_GetError() << std::endl;
-        TTF_Quit();
-        SDL_Quit();
-        exit(1);
-    }
-
-    if (!this->renderer) {
-        std::cout << "Error creating renderer: " << SDL_GetError() << std::endl;
-        SDL_DestroyWindow(this->window);
-        TTF_Quit();
-        SDL_Quit();
-        exit(1);
-    }
 
     // Configura a cor padrão do renderer
     SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 255);
 
-    screen = SDL_GetWindowSurface(this->window);
-}
+    this->screen = SDL_GetWindowSurface(this->window);
 
+    this->font = TTF_OpenFont("./assets/stocky.ttf", 36);
 
-int Menu::showmenu() {
-
-    TTF_Font* font = TTF_OpenFont("./assets/stocky.ttf", 36);
     if (!font) {
         std::cout << "Error loading font: " << TTF_GetError() << std::endl;
-        return -1;
     }
+}
 
+Menu::~Menu() {
+    if (font) TTF_CloseFont(font);
+}
+
+int Menu::showmenu() {
     Uint32 time;
     int x, y;
     const int NUMMENU = 4;
     const char* labels[NUMMENU] = {"Single Player", "Multiplayer", "Credits", "Exit"};
     SDL_Surface* menus[NUMMENU];
-    // bool selected[NUMMENU] = {0, 0};
     SDL_Color color[2] = {{255, 255, 255, 255}, {255, 0, 0, 255}};
 
     menus[0] = TTF_RenderText_Solid(font, labels[0], color[0]); // Game
@@ -110,13 +85,4 @@ int Menu::showmenu() {
         }
     }
 
-}
-
-
-Menu::~Menu() {
-    // if (window) {
-    //     SDL_DestroyWindow(window); // Destroi a janela criada
-    // }
-    TTF_Quit(); // Encerra a biblioteca SDL_ttf
-    SDL_Quit(); // Encerra o SDL
 }

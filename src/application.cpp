@@ -7,13 +7,21 @@
 
 Application::Application() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cerr << "Error initializing SDL: " << SDL_GetError() << std::endl;
+        std::cout << "Error initializing SDL: " << SDL_GetError() << std::endl;
         exit(1);
     }
+
+    if (TTF_Init() < 0) {
+        std::cout << "Error initializing TTF: " << TTF_GetError() << std::endl;
+        TTF_Quit();
+        SDL_Quit();
+        exit(1);
+    }   
 
     this->window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, SDL_WINDOW_SHOWN);
     if (!window) {
         std::cerr << "Error creating window (Application): " << SDL_GetError() << std::endl;
+        TTF_Quit();
         SDL_Quit();
         exit(1);
     }
@@ -22,6 +30,7 @@ Application::Application() {
     if (!renderer) {
         std::cerr << "Error creating renderer: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
+        TTF_Quit();
         SDL_Quit();
         exit(1);
     }
@@ -30,6 +39,7 @@ Application::Application() {
 Application::~Application() {
     if (this->renderer) SDL_DestroyRenderer(this->renderer);
     if (this->window) SDL_DestroyWindow(this->window);
+    TTF_Quit();
     SDL_Quit();
 }
 
@@ -48,6 +58,7 @@ int Application::Run(){
     // Criação dos objetos fora do loop
     Menu * menu = new Menu(this->window, this->renderer);
     Credits * credits = new Credits(this->window, this->renderer);
+
     // Loop principal de navegação entre telas
     menu->Setup(window, renderer);
     credits->Setup(window, renderer);
@@ -72,7 +83,7 @@ int Application::Run(){
             }
             case 2: { // Créditos
                 credits->ShowCredits();
-                // Retornar ao menu após os créditos
+              // Retornar ao menu após os créditos
                 break;
             }
             case 3: { // Sair
@@ -85,7 +96,8 @@ int Application::Run(){
                 break;
         }
     }
-
+    delete menu;
+    delete credits;
     return 0;
 }
 

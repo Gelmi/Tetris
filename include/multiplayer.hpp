@@ -37,6 +37,7 @@ class Multiplayer : public View {
         int eventStatus;
         bool connected;
         bool running;
+        bool results;
         uint32_t connectID;
 
         void pollSDLEvent(ENetPeer * peer);
