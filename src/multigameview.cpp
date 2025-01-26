@@ -14,6 +14,15 @@
 #include "constants.hpp"
 #include <SDL_ttf.h>
 
+/**
+ * @brief Renders the current game state for multiplayer mode.
+ *
+ * This function clears the renderer, draws the local player's board,
+ * the local player's next Tetromino, and the opponent's board.
+ *
+ * @param data A GameData structure containing information about both
+ *        boards, scores, levels, and the next Tetromino.
+ */
 void MultiGameView::Draw(GameData data) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);        
@@ -27,6 +36,12 @@ void MultiGameView::Draw(GameData data) {
     //SDL_RenderPresent(this->renderer); 
 }
 
+/**
+ * @brief Displays a message indicating the client is waiting to connect to the server.
+ *
+ * This function clears the renderer and draws a centered text string 
+ * "Waiting for connection to server".
+ */
 void MultiGameView::DrawWaitConnection() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);        
@@ -43,6 +58,12 @@ void MultiGameView::DrawWaitConnection() {
     //SDL_RenderPresent(this->renderer); 
 }
 
+/**
+ * @brief Displays a message indicating the client is waiting for the opponent to join or start.
+ *
+ * This function clears the renderer and draws a semi-transparent background
+ * rectangle, then centers the text "Waiting the opponent" within it.
+ */
 void MultiGameView::DrawWaitStart() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     std::string score_text = "Waiting the opponent";
@@ -63,6 +84,15 @@ void MultiGameView::DrawWaitStart() {
     //SDL_RenderPresent(this->renderer); 
 }
 
+/**
+ * @brief Displays the result of the multiplayer game (win or lose).
+ *
+ * This function draws a message indicating whether the local player won or lost,
+ * centered on a semi-transparent background rectangle.
+ *
+ * @param data A GameData structure that includes a boolean `result` 
+ *        indicating if the local player has won (true) or lost (false).
+ */
 void MultiGameView::DrawResults(GameData data) {
     printf("Resultado: %s\n", data.result ? "true": "false");
     std::string score_text;
@@ -88,6 +118,11 @@ void MultiGameView::DrawResults(GameData data) {
     //SDL_RenderPresent(this->renderer); 
 }
 
+/**
+ * @brief Destructor for MultiGameView.
+ *
+ * Closes the TTF font resource if it is open.
+ */
 MultiGameView::~MultiGameView(){
     if(font) TTF_CloseFont(font);
 }

@@ -18,11 +18,16 @@
 #include <memory>
 #include "constants.hpp"
 
-// PROXIMOS PASSOS:
-// Implementar o fim do jogo (tela)
-// Implementar o começo do jogo (tela e espera)
-// Implementar reset do servidor caso um dos dois jogadores saia
-
+/**
+ * @brief Constructs a Server object and initializes game boards and Tetrominos.
+ *
+ * This constructor:
+ * - Creates two Board objects and stores them in the boards vector.
+ * - Creates two initial Tetrominos (one for each board/player).
+ * - Creates two "next" Tetrominos (the upcoming pieces for each player).
+ * - Initializes important server state variables (e.g., player count, 
+ *   swap flags, connection status).
+ */
 Server::Server() { 
 
     Board * board1 = new Board();
@@ -59,6 +64,15 @@ Server::Server() {
     this->gameEnd = false;
 }
 
+/**
+ * @brief Destroys the Server object and cleans up resources.
+ * 
+ * This destructor:
+ * - Deinitializes ENet.
+ * - Deletes dynamically allocated Board objects.
+ * - Deletes dynamically allocated Tetromino objects.
+ * - Deletes the ENet server host if it exists.
+ */
 Server::~Server() {
     enet_deinitialize();
     delete boards[0];
@@ -70,6 +84,11 @@ Server::~Server() {
     delete server;
 }
 
+/**
+ * @brief Initializes the ENet server.
+ *
+ * @return True if the server was successfully created, otherwise false.
+ */
 bool Server::initServer() {
 
     ENetAddress address;
@@ -86,6 +105,19 @@ bool Server::initServer() {
     return true;
 }
 
+/**
+ * @brief Locks the current Tetromino of a player into the board and spawns the next one.
+ *
+ * This method:
+ * - Locks the Tetromino for the specified player index.
+ * - Adds garbage rows to the opponent’s board, depending on the lines cleared.
+ * - Swaps the current Tetromino with the next Tetromino.
+ * - Randomly generates a new "next" Tetromino.
+ * - Checks if the newly spawned Tetromino is in a valid position. If not, sets the game to end.
+ * - Sends end-of-game messages if necessary.
+ *
+ * @param index The index of the current player (0 or 1).
+ */
 void Server::lockAndLoad(int index) {
     boards[(index+1)%2]->addRows(this->boards[index]->lockTetromino(this->tetrominos[index]));
     this->tetrominos[index] = this->nextTetrominos[index];
@@ -96,27 +128,48 @@ void Server::lockAndLoad(int index) {
     Server::sendEndMessage(index);
 }
 
+/**
+ * @brief Populates the given ClientData structure with the current game state.
+ *
+ * This method:
+ * - Sets the message type to STATE_MESSAGE.
+ * - Copies the client IDs into the structure.
+ * - Copies board tile data for both players.
+ * - Overlays the current Tetrominos onto the board data.
+ * - Copies each board's level and score.
+ * - Copies the index (type) of the upcoming Tetrominos.
+ *
+ * @param clientData A pointer to a ClientData structure to fill with the current state.
+ */
 void Server::getData(ClientData * clientData) {
     clientData->messageType = STATE_MESSAGE;
     int id = 0;
     clientData->m2 = clients[id];
     clientData->m3 = clients[id+1];
+
+    // Copy board tiles
     for(int i = 0; i < 200; i++) {
         clientData->m4[i] = this->boards[id]->getTiles()[i];
         clientData->m5[i] = this->boards[id+1]->getTiles()[i];
     }
+
+    // Overlay current Tetrominos onto board data
     for(int j = 0; j < 4; j++){
         for(int i = 0; i < 4; i++) {
+            // First player's Tetromino
             if(this->tetrominos[id]->getTiles()[this->tetrominos[id]->atPos(i,j)] != 0) {
                 clientData->m4[this->boards[id]->atPos(this->tetrominos[id]->getX()+j, this->tetrominos[id]->getY()+i)]
                     = this->tetrominos[id]->getTiles()[this->tetrominos[id]->atPos(i,j)];
             }
+            // Second player's Tetromino
             if(this->tetrominos[id+1]->getTiles()[this->tetrominos[id+1]->atPos(i,j)] != 0) {
                 clientData->m5[this->boards[id+1]->atPos(this->tetrominos[id+1]->getX()+j, this->tetrominos[id+1]->getY()+i)]
                     = this->tetrominos[id+1]->getTiles()[this->tetrominos[id+1]->atPos(i,j)];
             }
         }
     }
+
+    // Board levels, scores, and upcoming piece indexes
     clientData->m6 = this->boards[id]->getLevel();
     clientData->m7 = this->boards[id+1]->getLevel();
     clientData->m8 = this->boards[id]->getScore();
@@ -125,16 +178,34 @@ void Server::getData(ClientData * clientData) {
     clientData->m11 = this->nextIndex[id+1];
 }
 
+/**
+ * @brief Finds the player index (0 or 1) for a given connection ID.
+ *
+ * @param connectID The ENet connection ID.
+ * @return The index of the player (0 or 1), or -1 if not found.
+ */
 int Server::idToIndex(uint32_t connectID) {
     for(int i = 0; i < 2; i++) if(clients[i] == connectID) return i;
     return -1;
 }
 
+/**
+ * @brief Handles commands received from a client.
+ *
+ * Supported commands include:
+ * - SPACE_BAR (drop piece)
+ * - ARROW_LEFT / ARROW_RIGHT (move piece horizontally)
+ * - ARROW_UP / ARROW_DOWN (rotate piece)
+ * - SWAP (swap held piece with next piece)
+ *
+ * @param command The command code received from the client.
+ * @param connectID The connection ID of the client sending the command.
+ */
 void Server::handleCommands(int command, uint32_t connectID) { 
     int position;
     int id = idToIndex(connectID);
     switch(command) { 
-        case SPACE_BAR:
+        case SPACE_BAR:  // Hard drop
             while(this->boards[id]->isPositionValid(this->tetrominos[id]) == 0) {
                 tetrominos[id]->moveDir(0);        
             }
@@ -176,6 +247,13 @@ void Server::handleCommands(int command, uint32_t connectID) {
     }
 }
 
+/**
+ * @brief Attempts to move each player's Tetromino down at fixed intervals.
+ *
+ * If the move down is invalid, the Tetromino is moved back up one line 
+ * and locked into place (triggering a new piece). The game state is 
+ * then broadcast to all connected clients.
+ */
 void Server::tryDescend() {
     const auto now{std::chrono::steady_clock::now()};
     const auto elapsed_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds> (now - this->counter);
@@ -193,6 +271,15 @@ void Server::tryDescend() {
     } 
 }
 
+/**
+ * @brief Sends an end-of-round or end-of-game message to all clients, if needed.
+ *
+ * This function sets up a ClientData structure indicating which player has ended 
+ * the game or caused the round to end, and then broadcasts it to all connected clients.
+ *
+ * @param index The index of the player who just locked a piece.
+ * @return True if the game has ended, otherwise false.
+ */
 bool Server::sendEndMessage(int index) {
     std::unique_ptr<ClientData> clientData = std::make_unique<ClientData>();
     clientData->messageType = RESULTS_MESSAGE;
@@ -211,6 +298,14 @@ bool Server::sendEndMessage(int index) {
     return gameEnd;
 }
 
+/**
+ * @brief Checks if either player's board is in a losing state and notifies clients.
+ *
+ * If any board has reached a losing condition, this method broadcasts a 
+ * RESULTS_MESSAGE to all clients to indicate which player lost.
+ *
+ * @return True if the game has ended, otherwise false.
+ */
 bool Server::checkIfEnded() {
     std::unique_ptr<ClientData> clientData = std::make_unique<ClientData>();
     clientData->messageType = RESULTS_MESSAGE;
@@ -235,6 +330,15 @@ bool Server::checkIfEnded() {
     return gameEnd;
 }
 
+/**
+ * @brief Restarts the game by resetting boards, Tetrominos, and server state.
+ *
+ * This function re-initializes:
+ * - The two boards.
+ * - The current and next Tetrominos.
+ * - Swap flags, timers, and connection state.
+ * - The gameEnd flag.
+ */
 void Server::restartGame() {
     this->boards[0] = new Board();
     this->boards[1] = new Board();
@@ -258,6 +362,13 @@ void Server::restartGame() {
     this->gameEnd = false;
 };
 
+/**
+ * @brief Sends the current state of the game to all connected clients.
+ *
+ * This function constructs a ClientData message by calling getData(), then 
+ * broadcasts it to all connected clients. It also flushes the ENet host 
+ * to ensure timely delivery.
+ */
 void Server::sendStateToClients() {
     std::unique_ptr<ClientData> clientData = std::make_unique<ClientData>();
     Server::getData(clientData.get());  
@@ -266,6 +377,14 @@ void Server::sendStateToClients() {
     enet_host_flush(server);
 }
 
+/**
+ * @brief Sends a connection message to a newly connected client.
+ *
+ * The message includes the connecting client's ID (connectID) 
+ * and is sent reliably on channel 0.
+ *
+ * @param peer A pointer to the ENetPeer representing the connected client.
+ */
 void Server::sendConnectMessage(ENetPeer * peer) {
     ClientData * clientData = (ClientData *) malloc(sizeof(ClientData));
     clientData->messageType = 13;
@@ -275,6 +394,9 @@ void Server::sendConnectMessage(ENetPeer * peer) {
     enet_host_flush(server);
 }
 
+/**
+ * @brief Sends a start message to all connected clients, indicating the game is beginning.
+ */
 void Server::sendStartMessage() {
     std::unique_ptr<ClientData> clientData = std::make_unique<ClientData>();
     clientData->messageType = START_MESSAGE;
@@ -283,6 +405,15 @@ void Server::sendStartMessage() {
     enet_host_flush(server);
 }
 
+/**
+ * @brief Runs the main event loop of the server.
+ *
+ * This function continuously processes ENet events (connect, receive, disconnect). 
+ * Once both players have connected, it handles commands from the clients and attempts 
+ * to move pieces down at regular intervals. 
+ *
+ * @return An integer exit code; returns 0 if server initialization fails, otherwise runs indefinitely.
+ */
 int Server::Run() {
     if(!Server::initServer()) {
         return 0;

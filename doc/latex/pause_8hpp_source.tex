@@ -1,0 +1,31 @@
+\doxysection{pause.\+hpp}
+\hypertarget{pause_8hpp_source}{}\label{pause_8hpp_source}\index{/home/gelmi/Tetris/include/pause.hpp@{/home/gelmi/Tetris/include/pause.hpp}}
+\mbox{\hyperlink{pause_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PAUSE\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PAUSE\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL\_ttf.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{view_8hpp}{view.hpp}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPause}{Pause}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classView}{View}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classPause_a4b1129ff184d5f7740b4aad810602bd6}{Pause}}(SDL\_Window*\ sharedWindow,\ SDL\_Renderer*\ sharedRenderer)}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classView}{View}}(sharedWindow,\ sharedRenderer)\ \{\}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPause_ad43a84705e0d78bec09a9c4ec2cc4827}{Setup}}(SDL\_Window*\ sharedWindow,\ SDL\_Renderer*\ sharedRenderer);}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPause_ae390c4dc91ba4fcb8a4f7ab79e39044f}{showpause}}();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Menu()\ =\ default;}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPause_acf6d48df0324fdf1b36bf61691178910}{close}}\{0\};}
+\DoxyCodeLine{00019\ \ \ \ \ SDL\_Window*\ \mbox{\hyperlink{classPause_a57be6aed45982f35beeea68781020d9f}{window}}\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ SDL\_Surface*\ screen\{nullptr\};}}
+\DoxyCodeLine{00021\ \ \ \ \ SDL\_Renderer*\ \mbox{\hyperlink{classPause_a58d10308318546031dd127cb107e74bc}{renderer}}\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00022\ \ \ \ \ TTF\_Font\ *\ \mbox{\hyperlink{classPause_ad06ae6559dfabc9a53ce672c57bdd185}{font}};}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,183 @@
+\doxysection{Game Class Reference}
+\hypertarget{classGame}{}\label{classGame}\index{Game@{Game}}
+
+
+{\ttfamily \#include $<$game.\+hpp$>$}
+
+
+
+Inheritance diagram for Game\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classGame__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Game\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGame__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classGame_a1880d9816a978b82bb91e4679743173d}{Run}} ()
+\begin{DoxyCompactList}\small\item\em implement main game loop with server and game state handling \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a4597118bd09eea62c4c1da1205bc3362}{Setup}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
+\begin{DoxyCompactList}\small\item\em implement setup function to initialize window and renderer \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGame_a85388d0c050191d6ae13d7f078bf82f8}{Get\+Input}} ()
+\begin{DoxyCompactList}\small\item\em implement input handling function for key and quit events \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGame_a87bb468c2645702d025d1049295ed8ec}{Game}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
+\item 
+void \mbox{\hyperlink{classGame_afdcfa40cfb9c960d798fb624e1e75f0a}{Pause\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em add pause menu functionality with unique pause handling \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_abe3050a64dfd3ff8a161bfe29cb66f19}{game\+End\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em add game over menu handling \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classView}{View}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classView_acdf0bf0b3c398da6efa7ca5fd63160e9}{View}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
+\item 
+virtual \mbox{\hyperlink{classView_aa02a820358e1a7bf7e34d205212ae8f3}{\texorpdfstring{$\sim$}{\string~}\+View}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classGame_a66512291364841aa8ed90056a7bf2e25}{close}} \{false\}
+\item 
+int \mbox{\hyperlink{classGame_a8b8847e0c3ebd83cdbd76d7887f9e347}{running}} \{true\}
+\item 
+bool \mbox{\hyperlink{classGame_ae15591f9d97e675a8f1cc58870e1a6dd}{lose}} \{false\}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGame_adc376cc3011b5c8f1c3897626100174c}{window}}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGame_ae5164c37c0dc74cfb56041174017bf57}{renderer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classView}{View}}}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classView_a35f57e296a4643edae6424c7f9569f8d}{window}}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classView_ab42eeb58ccbf7556b297cc80a83bc181}{renderer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGame_a87bb468c2645702d025d1049295ed8ec}\label{classGame_a87bb468c2645702d025d1049295ed8ec} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{shared\+Window,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{shared\+Renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGame_abe3050a64dfd3ff8a161bfe29cb66f19}\label{classGame_abe3050a64dfd3ff8a161bfe29cb66f19} 
+\index{Game@{Game}!gameEndMenu@{gameEndMenu}}
+\index{gameEndMenu@{gameEndMenu}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{gameEndMenu()}{gameEndMenu()}}
+{\footnotesize\ttfamily void Game\+::game\+End\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+add game over menu handling 
+
+\Hypertarget{classGame_a85388d0c050191d6ae13d7f078bf82f8}\label{classGame_a85388d0c050191d6ae13d7f078bf82f8} 
+\index{Game@{Game}!GetInput@{GetInput}}
+\index{GetInput@{GetInput}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetInput()}{GetInput()}}
+{\footnotesize\ttfamily int Game\+::\+Get\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+implement input handling function for key and quit events 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{classGame_afdcfa40cfb9c960d798fb624e1e75f0a}\label{classGame_afdcfa40cfb9c960d798fb624e1e75f0a} 
+\index{Game@{Game}!PauseMenu@{PauseMenu}}
+\index{PauseMenu@{PauseMenu}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{PauseMenu()}{PauseMenu()}}
+{\footnotesize\ttfamily void Game\+::\+Pause\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+add pause menu functionality with unique pause handling 
+
+\Hypertarget{classGame_a1880d9816a978b82bb91e4679743173d}\label{classGame_a1880d9816a978b82bb91e4679743173d} 
+\index{Game@{Game}!Run@{Run}}
+\index{Run@{Run}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily int Game\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+implement main game loop with server and game state handling 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{classGame_a4597118bd09eea62c4c1da1205bc3362}\label{classGame_a4597118bd09eea62c4c1da1205bc3362} 
+\index{Game@{Game}!Setup@{Setup}}
+\index{Setup@{Setup}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Setup()}{Setup()}}
+{\footnotesize\ttfamily void Game\+::\+Setup (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{shared\+Window,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{shared\+Renderer }\end{DoxyParamCaption})}
+
+
+
+implement setup function to initialize window and renderer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shared\+Window} & \\
+\hline
+{\em shared\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGame_a66512291364841aa8ed90056a7bf2e25}\label{classGame_a66512291364841aa8ed90056a7bf2e25} 
+\index{Game@{Game}!close@{close}}
+\index{close@{close}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{close}{close}}
+{\footnotesize\ttfamily bool Game\+::close \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGame_ae15591f9d97e675a8f1cc58870e1a6dd}\label{classGame_ae15591f9d97e675a8f1cc58870e1a6dd} 
+\index{Game@{Game}!lose@{lose}}
+\index{lose@{lose}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{lose}{lose}}
+{\footnotesize\ttfamily bool Game\+::lose \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGame_ae5164c37c0dc74cfb56041174017bf57}\label{classGame_ae5164c37c0dc74cfb56041174017bf57} 
+\index{Game@{Game}!renderer@{renderer}}
+\index{renderer@{renderer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} Game\+::renderer\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGame_a8b8847e0c3ebd83cdbd76d7887f9e347}\label{classGame_a8b8847e0c3ebd83cdbd76d7887f9e347} 
+\index{Game@{Game}!running@{running}}
+\index{running@{running}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily int Game\+::running \{true\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGame_adc376cc3011b5c8f1c3897626100174c}\label{classGame_adc376cc3011b5c8f1c3897626100174c} 
+\index{Game@{Game}!window@{window}}
+\index{window@{window}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} Game\+::window\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/gelmi/\+Tetris/include/\mbox{\hyperlink{game_8hpp}{game.\+hpp}}\item 
+/home/gelmi/\+Tetris/src/\mbox{\hyperlink{game_8cpp}{game.\+cpp}}\end{DoxyCompactItemize}

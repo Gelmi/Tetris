@@ -1,0 +1,158 @@
+\doxysection{Menu Class Reference}
+\hypertarget{classMenu}{}\label{classMenu}\index{Menu@{Menu}}
+
+
+{\ttfamily \#include $<$menu.\+hpp$>$}
+
+
+
+Inheritance diagram for Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{classMenu__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMenu__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMenu_aad04dc0b1ab4d1a15164725c1b6da168}{Menu}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
+\item 
+\mbox{\hyperlink{classMenu_a831387f51358cfb88cd018e1777bc980}{\texorpdfstring{$\sim$}{\string~}\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classMenu}{Menu}\+:\+: \doxylink{classMenu}{Menu} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a2b07650fad6cee4fffa5329bcc776c55}{Setup}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classMenu}{Menu}\+:\+: \doxylink{classMenu}{Menu} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMenu_ab8ed791bb903551b4aaf06bc73a1a34a}{showmenu}} ()
+\begin{DoxyCompactList}\small\item\em This function is responsable for build the layout and return the menu choice. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classView}{View}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classView_acdf0bf0b3c398da6efa7ca5fd63160e9}{View}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
+\item 
+virtual \mbox{\hyperlink{classView_aa02a820358e1a7bf7e34d205212ae8f3}{\texorpdfstring{$\sim$}{\string~}\+View}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classMenu_aa21a7270c660402e9cc17e69e2567381}{close}} \{0\}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classMenu_a9ec7fe2ea749d968f18673abe264a546}{window}} \{nullptr\}
+\item 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classMenu_a20df40ed188e74126216e0be9ac001a7}{screen}} \{nullptr\}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classMenu_a3494e32f2b07260b94e05c730049a907}{renderer}} \{nullptr\}
+\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classMenu_a6118add46f7f3096bdceadd6355e82e0}{font}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classView}{View}}}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classView_a35f57e296a4643edae6424c7f9569f8d}{window}}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classView_ab42eeb58ccbf7556b297cc80a83bc181}{renderer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMenu_aad04dc0b1ab4d1a15164725c1b6da168}\label{classMenu_aad04dc0b1ab4d1a15164725c1b6da168} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{shared\+Window,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{shared\+Renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classMenu_a831387f51358cfb88cd018e1777bc980}\label{classMenu_a831387f51358cfb88cd018e1777bc980} 
+\index{Menu@{Menu}!````~Menu@{\texorpdfstring{$\sim$}{\string~}Menu}}
+\index{````~Menu@{\texorpdfstring{$\sim$}{\string~}Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Menu()}{\string~Menu()}}
+{\footnotesize\ttfamily Menu\+::\texorpdfstring{$\sim$}{\string~}\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \doxylink{classMenu}{Menu}\+:\+: \doxylink{classMenu}{Menu} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMenu_a2b07650fad6cee4fffa5329bcc776c55}\label{classMenu_a2b07650fad6cee4fffa5329bcc776c55} 
+\index{Menu@{Menu}!Setup@{Setup}}
+\index{Setup@{Setup}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Setup()}{Setup()}}
+{\footnotesize\ttfamily void Menu\+::\+Setup (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{shared\+Window,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{shared\+Renderer }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classMenu}{Menu}\+:\+: \doxylink{classMenu}{Menu} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shared\+Window} & \\
+\hline
+{\em shared\+Renderer} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMenu_ab8ed791bb903551b4aaf06bc73a1a34a}\label{classMenu_ab8ed791bb903551b4aaf06bc73a1a34a} 
+\index{Menu@{Menu}!showmenu@{showmenu}}
+\index{showmenu@{showmenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showmenu()}{showmenu()}}
+{\footnotesize\ttfamily int Menu\+::showmenu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is responsable for build the layout and return the menu choice. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+This loop creates the proportional place for the options
+
+This loop deals with the events in the buttons
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMenu_aa21a7270c660402e9cc17e69e2567381}\label{classMenu_aa21a7270c660402e9cc17e69e2567381} 
+\index{Menu@{Menu}!close@{close}}
+\index{close@{close}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{close}{close}}
+{\footnotesize\ttfamily int Menu\+::close \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMenu_a6118add46f7f3096bdceadd6355e82e0}\label{classMenu_a6118add46f7f3096bdceadd6355e82e0} 
+\index{Menu@{Menu}!font@{font}}
+\index{font@{font}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*} Menu\+::font\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMenu_a3494e32f2b07260b94e05c730049a907}\label{classMenu_a3494e32f2b07260b94e05c730049a907} 
+\index{Menu@{Menu}!renderer@{renderer}}
+\index{renderer@{renderer}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} Menu\+::renderer \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMenu_a20df40ed188e74126216e0be9ac001a7}\label{classMenu_a20df40ed188e74126216e0be9ac001a7} 
+\index{Menu@{Menu}!screen@{screen}}
+\index{screen@{screen}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*} Menu\+::screen \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMenu_a9ec7fe2ea749d968f18673abe264a546}\label{classMenu_a9ec7fe2ea749d968f18673abe264a546} 
+\index{Menu@{Menu}!window@{window}}
+\index{window@{window}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} Menu\+::window \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/gelmi/\+Tetris/include/\mbox{\hyperlink{menu_8hpp}{menu.\+hpp}}\item 
+/home/gelmi/\+Tetris/src/\mbox{\hyperlink{menu_8cpp}{menu.\+cpp}}\end{DoxyCompactItemize}

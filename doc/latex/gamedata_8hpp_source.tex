@@ -1,0 +1,27 @@
+\doxysection{gamedata.\+hpp}
+\hypertarget{gamedata_8hpp_source}{}\label{gamedata_8hpp_source}\index{/home/gelmi/Tetris/include/gamedata.hpp@{/home/gelmi/Tetris/include/gamedata.hpp}}
+\mbox{\hyperlink{gamedata_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAMEDATA\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAMEDATA\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include<SDL.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameData}{GameData}}\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameData_ab59b5984f505b0adb62cbbc74148d757}{score}},\ \mbox{\hyperlink{classGameData_a44321fa1d7d5b3b6c374179a480551c4}{level}},\ \mbox{\hyperlink{classGameData_a7239e39ff0af4413bb10cd8ee97266b1}{rows}};}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameData_af10fc57d7ece4ef1273d4592878b1a72}{board}}[200],\ \mbox{\hyperlink{classGameData_ab856756378fa15e6e644d6304779e73b}{tiles}}[16],\ \mbox{\hyperlink{classGameData_aac1f28bf44893d55f600a313fb24fcf2}{boardOp}}[200];}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGameData_a3510bf7dd2ade05f70ecf0673124d2dd}{result}};}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameData_a67ab18c5a35df618e99983275c7552ab}{GameData}}()\ :\ \mbox{\hyperlink{classGameData_ab59b5984f505b0adb62cbbc74148d757}{score}}(0),\ \mbox{\hyperlink{classGameData_a44321fa1d7d5b3b6c374179a480551c4}{level}}(0),\ \mbox{\hyperlink{classGameData_a7239e39ff0af4413bb10cd8ee97266b1}{rows}}(0),\ \mbox{\hyperlink{classGameData_a3510bf7dd2ade05f70ecf0673124d2dd}{result}}(false)\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 200;\ i++)\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameData_af10fc57d7ece4ef1273d4592878b1a72}{board}}[i]\ =\ 0;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameData_aac1f28bf44893d55f600a313fb24fcf2}{boardOp}}[i]\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 16;\ i++)\ \mbox{\hyperlink{classGameData_ab856756378fa15e6e644d6304779e73b}{tiles}}[i]\ =\ 0;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif\ }}
+\DoxyCodeLine{00021\ }
+
+\end{DoxyCode}

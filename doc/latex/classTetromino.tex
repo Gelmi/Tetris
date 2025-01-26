@@ -1,0 +1,293 @@
+\doxysection{Tetromino Class Reference}
+\hypertarget{classTetromino}{}\label{classTetromino}\index{Tetromino@{Tetromino}}
+
+
+{\ttfamily \#include $<$tetromino.\+hpp$>$}
+
+
+
+Inheritance diagram for Tetromino\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTetromino__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tetromino\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classTetromino__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTetromino_a02587c8638761b8228567e01e927fbf9}{Tetromino}} (SDL\+\_\+\+Color \mbox{\hyperlink{classEntity_a8d662ac9f16cd9c2d79c3b0347465ae0}{color}}, std\+::array$<$ unsigned int, 16 $>$ shape)
+\item 
+void \mbox{\hyperlink{classTetromino_ab228d4252c950e0c8a971b019c1edcf3}{move\+Dir}} (int dir)
+\begin{DoxyCompactList}\small\item\em Moves the \doxylink{classTetromino}{Tetromino} in a specified direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTetromino_a1b97aafb1ce649b204f79f3bfa36608b}{move\+To}} (int \mbox{\hyperlink{classEntity_aae071f833fcdfdb6983c4a5aadc7829f}{x}}, int \mbox{\hyperlink{classEntity_a3032094a99240e958512727451630e7b}{y}})
+\begin{DoxyCompactList}\small\item\em Moves the \doxylink{classTetromino}{Tetromino} to specific coordinates. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classTetromino_ad0cf591b80f65421c008fe463a6085a9}{rotate\+Left}} ()
+\begin{DoxyCompactList}\small\item\em Rotates the \doxylink{classTetromino}{Tetromino} to the left (counter-\/clockwise) and adjusts its position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTetromino_a229374c8a02164c70a3bc7978a05507a}{rotate\+Left\+Pad}} ()
+\begin{DoxyCompactList}\small\item\em Rotates the \doxylink{classTetromino}{Tetromino} to the left (counter-\/clockwise) without wall kicks. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classTetromino_a0c9bd56f3db5d42a51e0b0296a9dac81}{rotate\+Right}} ()
+\begin{DoxyCompactList}\small\item\em Rotates the \doxylink{classTetromino}{Tetromino} to the right (clockwise) and adjusts its position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTetromino_abfb84aa08c4d2ab83556cf0ca38970f2}{rotate\+Right\+Pad}} ()
+\begin{DoxyCompactList}\small\item\em Rotates the \doxylink{classTetromino}{Tetromino} to the right (clockwise) without wall kicks. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Color \mbox{\hyperlink{classTetromino_af06524b7ae0f3c6df220e3e69daba09e}{get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the color of the \doxylink{classTetromino}{Tetromino}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTetromino_a80c6873bf2a00ab5a415f58c4351a9af}{get\+Rotation}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current rotation state of the \doxylink{classTetromino}{Tetromino}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTetromino_a668d93157232f8bea44fd997b9ab7220}{at\+Pos}} (int \mbox{\hyperlink{classEntity_aae071f833fcdfdb6983c4a5aadc7829f}{x}}, int \mbox{\hyperlink{classEntity_a3032094a99240e958512727451630e7b}{y}})
+\begin{DoxyCompactList}\small\item\em Calculates the tile index within the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s shape for the given coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEntity_ade5f3c214b4f8e87ba59c61d65f6482e}{Entity}} (int \mbox{\hyperlink{classEntity_aae071f833fcdfdb6983c4a5aadc7829f}{x}}, int \mbox{\hyperlink{classEntity_a3032094a99240e958512727451630e7b}{y}}, int \mbox{\hyperlink{classEntity_a3787ce17716bc1f43c4169ec518fe458}{w}}, int \mbox{\hyperlink{classEntity_abcebdbf67dfe51fc57499c6a41bef785}{h}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classEntity}{Entity}\+:\+: \doxylink{classEntity}{Entity} object implement destructor to free dynamically allocated memory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEntity_a690d835acb59dd789e04171392fe53fd}{Entity}} (int \mbox{\hyperlink{classEntity_a3787ce17716bc1f43c4169ec518fe458}{w}}, int \mbox{\hyperlink{classEntity_abcebdbf67dfe51fc57499c6a41bef785}{h}})
+\item 
+\mbox{\hyperlink{classEntity_adf6d3f7cb1b2ba029b6b048a395cc8ae}{\texorpdfstring{$\sim$}{\string~}\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classEntity}{Entity}\+:\+: \doxylink{classEntity}{Entity} object. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classEntity_a0aa12fbbdcc0d23c96a5edc773f80894}{get\+Rect}} ()
+\begin{DoxyCompactList}\small\item\em add function to get the SDL\+\_\+\+Rect of the entity \end{DoxyCompactList}\item 
+unsigned int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classEntity_a4fe034529c569a6bdcc8f41eaa65e870}{get\+Tiles}} ()
+\begin{DoxyCompactList}\small\item\em add function to access the entity\textquotesingle{}s tile array \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEntity_a8bad399d8b9c6bf23ecbb8f0b4fe6a64}{getX}} ()
+\begin{DoxyCompactList}\small\item\em add getter functions for entity\textquotesingle{}s x and y positions \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEntity_a4f2a264033195f9004a494069c5865f0}{getY}} ()
+\item 
+int \mbox{\hyperlink{classEntity_a5b10ec150911f104b315649c97fd6f5c}{at\+Pos}} (int \mbox{\hyperlink{classEntity_aae071f833fcdfdb6983c4a5aadc7829f}{x}}, int \mbox{\hyperlink{classEntity_a3032094a99240e958512727451630e7b}{y}})
+\begin{DoxyCompactList}\small\item\em add helper function to calculate tile position in the array \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classTetromino}{Tetromino}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classTetromino_a3797476773118ccdc9dacce0e5064746}{create}} (int type)
+\begin{DoxyCompactList}\small\item\em Factory method to create new \doxylink{classTetromino}{Tetromino} objects based on type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classTetromino_a2af24d527c3cf326513b181c0c70206a}{rotation}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Rect \mbox{\hyperlink{classEntity_a19a505be2f6ce88e2c38fb4b2df3ca84}{rect}}
+\item 
+int \mbox{\hyperlink{classEntity_aae071f833fcdfdb6983c4a5aadc7829f}{x}}
+\item 
+int \mbox{\hyperlink{classEntity_a3032094a99240e958512727451630e7b}{y}}
+\item 
+int \mbox{\hyperlink{classEntity_abcebdbf67dfe51fc57499c6a41bef785}{h}}
+\item 
+int \mbox{\hyperlink{classEntity_a3787ce17716bc1f43c4169ec518fe458}{w}}
+\item 
+SDL\+\_\+\+Color \mbox{\hyperlink{classEntity_a8d662ac9f16cd9c2d79c3b0347465ae0}{color}}
+\item 
+unsigned int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classEntity_a1e60e7b089fd33ae7a541c2c18b3fed6}{tiles}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTetromino_a02587c8638761b8228567e01e927fbf9}\label{classTetromino_a02587c8638761b8228567e01e927fbf9} 
+\index{Tetromino@{Tetromino}!Tetromino@{Tetromino}}
+\index{Tetromino@{Tetromino}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{Tetromino()}{Tetromino()}}
+{\footnotesize\ttfamily Tetromino\+::\+Tetromino (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Color}]{color,  }\item[{std\+::array$<$ unsigned int, 16 $>$}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTetromino_a668d93157232f8bea44fd997b9ab7220}\label{classTetromino_a668d93157232f8bea44fd997b9ab7220} 
+\index{Tetromino@{Tetromino}!atPos@{atPos}}
+\index{atPos@{atPos}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{atPos()}{atPos()}}
+{\footnotesize\ttfamily int Tetromino\+::at\+Pos (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Calculates the tile index within the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s shape for the given coordinates. 
+
+The \doxylink{classTetromino}{Tetromino} shape is stored as a 4x4 grid. Depending on the current rotation, the coordinates are mapped to a different index in this grid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate in the 4x4 grid of the \doxylink{classTetromino}{Tetromino}. \\
+\hline
+{\em y} & The y-\/coordinate in the 4x4 grid of the \doxylink{classTetromino}{Tetromino}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer index into the 4x4 tile array representing the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s shape. 
+\end{DoxyReturn}
+\Hypertarget{classTetromino_a3797476773118ccdc9dacce0e5064746}\label{classTetromino_a3797476773118ccdc9dacce0e5064746} 
+\index{Tetromino@{Tetromino}!create@{create}}
+\index{create@{create}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTetromino}{Tetromino}} \texorpdfstring{$\ast$}{*} Tetromino\+::create (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory method to create new \doxylink{classTetromino}{Tetromino} objects based on type. 
+
+This function returns a pointer to a derived \doxylink{classTetromino}{Tetromino} class based on the given {\ttfamily type\+:} 
+\begin{DoxyItemize}
+\item 1\+: \doxylink{classTetrominoI}{TetrominoI}
+\item 2\+: \doxylink{classTetrominoO}{TetrominoO}
+\item 3\+: \doxylink{classTetrominoT}{TetrominoT}
+\item 4\+: \doxylink{classTetrominoJ}{TetrominoJ}
+\item 5\+: \doxylink{classTetrominoL}{TetrominoL}
+\item 6\+: \doxylink{classTetrominoS}{TetrominoS}
+\item 7\+: \doxylink{classTetrominoZ}{TetrominoZ}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & An integer representing the type of \doxylink{classTetromino}{Tetromino} to create. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the created \doxylink{classTetromino}{Tetromino} object. 
+\end{DoxyReturn}
+\Hypertarget{classTetromino_af06524b7ae0f3c6df220e3e69daba09e}\label{classTetromino_af06524b7ae0f3c6df220e3e69daba09e} 
+\index{Tetromino@{Tetromino}!getColor@{getColor}}
+\index{getColor@{getColor}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Color Tetromino\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the color of the \doxylink{classTetromino}{Tetromino}. 
+
+This function returns the SDL\+\_\+\+Color structure used to render the \doxylink{classTetromino}{Tetromino}, which contains RGBA color information.
+
+\begin{DoxyReturn}{Returns}
+An SDL\+\_\+\+Color representing the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s color. 
+\end{DoxyReturn}
+\Hypertarget{classTetromino_a80c6873bf2a00ab5a415f58c4351a9af}\label{classTetromino_a80c6873bf2a00ab5a415f58c4351a9af} 
+\index{Tetromino@{Tetromino}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily int Tetromino\+::get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current rotation state of the \doxylink{classTetromino}{Tetromino}. 
+
+The rotation value can be from 0 to 3 and is used to index different orientations of the \doxylink{classTetromino}{Tetromino} shape.
+
+\begin{DoxyReturn}{Returns}
+An integer representing the current rotation (0-\/3). 
+\end{DoxyReturn}
+\Hypertarget{classTetromino_ab228d4252c950e0c8a971b019c1edcf3}\label{classTetromino_ab228d4252c950e0c8a971b019c1edcf3} 
+\index{Tetromino@{Tetromino}!moveDir@{moveDir}}
+\index{moveDir@{moveDir}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{moveDir()}{moveDir()}}
+{\footnotesize\ttfamily void Tetromino\+::move\+Dir (\begin{DoxyParamCaption}\item[{int}]{dir }\end{DoxyParamCaption})}
+
+
+
+Moves the \doxylink{classTetromino}{Tetromino} in a specified direction. 
+
+The function updates both the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s x and y coordinates and the associated SDL\+\_\+\+Rect, which is used for rendering. The direction is determined by the {\ttfamily dir} parameter\+:
+\begin{DoxyItemize}
+\item 0\+: Move down
+\item 1\+: Move left
+\item -\/1\+: Move right
+\item 3\+: Move up
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & An integer representing the direction to move. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTetromino_a1b97aafb1ce649b204f79f3bfa36608b}\label{classTetromino_a1b97aafb1ce649b204f79f3bfa36608b} 
+\index{Tetromino@{Tetromino}!moveTo@{moveTo}}
+\index{moveTo@{moveTo}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{moveTo()}{moveTo()}}
+{\footnotesize\ttfamily void Tetromino\+::move\+To (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Moves the \doxylink{classTetromino}{Tetromino} to specific coordinates. 
+
+This function sets the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s x and y positions to the given coordinates and updates the position of its SDL\+\_\+\+Rect accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The new x-\/coordinate for the \doxylink{classTetromino}{Tetromino}. \\
+\hline
+{\em y} & The new y-\/coordinate for the \doxylink{classTetromino}{Tetromino}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTetromino_ad0cf591b80f65421c008fe463a6085a9}\label{classTetromino_ad0cf591b80f65421c008fe463a6085a9} 
+\index{Tetromino@{Tetromino}!rotateLeft@{rotateLeft}}
+\index{rotateLeft@{rotateLeft}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{rotateLeft()}{rotateLeft()}}
+{\footnotesize\ttfamily void Tetromino\+::rotate\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Rotates the \doxylink{classTetromino}{Tetromino} to the left (counter-\/clockwise) and adjusts its position. 
+
+This function changes the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s rotation state to the left (counter-\/clockwise) and then moves it one tile in a specific direction based on the new rotation. This simulates a "{}soft"{} wall kick. 
+
+Reimplemented in \mbox{\hyperlink{classTetrominoI_a9bada8954caac88d194ea9117b3f6c61}{TetrominoI}}, and \mbox{\hyperlink{classTetrominoO_a0f9b03d8a5f980c349632f4d06c781ff}{TetrominoO}}.
+
+\Hypertarget{classTetromino_a229374c8a02164c70a3bc7978a05507a}\label{classTetromino_a229374c8a02164c70a3bc7978a05507a} 
+\index{Tetromino@{Tetromino}!rotateLeftPad@{rotateLeftPad}}
+\index{rotateLeftPad@{rotateLeftPad}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{rotateLeftPad()}{rotateLeftPad()}}
+{\footnotesize\ttfamily void Tetromino\+::rotate\+Left\+Pad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Rotates the \doxylink{classTetromino}{Tetromino} to the left (counter-\/clockwise) without wall kicks. 
+
+This function modifies the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s rotation value by moving it to the left (counter-\/clockwise) one step. It does not perform any movement adjustments other than updating the rotation index. \Hypertarget{classTetromino_a0c9bd56f3db5d42a51e0b0296a9dac81}\label{classTetromino_a0c9bd56f3db5d42a51e0b0296a9dac81} 
+\index{Tetromino@{Tetromino}!rotateRight@{rotateRight}}
+\index{rotateRight@{rotateRight}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{rotateRight()}{rotateRight()}}
+{\footnotesize\ttfamily void Tetromino\+::rotate\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Rotates the \doxylink{classTetromino}{Tetromino} to the right (clockwise) and adjusts its position. 
+
+This function changes the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s rotation state to the right (clockwise) and then moves it one tile in a specific direction based on the new rotation. This simulates a "{}soft"{} wall kick. 
+
+Reimplemented in \mbox{\hyperlink{classTetrominoI_af27a91e0e0a89086f0456395ccd59fb8}{TetrominoI}}, and \mbox{\hyperlink{classTetrominoO_add9c109d4405c416015b4a2cf8a29e51}{TetrominoO}}.
+
+\Hypertarget{classTetromino_abfb84aa08c4d2ab83556cf0ca38970f2}\label{classTetromino_abfb84aa08c4d2ab83556cf0ca38970f2} 
+\index{Tetromino@{Tetromino}!rotateRightPad@{rotateRightPad}}
+\index{rotateRightPad@{rotateRightPad}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{rotateRightPad()}{rotateRightPad()}}
+{\footnotesize\ttfamily void Tetromino\+::rotate\+Right\+Pad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Rotates the \doxylink{classTetromino}{Tetromino} to the right (clockwise) without wall kicks. 
+
+This function modifies the \doxylink{classTetromino}{Tetromino}\textquotesingle{}s rotation value by moving it to the right (clockwise) one step. It does not perform any movement adjustments other than updating the rotation index. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTetromino_a2af24d527c3cf326513b181c0c70206a}\label{classTetromino_a2af24d527c3cf326513b181c0c70206a} 
+\index{Tetromino@{Tetromino}!rotation@{rotation}}
+\index{rotation@{rotation}!Tetromino@{Tetromino}}
+\doxysubsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily int Tetromino\+::rotation\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/gelmi/\+Tetris/include/\mbox{\hyperlink{tetromino_8hpp}{tetromino.\+hpp}}\item 
+/home/gelmi/\+Tetris/src/\mbox{\hyperlink{tetromino_8cpp}{tetromino.\+cpp}}\end{DoxyCompactItemize}

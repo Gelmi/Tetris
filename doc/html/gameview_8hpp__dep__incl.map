@@ -1,0 +1,13 @@
+<map id="/home/gelmi/Tetris/include/gameview.hpp" name="/home/gelmi/Tetris/include/gameview.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="300,5,472,45"/>
+<area shape="rect" id="Node000002" href="$multigameview_8hpp.html" title=" " alt="" coords="84,93,291,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="331,53,232,96,230,91,329,48"/>
+<area shape="rect" id="Node000005" href="$game_8cpp.html" title="This file handles the settings of the game looping." alt="" coords="315,93,457,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="389,59,389,93,383,93,383,59"/>
+<area shape="rect" id="Node000006" href="$gameview_8cpp.html" title="This file handles the game screen of single player mode." alt="" coords="481,93,624,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="436,49,517,91,515,96,433,54"/>
+<area shape="rect" id="Node000003" href="$multigameview_8cpp.html" title="This file handles the screen of multiplayer mode." alt="" coords="5,181,183,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="158,145,116,183,113,179,155,141"/>
+<area shape="rect" id="Node000004" href="$multiplayer_8cpp.html" title="This file handles the conexion of multiplayer mode." alt="" coords="207,181,357,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="220,141,263,179,259,183,217,145"/>
+</map>

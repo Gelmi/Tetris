@@ -1,0 +1,41 @@
+\doxysection{gameend.\+hpp}
+\hypertarget{gameend_8hpp_source}{}\label{gameend_8hpp_source}\index{/home/gelmi/Tetris/include/gameend.hpp@{/home/gelmi/Tetris/include/gameend.hpp}}
+\mbox{\hyperlink{gameend_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAMEEND\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAMEEND\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL\_ttf.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{view_8hpp}{view.hpp}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameEnd}{GameEnd}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classView}{View}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classGameEnd_a47333c831fbdfb21894d3d6b80ef4ceb}{GameEnd}}(SDL\_Window*\ sharedWindow,\ SDL\_Renderer*\ sharedRenderer)}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classView}{View}}(sharedWindow,\ sharedRenderer)\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classGameEnd_a88dce60f3a709ab7dbb800078714e99d}{text}}\ =\ \textcolor{stringliteral}{"{}You\ lose!"{}};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \};\ \ }
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classGameEnd_a71ace4e2959f80e3c98e97c8e915cf7a}{GameEnd}}(SDL\_Window*\ sharedWindow,\ SDL\_Renderer*\ sharedRenderer,\ std::string\ \mbox{\hyperlink{classGameEnd_a88dce60f3a709ab7dbb800078714e99d}{text}})\ :}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameEnd}{GameEnd}}(sharedWindow,\ sharedRenderer)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>text\ =\ \mbox{\hyperlink{classGameEnd_a88dce60f3a709ab7dbb800078714e99d}{text}};\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameEnd_a46d864392104b07b69b859cd0f060cf2}{Setup}}(SDL\_Window*\ sharedWindow,\ SDL\_Renderer*\ sharedRenderer);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameEnd_a448b5cd5d1c911cf764a42083334ec55}{changeText}}(std::string\ \mbox{\hyperlink{classGameEnd_a88dce60f3a709ab7dbb800078714e99d}{text}});}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameEnd_ad80968c4037067c3bbf00792795d2ecc}{showgameend}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ Menu()\ =\ default;}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameEnd_aeb47b6997420ede2147b01d51d19ac2a}{close}}\{0\};}
+\DoxyCodeLine{00028\ \ \ \ \ SDL\_Window*\ \mbox{\hyperlink{classGameEnd_af3077649708c95ee4d8c36b849933e81}{window}}\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ SDL\_Surface*\ screen\{nullptr\};}}
+\DoxyCodeLine{00030\ \ \ \ \ SDL\_Renderer*\ \mbox{\hyperlink{classGameEnd_ab3511dbe4cbc09cc6345f07d263fe27c}{renderer}}\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00031\ \ \ \ \ TTF\_Font\ *\ \mbox{\hyperlink{classGameEnd_a230d90c835c44c27f9c3b9a1d3905ec7}{font}};}
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ \mbox{\hyperlink{classGameEnd_a88dce60f3a709ab7dbb800078714e99d}{text}};}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

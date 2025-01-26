@@ -1,0 +1,38 @@
+\doxysection{gameview.\+hpp}
+\hypertarget{gameview_8hpp_source}{}\label{gameview_8hpp_source}\index{/home/gelmi/Tetris/include/gameview.hpp@{/home/gelmi/Tetris/include/gameview.hpp}}
+\mbox{\hyperlink{gameview_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAMEVIEW\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAMEVIEW\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL\_ttf.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gamedata_8hpp}{gamedata.hpp}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameView}{GameView}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ SDL\_Renderer\ *\ \mbox{\hyperlink{classGameView_a351fd41c7f6490b8d78bc57cddea2918}{renderer}};}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ SDL\_Window\ *\ \mbox{\hyperlink{classGameView_a50ebc9bb563a22e7d6c91c4e28c428a5}{window}};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{classGameView_a1da283b3c58ddc6c69611ea2f9edb47a}{boardTexture}};}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{classGameView_afc67b7c93b5d31c867afe03b8a3fbe9d}{boardTileTexture}};}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{classGameView_a5f3ed1e9bc4c0406a27959b7bb9ec0c9}{tetrominoTexture}};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{classGameView_a7e0a1fda7f0574f0be43f62330ca9452}{tetrominoTileTexture}};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ TTF\_Font\ *\ \mbox{\hyperlink{classGameView_a2c1560f37bbbec91a11b4c1a154dd84d}{font}};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameView_a906afed2573ccc6f4869ebb67cdaa586}{DrawEntity}}(SDL\_Texture\ *\ texture,\ SDL\_Texture\ *\ tileTexture,\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Texture\ *\ backTexture,\ \textcolor{keywordtype}{int}\ tileSize,\ \textcolor{keywordtype}{int}\ *\ tiles,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ w);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameView_a41865ef051acd0f8fbae419b12165390}{DrawBoard}}(\mbox{\hyperlink{classGameData}{GameData}}\ data);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameView_a3e752d274545ae81c1975acf7a58686c}{DrawTetromino}}(\mbox{\hyperlink{classGameData}{GameData}}\ data);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameView_a731f633d4e138e0dae1e8a07e3b18d38}{DrawStats}}(\mbox{\hyperlink{classGameData}{GameData}}\ data);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameView_acf7944a165682179a056cb5a7367a8ba}{DrawNextTetromino}}(\mbox{\hyperlink{classGameData}{GameData}}\ data);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameView}{GameView}}(SDL\_Window\ *\ sharedWindow,\ SDL\_Renderer\ *\ sharedRenderer);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameView_a957dca86bb68a729188f167f7d45ab86}{\string~GameView}}();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameView_a1c4709d412d99bcd59946fd257e66719}{Draw}}(\mbox{\hyperlink{classGameData}{GameData}}\ data);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

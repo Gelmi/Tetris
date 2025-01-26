@@ -20,6 +20,13 @@
 #include <string>
 #include <memory>
 
+/**
+ * @brief Destructor for the Multiplayer class.
+ *
+ * This destructor:
+ * - Deinitializes ENet.
+ * - Frees the allocated memory for GameData, the client ENetHost, and the ENetPeer.
+ */
 Multiplayer::~Multiplayer() {
     enet_deinitialize();
     delete this->gameData;
@@ -27,6 +34,15 @@ Multiplayer::~Multiplayer() {
     delete this->peer;
 }
 
+/**
+ * @brief Sets up the Multiplayer object with the provided SDL_Window and SDL_Renderer.
+ *
+ * Initializes various state variables such as connection status, running/close flags,
+ * and allocates memory for GameData used to track the game state.
+ *
+ * @param sharedWindow A pointer to the SDL_Window to use.
+ * @param sharedRenderer A pointer to the SDL_Renderer to use.
+ */
 void Multiplayer::Setup(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer;
@@ -37,6 +53,16 @@ void Multiplayer::Setup(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer
     this->results = false;
 }
 
+/**
+ * @brief Connects to an ENet server using the given IP address.
+ *
+ * This function initializes ENet if needed, creates a client host,
+ * and attempts to connect to the server at the specified IP and port (1234).
+ *
+ * @param ip A C-string representing the server's IP address.
+ * @return EXIT_SUCCESS (0) if the connection attempt was initialized successfully, 
+ *         or EXIT_FAILURE (1) otherwise.
+ */
 int Multiplayer::connect(char * ip) {
     if(enet_initialize() != 0) {
         fprintf(stderr, "An error occured while initializing ENet\n");
@@ -63,6 +89,15 @@ int Multiplayer::connect(char * ip) {
     return EXIT_SUCCESS;
 }
 
+/**
+ * @brief Polls SDL events and sends appropriate commands to the server.
+ *
+ * This method checks the SDL event queue. If a keypress is detected
+ * (e.g., space, arrow keys, 'C'), it creates a ClientData packet
+ * and sends it to the server via ENet.
+ *
+ * @param peer A pointer to the ENetPeer connected to the server.
+ */
 void Multiplayer::pollSDLEvent(ENetPeer * peer) {
     SDL_Event sdlEvent;
     while (SDL_PollEvent(&sdlEvent)) {
@@ -100,6 +135,15 @@ void Multiplayer::pollSDLEvent(ENetPeer * peer) {
     }
 }
 
+/**
+ * @brief Handles ENet events for the client side.
+ *
+ * This method processes incoming ENet events (connect, receive, disconnect).
+ * - ENET_EVENT_TYPE_CONNECT: Marks the connection as successful.
+ * - ENET_EVENT_TYPE_RECEIVE: Parses ClientData messages from the server and
+ *   updates the local game state accordingly.
+ * - ENET_EVENT_TYPE_DISCONNECT: Marks the connection as lost.
+ */
 void Multiplayer::handleServer() {
     eventStatus = enet_host_service(client, &event, 0);
 
@@ -143,6 +187,16 @@ void Multiplayer::handleServer() {
     }
 }
 
+/**
+ * @brief Updates the local GameData object based on server state.
+ *
+ * This method interprets the received ClientData structure and updates
+ * the player's board, opponent's board, level, score, and the next Tetromino type.
+ * If the message indicates end results, it also updates the `result` flag indicating
+ * a win or loss for the local player.
+ *
+ * @param clientData A pointer to a ClientData structure received from the server.
+ */
 void Multiplayer::clientToGame(ClientData * clientData){
     Tetromino * tetromino;
     if(connectID == clientData->m2) {
@@ -167,6 +221,15 @@ void Multiplayer::clientToGame(ClientData * clientData){
     for(int i = 0; i < 16; i++) this->gameData->tiles[i] = tetromino->getTiles()[i];
 }
 
+/**
+ * @brief Displays the end-game menu with the current results.
+ *
+ * If the local GameData indicates a winning condition, it shows "You win!";
+ * otherwise, it will display a default message or different text as needed.
+ *
+ * The user can choose to exit after the game ends. This method sets the
+ * appropriate flags based on the user's choice.
+ */
 void Multiplayer::gameEndMenu() {
     std::unique_ptr<GameEnd> gameEnd = std::make_unique<GameEnd>(this->window, this->renderer);
     gameEnd->Setup(this->window, this->renderer);
@@ -183,6 +246,18 @@ void Multiplayer::gameEndMenu() {
     }
 }
 
+/**
+ * @brief The main loop for the multiplayer client.
+ *
+ * Attempts to connect to the specified IP. If successful, enters a loop to:
+ * - Poll SDL events and send commands to the server.
+ * - Handle server responses.
+ * - Render the game or waiting screens depending on connection/running states.
+ * - Display end-game results if needed.
+ *
+ * @param ip A C-string representing the server's IP address.
+ * @return Returns 0 upon exiting the loop or if connection fails.
+ */
 int Multiplayer::Run(char * ip) {  
    
     MultiGameView * gameView = new MultiGameView(this->window, this->renderer);
