@@ -24,20 +24,22 @@ class Server {
         std::vector<Board*> boards;
         std::vector<Tetromino*> tetrominos;
         std::vector<Tetromino*> nextTetrominos;
-        uint8_t nextIndex[2];
+        uint8_t nextIndex[4];
         uint32_t clients[2];
         int players;
-        bool hasSwaped;
+        int playerIndex;
+        bool hasSwaped[2];
         bool bothConnected;
         bool gameEnd;
         std::chrono::steady_clock::time_point counter;
 
-        void getData(ClientData * clientData, uint32_t connectID);
+        void getData(ClientData * clientData);
         void handleCommands(int command, uint32_t connectID);
         bool initServer();
         int idToIndex(uint32_t connectID);
         void lockAndLoad(int index);
         void tryDescend();
+        bool checkIfEnded();
         void restartGame();
 
     public: 

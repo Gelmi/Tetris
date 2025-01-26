@@ -5,13 +5,13 @@
 #include "board.hpp"
 #include "tetromino.hpp"
 #include <chrono>
+#include <memory>
+#include "constants.hpp"
 
 // PROXIMOS PASSOS:
-// Terminar de implementar as funções handleCommand e lock and load;
-// Implementar a visualização da proxima peça
-// Implementar a pontuação no servidor
 // Implementar o fim do jogo (tela)
 // Implementar o começo do jogo (tela e espera)
+// Implementar reset do servidor caso um dos dois jogadores saia
 
 Server::Server() { 
 
@@ -37,8 +37,10 @@ Server::Server() {
     this->nextTetrominos.push_back(tetromino4);
 
     this->players = 0;
+    this->playerIndex = 0;
 
-    this->hasSwaped = false;
+    this->hasSwaped[0] = false;
+    this->hasSwaped[1] = false;
 
     this->counter = std::chrono::steady_clock::now();
 
@@ -75,16 +77,18 @@ bool Server::initServer() {
 }
 
 void Server::lockAndLoad(int index) {
-    this->boards[index]->lockTetromino(this->tetrominos[index]); 
-    this->tetrominos[index] = this->nextTetrominos[index];
-    this->nextIndex[index] = rand() % 7 + 2;
-    this->nextTetrominos[index] = Tetromino::create(static_cast<int>(this->nextIndex[index]));
-    this->hasSwaped = false;
+    this->boards[index]->lockTetromino(this->tetrominos[index]);
+    delete this->tetrominos[index];
+    if(!Server::checkIfEnded()) {
+        this->tetrominos[index] = this->nextTetrominos[index];
+        this->nextIndex[index] = rand() % 7 + 2;
+        this->nextTetrominos[index] = Tetromino::create(static_cast<int>(this->nextIndex[index]));
+        this->hasSwaped[index] = false;
+    }
 }
 
-void Server::getData(ClientData * clientData, uint32_t connectID) {
+void Server::getData(ClientData * clientData) {
     clientData->messageType = STATE_MESSAGE;
-    printf("A\n");
     int id = 0;
     clientData->m2 = clients[id];
     clientData->m3 = clients[id+1];
@@ -114,6 +118,7 @@ void Server::getData(ClientData * clientData, uint32_t connectID) {
 
 int Server::idToIndex(uint32_t connectID) {
     for(int i = 0; i < 2; i++) if(clients[i] == connectID) return i;
+    return -1;
 }
 
 void Server::handleCommands(int command, uint32_t connectID) { 
@@ -145,14 +150,15 @@ void Server::handleCommands(int command, uint32_t connectID) {
             if(position != 0) tetrominos[id]->rotateLeft();
             break;
         case SWAP:
-            if(!hasSwaped){
+            if(!hasSwaped[id]){
                 Tetromino * temp = this->tetrominos[id];
                 this->nextTetrominos[id]->
                 moveTo(this->tetrominos[id]->getX(), this->tetrominos[id]->getY());
                 this->tetrominos[id] = this->nextTetrominos[id];
                 this->nextTetrominos[id] = temp;
+                this->nextTetrominos[id]->moveTo(0,0);
 
-                this->hasSwaped = true;
+                this->hasSwaped[id] = true;
 
                 uint8_t inttemp = this->nextIndex[0];
                 this->nextIndex[0] = this->nextIndex[1];
@@ -175,12 +181,58 @@ void Server::tryDescend() {
             }
         }
         ClientData * clientData = (ClientData *) malloc(sizeof(ClientData));
-        Server::getData(clientData, 0);  
+        Server::getData(clientData);  
         ENetPacket *packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
         enet_host_broadcast(this->server, 0, packet);
+        delete clientData;
     } 
-
 }
+
+bool Server::checkIfEnded() {
+    std::unique_ptr<ClientData> clientData = std::make_unique<ClientData>();
+    clientData->messageType = RESULTS_MESSAGE;
+    clientData->m2 = clients[0];
+    clientData->m3 = clients[1];
+    clientData->m6 = 0;
+    clientData->m7 = 0;
+    if(this->boards[0]->checkIfEnded()) {
+        gameEnd = true;
+        clientData->m6 = 1; 
+    }
+    if(this->boards[1]->checkIfEnded()) {
+        gameEnd = true;
+        clientData->m7 = 1; 
+    }
+    ENetPacket * packet = enet_packet_create(clientData.get(), sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
+    if(gameEnd) {
+        enet_host_broadcast(server, 0, packet);
+        printf("Enviei\n");
+    }
+    return gameEnd;
+}
+
+void Server::restartGame() {
+    this->boards[0] = new Board();
+    this->boards[1] = new Board();
+       
+    this->tetrominos[0] = Tetromino::create(rand() % 7 + 2);
+    this->tetrominos[1] = Tetromino::create(rand() % 7 + 2);
+
+    this->nextIndex[0] = rand() % 7 + 2;
+    this->nextIndex[1] = rand() % 7 + 2;
+    
+    this->nextTetrominos[0] = Tetromino::create(static_cast<int>(this->nextIndex[0]));
+    this->nextTetrominos[1] = Tetromino::create(static_cast<int>(this->nextIndex[1]));
+
+    this->hasSwaped[0] = false;
+    this->hasSwaped[1] = false;
+
+    this->counter = std::chrono::steady_clock::now();
+
+    this->bothConnected = false;
+
+    this->gameEnd = false;
+};
 
 int Server::Run() {
     if(!Server::initServer()) {
@@ -190,7 +242,8 @@ int Server::Run() {
     int eventStatus;
     ENetEvent event;
     ClientData * clientData;
-    ENetPacket *packet;
+    ENetPacket * packet;
+
     while(1) {
         eventStatus = enet_host_service(server, &event, 0);
 
@@ -201,7 +254,14 @@ int Server::Run() {
                     " with id " << event.peer->connectID << "\n";
                     this->clients[players] = event.peer->connectID;
                     players++;
-                    if(players == 2) bothConnected = true;
+                    if(!gameEnd && players == 2) {
+                        bothConnected = true;
+                        gameEnd= false;
+                        const auto old{std::chrono::steady_clock::now()};
+                        while ((std::chrono::duration_cast<std::chrono::milliseconds> (std::chrono::steady_clock::now()-old)) < std::chrono::milliseconds(3000));
+                        clientData->messageType = START_MESSAGE; packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
+                        enet_host_broadcast(server, 0, packet);
+                    }
                     clientData = (ClientData *) malloc(sizeof(ClientData));
 
                     clientData->messageType = 13;
@@ -209,9 +269,10 @@ int Server::Run() {
                     packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
                     enet_peer_send(event.peer, 0, packet);
 
-                    Server::getData(clientData, 0);  
+                    Server::getData(clientData);  
                     packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
                     enet_host_broadcast(server, 0, packet);
+                    delete clientData;
                     break; }
                 case ENET_EVENT_TYPE_RECEIVE: {
                     if(bothConnected && !gameEnd) {
@@ -220,7 +281,7 @@ int Server::Run() {
                             << static_cast<int>(clientData->m1) << "\n";
                         Server::handleCommands(static_cast<int>(clientData->m1), event.peer->connectID);
 
-                        Server::getData(clientData, event.peer->connectID);  
+                        Server::getData(clientData);  
                         packet = enet_packet_create(clientData, sizeof(ClientData), ENET_PACKET_FLAG_RELIABLE);
                         enet_host_broadcast(server, 0, packet);
                     }
@@ -230,19 +291,17 @@ int Server::Run() {
                     event.peer->data = NULL;
                     players--;
                     bothConnected = false;
-                    if(players == 0) gameEnd = true;
+                    gameEnd = true;
+                    if(players == 0) {
+                        Server::restartGame();
+                        gameEnd = false;
+                    };
                     break; }
             }
         }
-        if(this->boards[0]->checkIfEnded()) {
-            printf("1 acabou\n");
-            gameEnd = true;
-        }
-        if(this->boards[1]->checkIfEnded()) {
-            printf("2 acabou\n");
-            gameEnd = true;
-        }
         if(bothConnected && !gameEnd)Server::tryDescend();
     }
+    delete clientData;
+    delete packet;
     return 1;
 }

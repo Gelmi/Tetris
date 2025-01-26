@@ -21,6 +21,10 @@ Entity::Entity(int x, int y, int w, int h){
     color.a = 255;
 }
 
+Entity::~Entity() {
+    delete tiles;
+}
+
 SDL_Rect * Entity::getRect() {
     return &(this->rect);
 }

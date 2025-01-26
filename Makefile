@@ -21,7 +21,7 @@ CC_FLAGS=-c         \
          -ansi      \
          -pedantic	\
 		 -I include \
-		 -std=c++11
+		 -std=c++20
 
 CC_SERVER_FLAGS=-W         \
          		-Wall      \

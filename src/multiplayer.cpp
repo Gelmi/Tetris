@@ -17,8 +17,9 @@ Multiplayer::~Multiplayer() {
 void Multiplayer::Setup(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer;
-    this->running = true;
+    this->running = false;
     this->connected = false;
+    this->close = false;
     this->gameData = new GameData();
 }
 
@@ -53,7 +54,7 @@ void Multiplayer::pollSDLEvent(ENetPeer * peer) {
     while (SDL_PollEvent(&sdlEvent)) {
         switch(sdlEvent.type) {
             case SDL_QUIT:
-                this->running = false;
+                this->close = true;
                 break;
             case SDL_KEYDOWN:
                 ClientData clientData;
@@ -79,7 +80,6 @@ void Multiplayer::pollSDLEvent(ENetPeer * peer) {
                         break;
 
                 }
-                printf("Enviando pacote\n");
                 ENetPacket *packet = enet_packet_create(&clientData, sizeof(clientData), ENET_PACKET_FLAG_RELIABLE);
                 enet_peer_send(peer, 0, packet);
         }
@@ -99,19 +99,18 @@ void Multiplayer::handleServer() {
             }
             case ENET_EVENT_TYPE_RECEIVE: {
                 ClientData * clientData = reinterpret_cast<ClientData*>(event.packet->data);
+                printf("Recebi pacote do tipo: %d\n", clientData->messageType);
                 if(clientData->messageType == COMMAND_MESSAGE) printf("(Client) Message from server : %d\n", clientData->m1);
                 if(clientData->messageType == CONNECT_MESSAGE) {
                     printf("(Client) Your clientID is: %u\n", clientData->m2);
                     this->connectID = clientData->m2;
                 }
+                if(clientData->messageType == START_MESSAGE) this->running = true;
                 if(clientData->messageType == STATE_MESSAGE) {
-                    printf("Board:");
-                    for(int i = 0; i < 200; i++) {
-                        printf(" %d", clientData->m4[i]);
-                    }
-                    printf("\n");
                     Multiplayer::clientToGame(clientData);
                 }
+                if(clientData->messageType == WIN_MESSAGE) printf("Ganhei\n");
+                if(clientData->messageType == LOSE_MESSAGE) printf("Perdi\n");
                 enet_packet_destroy(event.packet);
                 break;
             }
@@ -154,13 +153,14 @@ int Multiplayer::Run() {
 
     if(Multiplayer::connect() == EXIT_FAILURE) return 0;
 
-    while(this->running) {  
+    while(!(this->close)) {  
         Multiplayer::pollSDLEvent(peer);
         Multiplayer::handleServer();
         if(connected) {
-            gameView->Draw(*(this->gameData));
+            if(!running) gameView->DrawWaitStart(*(this->gameData));
+            else gameView->Draw(*(this->gameData));
         } else {
-            gameView->DrawWait(*(this->gameData));
+            gameView->DrawWaitConnection(*(this->gameData));
         }
     }
     

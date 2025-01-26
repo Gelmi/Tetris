@@ -28,7 +28,7 @@ class Multiplayer : public View {
     private:
         SDL_Window * window;
         SDL_Renderer * renderer;
-        bool running;
+        bool close;
         ENetAddress address;
         ENetHost * client;
         ENetPeer * peer;
@@ -36,6 +36,7 @@ class Multiplayer : public View {
         GameData * gameData;
         int eventStatus;
         bool connected;
+        bool running;
         uint32_t connectID;
 
         void pollSDLEvent(ENetPeer * peer);

@@ -13,6 +13,7 @@ class Entity {
     public:
         Entity(int x, int y, int w, int h);
         Entity(int w, int h) : Entity(0, 0, w, h) {};
+        ~Entity();
         SDL_Rect * getRect();
         unsigned int* getTiles();
         int getX();

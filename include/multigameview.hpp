@@ -1,32 +1,29 @@
 #ifndef MULTIGAMEVIEW_HPP
 #define MULTIGAMEVIEW_HPP
 
+#include <iostream>
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include "gamedata.hpp"
+#include "gameview.hpp"
 
-class MultiGameView {
-    private:
-        SDL_Renderer * renderer;
-        SDL_Window * window;
-        SDL_Texture * boardTexture;
-        SDL_Texture * boardTileTexture;
-        SDL_Texture * tetrominoTexture;
-        SDL_Texture * tetrominoTileTexture;
-        TTF_Font * font;
-
-        void DrawBoard(GameData data);
-        void DrawTetromino(GameData data);
-        void DrawStats(GameData data);
-        void DrawNextTetromino(GameData data);
-        void DrawBoardOp(GameData data);
-        int atPos(int x, int y, int h);
-
+class MultiGameView : public GameView {
     public:
-        MultiGameView(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer);
+        MultiGameView(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer)
+            : GameView(sharedWindow, sharedRenderer) {
+                font = TTF_OpenFont("./assets/stocky.ttf", 36);
+                if (!font) {
+                    std::cerr << "Error loading font: " << TTF_GetError() << std::endl;
+                    exit(1);
+                }
+            };
         ~MultiGameView();
         void Draw(GameData data);
-        void DrawWait(GameData data);
+        void DrawWaitConnection(GameData data);
+        void DrawWaitStart(GameData data);
+
+    private:
+        TTF_Font* font;
         
 };
 
