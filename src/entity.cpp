@@ -3,6 +3,7 @@
 #include<cstring>
 #include<SDL.h>
 #include "constants.hpp"
+#include <stdio.h>
 
 Entity::Entity(int x, int y, int w, int h){
     this->x = x;
@@ -19,6 +20,10 @@ Entity::Entity(int x, int y, int w, int h){
     color.g = 255;
     color.b = 255;
     color.a = 255;
+}
+
+Entity::~Entity() {
+    delete tiles;
 }
 
 SDL_Rect * Entity::getRect() {

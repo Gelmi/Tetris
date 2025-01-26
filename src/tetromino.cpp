@@ -37,12 +37,49 @@ int Tetromino::getRotation() {
     return this->rotation;
 }
 
+void Tetromino::rotateLeftPad(){
+    this->rotation = (this->rotation + 3) % 4;    
+}
+
+void Tetromino::rotateRightPad(){
+    this->rotation = (this->rotation + 1) % 4;
+} 
+
 void Tetromino::rotateLeft(){
-    this->rotation = (this->rotation + 3) % 4;
+    this->rotation = (this->rotation + 3) % 4;    
+    switch(this->rotation) {
+        case 0:
+            this->moveDir(1);
+            break;
+        case 1:
+            this->moveDir(0);
+            break;
+        case 2:
+            this->moveDir(-1);
+            break;
+        case 3:
+            this->moveDir(3);
+            break;
+    }
 }
 
 void Tetromino::rotateRight(){
     this->rotation = (this->rotation + 1) % 4;
+    switch(this->rotation) {
+        case 0:
+            this->moveDir(0); 
+            printf("Cima\n");
+            break;
+        case 1:
+            this->moveDir(-1);
+            break;
+        case 2:
+            this->moveDir(3);
+            break;
+        case 3:
+            this->moveDir(1);
+            break;
+    }
 }
 
 int Tetromino::atPos(int x, int y) {
@@ -91,3 +128,8 @@ Tetromino * Tetromino::create(int type) {
             return new TetrominoI;
     }
 }
+
+void TetrominoI::rotateLeft() { Tetromino::rotateLeftPad(); };
+void TetrominoI::rotateRight() { Tetromino::rotateRightPad(); };
+void TetrominoO::rotateLeft() { Tetromino::rotateLeftPad(); };
+void TetrominoO::rotateRight() { Tetromino::rotateRightPad(); };

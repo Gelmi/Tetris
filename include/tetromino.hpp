@@ -10,7 +10,7 @@ class Tetromino : public Entity {
 
     public:
         Tetromino(SDL_Color color, std::array<unsigned int, 16> shape)
-            : Entity(4, 4), rotation(0) {
+            : Entity(3, 0, 4, 4), rotation(0) {
             this->color.r = color.r;
             this->color.g = color.g;
             this->color.b = color.b;
@@ -19,8 +19,10 @@ class Tetromino : public Entity {
         }; 
         void moveDir(int dir);
         void moveTo(int x, int y);
-        void rotateLeft();
-        void rotateRight();
+        virtual void rotateLeft();
+        void rotateLeftPad();
+        virtual void rotateRight();
+        void rotateRightPad();
         SDL_Color getColor();
         int getRotation();
         static Tetromino * create(int type);
@@ -32,7 +34,9 @@ class TetrominoI : public Tetromino {
         TetrominoI() : Tetromino({0,255,255,255}, {0,0,0,0,
                                                    1,1,1,1,
                                                    0,0,0,0,
-                                                   0,0,0,0}) {}; 
+                                                   0,0,0,0}) {};
+        virtual void rotateLeft();
+        virtual void rotateRight();
 };
 
 class TetrominoO : public Tetromino {
@@ -41,6 +45,8 @@ class TetrominoO : public Tetromino {
                                                    0,2,2,0,
                                                    0,2,2,0,
                                                    0,0,0,0}) {}; 
+        virtual void rotateLeft();
+        virtual void rotateRight();
 }; 
 
 class TetrominoT : public Tetromino {
@@ -62,9 +68,9 @@ class TetrominoJ : public Tetromino {
 class TetrominoL : public Tetromino {
     public:
         TetrominoL() : Tetromino({255,127,0,255}, {0,0,0,0,
+                                                   0,0,0,0,
                                                    5,5,5,0,
-                                                   0,0,5,0,
-                                                   0,0,0,0}) {}; 
+                                                   0,0,5,0}) {}; 
 };
 
 class TetrominoS : public Tetromino {

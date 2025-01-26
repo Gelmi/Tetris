@@ -3,16 +3,26 @@
 #include "game.hpp"
 #include "credits.hpp"
 #include <iostream>
+#include "multiplayer.hpp"
+#include <memory>
 
-Application::Application() : window(nullptr), renderer(nullptr) {
+Application::Application() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cerr << "Error initializing SDL: " << SDL_GetError() << std::endl;
+        std::cout << "Error initializing SDL: " << SDL_GetError() << std::endl;
         exit(1);
     }
+
+    if (TTF_Init() < 0) {
+        std::cout << "Error initializing TTF: " << TTF_GetError() << std::endl;
+        TTF_Quit();
+        SDL_Quit();
+        exit(1);
+    }   
 
     this->window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, SDL_WINDOW_SHOWN);
     if (!window) {
         std::cerr << "Error creating window (Application): " << SDL_GetError() << std::endl;
+        TTF_Quit();
         SDL_Quit();
         exit(1);
     }
@@ -21,14 +31,18 @@ Application::Application() : window(nullptr), renderer(nullptr) {
     if (!renderer) {
         std::cerr << "Error creating renderer: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
+        TTF_Quit();
         SDL_Quit();
         exit(1);
     }
+
+    SDL_RenderSetLogicalSize(renderer, 800, 640);
 }
 
 Application::~Application() {
-    if (this->renderer) SDL_DestroyRenderer(this->renderer);
-    if (this->window) SDL_DestroyWindow(this->window);
+    SDL_DestroyRenderer(this->renderer);
+    SDL_DestroyWindow(this->window);
+    TTF_Quit();
     SDL_Quit();
 }
 
@@ -40,13 +54,14 @@ SDL_Renderer* Application::GetRenderer() const {
     return this->renderer;
 }
 
-int Application::Run(){
+int Application::Run(char * ip){
 
  bool running = true;
 
     // Criação dos objetos fora do loop
-    Menu * menu = new Menu(this->window, this->renderer);
-    Credits * credits = new Credits(this->window, this->renderer);
+    std::unique_ptr<Menu> menu = std::make_unique<Menu>(this->window, this->renderer);
+    std::unique_ptr<Credits> credits = std::make_unique<Credits>(this->window, this->renderer);
+
     // Loop principal de navegação entre telas
     menu->Setup(window, renderer);
     credits->Setup(window, renderer);
@@ -56,19 +71,20 @@ int Application::Run(){
 
         switch (menuChoice) {
             case 0: { // Jogo Single Player    
-                Game * game = new Game(this->window, this->renderer);
+                std::unique_ptr<Game> game = std::make_unique<Game>(this->window, this->renderer);
                 game->Setup(window, renderer);
                 game->Run();
-                delete game;
                 break;
             }
-            case 1: { // Placeholder para Multiplayer
-                std::cout << "Multiplayer ainda não implementado." << std::endl;
+            case 1: { // Placeholder para Multiplayer 
+                std::unique_ptr<Multiplayer> multiplayer = std::make_unique<Multiplayer>(this->window, this->renderer);
+                multiplayer->Setup(window, renderer);
+                multiplayer->Run(ip);
                 break;
             }
             case 2: { // Créditos
                 credits->ShowCredits();
-                // Retornar ao menu após os créditos
+              // Retornar ao menu após os créditos
                 break;
             }
             case 3: { // Sair
@@ -81,7 +97,6 @@ int Application::Run(){
                 break;
         }
     }
-
     return 0;
 }
 

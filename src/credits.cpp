@@ -5,11 +5,6 @@ void Credits::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer;
 
-    if (TTF_Init() < 0) {
-        std::cerr << "Error initializing TTF: " << TTF_GetError() << std::endl;
-        exit(1);
-    }
-
     font = TTF_OpenFont("./assets/stocky.ttf", 36); // Certifique-se de que o caminho está correto
     if (!font) {
         std::cerr << "Error loading font: " << TTF_GetError() << std::endl;
@@ -86,8 +81,5 @@ void Credits::ShowCredits() {
 }
 
 Credits::~Credits() {
-    if (font) {
-        TTF_CloseFont(font);
-        font = nullptr;
-    }
+    if (font) TTF_CloseFont(font);
 }

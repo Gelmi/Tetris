@@ -4,15 +4,14 @@ int Board::isPositionValid(Tetromino * Tetromino) {
     for(int j = 0; j < 4; j++) {
         for(int i = 0; i < 4; i++) {
             if(Tetromino->getTiles()[Tetromino->atPos(i, j)] != 0){    
-                //Bateu em algum bloco ou embaixo
-                if(Tetromino->getY() + i > 19 || this->tiles[this->atPos(Tetromino->getX()+j, Tetromino->getY()+i)] != 0){ 
-                    //printf("Block found in: %d, %d\n", Tetromino->getX()+j, Tetromino->getY()+i);
-                    return 2;
-                }
                 //Bateu nas laterais
                 if(Tetromino->getX() + j < 0 || Tetromino->getX() + j > 9 ) {
-                    //printf("%d\n", Tetromino->getY()+i);
                     return 1;
+                }
+                //Bateu em algum bloco ou embaixo
+                if(Tetromino->getX() + j > 0 && Tetromino->getY() + i > 0
+                    && Tetromino->getY() + i > 19 || this->tiles[this->atPos(Tetromino->getX()+j, Tetromino->getY()+i)] != 0){ 
+                    return 2;
                 }
             }
         }
@@ -20,7 +19,14 @@ int Board::isPositionValid(Tetromino * Tetromino) {
     return 0;
 } 
 
-void Board::lockTetromino(Tetromino * Tetromino) {
+bool Board::checkIfEnded(){ 
+    for(int i = 0; i < 10; i++){
+        if(this->tiles[i] != 0) return true;
+    }
+    return false;
+}
+
+int Board::lockTetromino(Tetromino * Tetromino) {
     for(int j = 0; j < 4; j++) {
         for(int i = 0; i < 4; i++) {
             if(Tetromino->getTiles()[Tetromino->atPos(i, j)] != 0)  
@@ -28,10 +34,10 @@ void Board::lockTetromino(Tetromino * Tetromino) {
                     = Tetromino->getTiles()[Tetromino->atPos(i,j)];
         }
     }
-    this->cleanRows(Tetromino);
+    return this->cleanRows(Tetromino);
 }
 
-void Board::cleanRows(Tetromino * Tetromino) {
+int Board::cleanRows(Tetromino * Tetromino) {
     bool fullRow;
     int n = 0;
     for(int i = 0; i < 4; i++) {
@@ -48,15 +54,30 @@ void Board::cleanRows(Tetromino * Tetromino) {
             n++; 
         }
     }
-    printf("LINHAS: %d\n", n);
     if(n > 0) this->addScore(n);
     rows = rows + n;
     if(this->rows >= 10) {
         this->level++;
         rows = rows - 10;
     }
-    printf("====================\nscore: %d\nlevel: %d\nrows: %d\n", this->score, level, rows);
+    return n;
 } 
+
+void Board::addRows(int n) {
+    for(int i = 0; i < 20 - n; i++) {
+        for(int j = 0; j < 10; j++) {
+            this->tiles[this->atPos(j, i)] =
+                this->tiles[this->atPos(j, i+n)]; 
+        }
+    }
+    int empty = rand() % 9 + 1;
+    for(int i = 20 - n; i < 20; i++) {
+        for(int j = 0; j < 10; j++) {
+            if(j == empty) this->tiles[this->atPos(j, i)] = 0;
+            else this->tiles[this->atPos(j, i)] = 8;
+        }
+    } 
+}
 
 void Board::addScore(int n) {
     int p;
