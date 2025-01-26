@@ -1,3 +1,13 @@
+/**
+ * @file multigameview.cpp
+ * @author Gabriel and Guilherme
+ * @brief This file handles the screen of multiplayer mode 
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "multigameview.hpp"
 #include <SDL.h>
 #include <iostream>

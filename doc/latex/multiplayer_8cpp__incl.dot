@@ -1,0 +1,58 @@
+digraph "/home/corsi/Tetris/src/multiplayer.cpp"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="/home/corsi/Tetris\l/src/multiplayer.cpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="This file handles the conexion of multiplayer mode."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="multiplayer.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$multiplayer_8hpp_source.html",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="SDL.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="view.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8hpp_source.html",tooltip=" "];
+  Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="enet/enet.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="gamedata.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$gamedata_8hpp_source.html",tooltip=" "];
+  Node6 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="stdio.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="string.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="stdint.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="constants.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$constants_8hpp_source.html",tooltip=" "];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="multigameview.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$multigameview_8hpp_source.html",tooltip=" "];
+  Node11 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="iostream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node11 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="SDL_ttf.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node11 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 -> Node14 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="gameview.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$gameview_8hpp_source.html",tooltip=" "];
+  Node14 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node15 [color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="tetromino.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tetromino_8hpp_source.html",tooltip=" "];
+  Node15 -> Node16 [color="midnightblue",fontsize="10",style="solid"];
+  Node16 [label="array",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node15 -> Node17 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 [label="entity.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$entity_8hpp_source.html",tooltip=" "];
+  Node17 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node18 [color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="gameend.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$gameend_8hpp_source.html",tooltip=" "];
+  Node18 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node18 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node18 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node18 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node19 [label="string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node20 [label="memory",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

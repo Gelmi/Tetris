@@ -1,3 +1,13 @@
+/**
+ * @file server.cpp
+ * @author Gabriel and Guilherme 
+ * @brief This file handles the all the servidor's management
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "server.hpp"
 #include <iostream>
 #include <enet/enet.h>

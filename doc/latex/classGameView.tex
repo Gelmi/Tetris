@@ -1,0 +1,63 @@
+\hypertarget{classGameView}{}\doxysection{Game\+View Class Reference}
+\label{classGameView}\index{GameView@{GameView}}
+
+
+Inheritance diagram for Game\+View\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGameView_a9b3c9ccc7d1ba1daa297286bfcc411c2}\label{classGameView_a9b3c9ccc7d1ba1daa297286bfcc411c2}} 
+{\bfseries Game\+View} (SDL\+\_\+\+Window $\ast$shared\+Window, SDL\+\_\+\+Renderer $\ast$shared\+Renderer)
+\item 
+\mbox{\Hypertarget{classGameView_a1c4709d412d99bcd59946fd257e66719}\label{classGameView_a1c4709d412d99bcd59946fd257e66719}} 
+void {\bfseries Draw} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGameView_a906afed2573ccc6f4869ebb67cdaa586}\label{classGameView_a906afed2573ccc6f4869ebb67cdaa586}} 
+void {\bfseries Draw\+Entity} (SDL\+\_\+\+Texture $\ast$texture, SDL\+\_\+\+Texture $\ast$tile\+Texture, SDL\+\_\+\+Texture $\ast$back\+Texture, int tile\+Size, int $\ast$tiles, int x, int y, int h, int w)
+\item 
+\mbox{\Hypertarget{classGameView_a41865ef051acd0f8fbae419b12165390}\label{classGameView_a41865ef051acd0f8fbae419b12165390}} 
+void {\bfseries Draw\+Board} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+\item 
+\mbox{\Hypertarget{classGameView_a3e752d274545ae81c1975acf7a58686c}\label{classGameView_a3e752d274545ae81c1975acf7a58686c}} 
+void {\bfseries Draw\+Tetromino} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+\item 
+\mbox{\Hypertarget{classGameView_a731f633d4e138e0dae1e8a07e3b18d38}\label{classGameView_a731f633d4e138e0dae1e8a07e3b18d38}} 
+void {\bfseries Draw\+Stats} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+\item 
+\mbox{\Hypertarget{classGameView_acf7944a165682179a056cb5a7367a8ba}\label{classGameView_acf7944a165682179a056cb5a7367a8ba}} 
+void {\bfseries Draw\+Next\+Tetromino} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGameView_a351fd41c7f6490b8d78bc57cddea2918}\label{classGameView_a351fd41c7f6490b8d78bc57cddea2918}} 
+SDL\+\_\+\+Renderer $\ast$ {\bfseries renderer}
+\item 
+\mbox{\Hypertarget{classGameView_a50ebc9bb563a22e7d6c91c4e28c428a5}\label{classGameView_a50ebc9bb563a22e7d6c91c4e28c428a5}} 
+SDL\+\_\+\+Window $\ast$ {\bfseries window}
+\item 
+\mbox{\Hypertarget{classGameView_a1da283b3c58ddc6c69611ea2f9edb47a}\label{classGameView_a1da283b3c58ddc6c69611ea2f9edb47a}} 
+SDL\+\_\+\+Texture $\ast$ {\bfseries board\+Texture}
+\item 
+\mbox{\Hypertarget{classGameView_afc67b7c93b5d31c867afe03b8a3fbe9d}\label{classGameView_afc67b7c93b5d31c867afe03b8a3fbe9d}} 
+SDL\+\_\+\+Texture $\ast$ {\bfseries board\+Tile\+Texture}
+\item 
+\mbox{\Hypertarget{classGameView_a5f3ed1e9bc4c0406a27959b7bb9ec0c9}\label{classGameView_a5f3ed1e9bc4c0406a27959b7bb9ec0c9}} 
+SDL\+\_\+\+Texture $\ast$ {\bfseries tetromino\+Texture}
+\item 
+\mbox{\Hypertarget{classGameView_a7e0a1fda7f0574f0be43f62330ca9452}\label{classGameView_a7e0a1fda7f0574f0be43f62330ca9452}} 
+SDL\+\_\+\+Texture $\ast$ {\bfseries tetromino\+Tile\+Texture}
+\item 
+\mbox{\Hypertarget{classGameView_a2c1560f37bbbec91a11b4c1a154dd84d}\label{classGameView_a2c1560f37bbbec91a11b4c1a154dd84d}} 
+TTF\+\_\+\+Font $\ast$ {\bfseries font}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/corsi/\+Tetris/include/gameview.\+hpp\item 
+/home/corsi/\+Tetris/src/\mbox{\hyperlink{gameview_8cpp}{gameview.\+cpp}}\end{DoxyCompactItemize}

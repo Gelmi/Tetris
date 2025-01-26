@@ -1,3 +1,13 @@
+/**
+ * @file tetromino.cpp
+ * @author Gabriel and Guilherme
+ * @brief This files handles all the game pieces 
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "tetromino.hpp"
 #include "constants.hpp"
 

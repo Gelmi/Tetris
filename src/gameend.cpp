@@ -1,3 +1,13 @@
+/**
+ * @file gameend.cpp
+ * @author Gabriel and Guilherme
+ * @brief This file handles the end screen 
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "view.hpp"
 #include "gameend.hpp"
 #include <iostream>

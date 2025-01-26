@@ -1,23 +1,43 @@
+/**
+ * @file credits.cpp
+ * @author Gabriel and Corsi 
+ * @brief This file handles the credits screen
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "credits.hpp"
 #include <iostream>
 
+/**
+ * @brief Construct a new Credits:: Credits object
+ * 
+ * @param sharedWindow 
+ * @param sharedRenderer 
+ */
 void Credits::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer;
 
-    font = TTF_OpenFont("./assets/stocky.ttf", 36); // Certifique-se de que o caminho está correto
+    font = TTF_OpenFont("./assets/stocky.ttf", 36); 
     if (!font) {
         std::cerr << "Error loading font: " << TTF_GetError() << std::endl;
         exit(1);
     }
 }
 
+/**
+ * @brief The main fonction to configure the text and back button
+ * 
+ */
 void Credits::ShowCredits() {
     SDL_Event event;
     bool running = true;
 
     while (running) {
-        // Processa os eventos
+        // Process the events
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = false;
@@ -25,18 +45,18 @@ void Credits::ShowCredits() {
                 int x = event.button.x;
                 int y = event.button.y;
 
-                // Botão "Back"
+                // button "Back"
                 if (x >= 300 && x <= 500 && y >= 400 && y <= 450) {
                     running = false;
                 }
             }
         }
 
-        // Renderiza a tela de créditos
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Fundo preto
+        // Renders the credits screen
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // black background color
         SDL_RenderClear(renderer);
 
-        SDL_Color white = {255, 255, 255, 255}; // Cor branca
+        SDL_Color white = {255, 255, 255, 255}; // white background color
 
         const char* lines[] = {
             "Developers:",
@@ -44,7 +64,7 @@ void Credits::ShowCredits() {
             "Guilherme"
         };
 
-        int yOffset = 200; // Posição inicial vertical
+        int yOffset = 200; // Vertical initial position
         for (int i = 0; i < 3; i++) {
             SDL_Surface* textSurface = TTF_RenderText_Solid(font, lines[i], white);
             if (!textSurface) {
@@ -59,14 +79,14 @@ void Credits::ShowCredits() {
             SDL_FreeSurface(textSurface);
             SDL_DestroyTexture(textTexture);
 
-            // Desenhar linha abaixo do texto
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // Branco
+            // Draws the line under the text  
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderDrawLine(renderer, 200, yOffset + textRect.h + 5, 600, yOffset + textRect.h + 5);
 
-            yOffset += textRect.h + 20; // Incrementa a posição para o próximo texto
+            yOffset += textRect.h + 20; // Add position for the next text
         }
 
-        // Botão "Back"
+        // Button "Back"
         SDL_Surface* backSurface = TTF_RenderText_Solid(font, "Back", white);
         SDL_Texture* backTexture = SDL_CreateTextureFromSurface(renderer, backSurface);
 
@@ -80,6 +100,10 @@ void Credits::ShowCredits() {
     }
 }
 
+/**
+ * @brief Destroy the Credits:: Credits object
+ * 
+ */
 Credits::~Credits() {
     if (font) TTF_CloseFont(font);
 }

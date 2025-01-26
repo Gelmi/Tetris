@@ -1,7 +1,23 @@
+/**
+ * @file menu.cpp
+ * @author Gabriel and Guilherme
+ * @brief This file handles the menu scren
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "view.hpp"
 #include "menu.hpp"
 #include <iostream>
 
+/**
+ * @brief Construct a new Menu:: Menu object
+ * 
+ * @param sharedWindow 
+ * @param sharedRenderer 
+ */
 void Menu::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer;
@@ -18,10 +34,19 @@ void Menu::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     }
 }
 
+/**
+ * @brief Destroy the Menu:: Menu object
+ * 
+ */
 Menu::~Menu() {
     if (font) TTF_CloseFont(font);
 }
 
+/**
+ * @brief This function is responsable for build the layout and return the menu choice
+ * 
+ * @return int 
+ */
 int Menu::showmenu() {
     Uint32 time;
     int x, y;
@@ -30,8 +55,9 @@ int Menu::showmenu() {
     SDL_Color color[2] = {{255, 255, 255, 255}, {255, 0, 0, 255}};
 
     int windowWidth = 800, windowHeight = 640;
-    //SDL_GetWindowSize(this->window, &windowWidth, &windowHeight);
 
+
+/// @brief This loop creates the proportional place for the options
     SDL_Rect pos[NUMMENU];
     for (int i = 0; i < NUMMENU; ++i) {
         SDL_Surface * surface = TTF_RenderText_Solid(font, labels[i], color[0]);
@@ -44,6 +70,7 @@ int Menu::showmenu() {
 
     SDL_Event event;
 
+/// @brief This loop deals with the events in the buttons 
     while (true) {
         time = SDL_GetTicks();
         while (SDL_PollEvent(&event)) {

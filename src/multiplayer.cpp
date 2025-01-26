@@ -1,3 +1,13 @@
+/**
+ * @file multiplayer.cpp
+ * @author Gabriel and Guilherme
+ * @brief This file handles the conexion of multiplayer mode
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "multiplayer.hpp"
 #include <enet/enet.h>
 #include <stdio.h>
