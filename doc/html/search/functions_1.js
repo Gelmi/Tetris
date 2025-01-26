@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['run_88',['Run',['../classApplication.html#ab8bb8eafa9c49f217c6ec9d3ea14ccb9',1,'Application']]]
+  ['checkifended_104',['checkIfEnded',['../classBoard.html#aa7015f6a4c2e9cbe210d73ff6bcd8781',1,'Board']]],
+  ['cleanrows_105',['cleanRows',['../classBoard.html#a4e809121230c7d19f9e44145313ecf3f',1,'Board']]]
 ];

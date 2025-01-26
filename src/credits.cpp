@@ -1,6 +1,6 @@
 /**
  * @file credits.cpp
- * @author Gabriel and Corsi 
+ * @author Gabriel and Guilherme 
  * @brief This file handles the credits screen
  * @version 0.1
  * @date 2025-01-26
@@ -37,7 +37,7 @@ void Credits::ShowCredits() {
     bool running = true;
 
     while (running) {
-        // Process the events
+        /// Process the events
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = false;
@@ -52,7 +52,7 @@ void Credits::ShowCredits() {
             }
         }
 
-        // Renders the credits screen
+        /// Renders the credits screen
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // black background color
         SDL_RenderClear(renderer);
 
@@ -79,7 +79,7 @@ void Credits::ShowCredits() {
             SDL_FreeSurface(textSurface);
             SDL_DestroyTexture(textTexture);
 
-            // Draws the line under the text  
+            /// Draws the line under the text  
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderDrawLine(renderer, 200, yOffset + textRect.h + 5, 600, yOffset + textRect.h + 5);
 

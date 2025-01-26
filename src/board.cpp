@@ -1,5 +1,21 @@
+/**
+ * @file board.cpp
+ * @author Gabriel and Guilherme 
+ * @brief This file handles the board settings 
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "board.hpp"
 
+/**
+ * @brief implement function to validate Tetromino's position on the board
+ * 
+ * @param Tetromino 
+ * @return int 
+ */
 int Board::isPositionValid(Tetromino * Tetromino) {
     for(int j = 0; j < 4; j++) {
         for(int i = 0; i < 4; i++) {
@@ -19,6 +35,12 @@ int Board::isPositionValid(Tetromino * Tetromino) {
     return 0;
 } 
 
+/**
+ * @brief add function to check if the game has ended
+ * 
+ * @return true 
+ * @return false 
+ */
 bool Board::checkIfEnded(){ 
     for(int i = 0; i < 10; i++){
         if(this->tiles[i] != 0) return true;
@@ -26,6 +48,13 @@ bool Board::checkIfEnded(){
     return false;
 }
 
+
+/**
+ * @brief implement function to lock Tetromino on the board and clean rows
+ * 
+ * @param Tetromino 
+ * @return int 
+ */
 int Board::lockTetromino(Tetromino * Tetromino) {
     for(int j = 0; j < 4; j++) {
         for(int i = 0; i < 4; i++) {
@@ -37,6 +66,13 @@ int Board::lockTetromino(Tetromino * Tetromino) {
     return this->cleanRows(Tetromino);
 }
 
+
+/**
+ * @brief add function to clear full rows and update score
+ * 
+ * @param Tetromino 
+ * @return int 
+ */
 int Board::cleanRows(Tetromino * Tetromino) {
     bool fullRow;
     int n = 0;
@@ -63,6 +99,11 @@ int Board::cleanRows(Tetromino * Tetromino) {
     return n;
 } 
 
+/**
+ * @brief implement function to add penalty rows with random gaps
+ * 
+ * @param n 
+ */
 void Board::addRows(int n) {
     for(int i = 0; i < 20 - n; i++) {
         for(int j = 0; j < 10; j++) {
@@ -79,6 +120,11 @@ void Board::addRows(int n) {
     } 
 }
 
+/**
+ * @brief feat(board): add scoring mechanism based on cleared rows
+ * 
+ * @param n 
+ */
 void Board::addScore(int n) {
     int p;
     switch(n) {

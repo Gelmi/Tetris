@@ -1,6 +1,6 @@
 /**
  * @file server_main.cpp
- * @author Gabriel and Corsi
+ * @author Gabriel and Guilherme
  * @brief This files handles the Servidor main looping 
  * @version 0.1
  * @date 2025-01-26

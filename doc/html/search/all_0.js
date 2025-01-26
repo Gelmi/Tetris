@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['application_0',['Application',['../classApplication.html',1,'Application'],['../classApplication.html#afa8cc05ce6b6092be5ecdfdae44e05f8',1,'Application::Application()']]],
-  ['application_2ecpp_1',['application.cpp',['../application_8cpp.html',1,'']]]
+  ['addrows_0',['addRows',['../classBoard.html#a2c081208cabe2ae0ad77d4b2b30f0a13',1,'Board']]],
+  ['addscore_1',['addScore',['../classBoard.html#ac1e95a09c2f7a57c5dbe37ded64a6051',1,'Board']]],
+  ['application_2',['Application',['../classApplication.html',1,'Application'],['../classApplication.html#afa8cc05ce6b6092be5ecdfdae44e05f8',1,'Application::Application()']]],
+  ['application_2ecpp_3',['application.cpp',['../application_8cpp.html',1,'']]],
+  ['atpos_4',['atPos',['../classEntity.html#a5b10ec150911f104b315649c97fd6f5c',1,'Entity']]]
 ];

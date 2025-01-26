@@ -11,24 +11,18 @@ Collaboration diagram for Board\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classBoard_adb976b5a8c2ff65db446679a821ea9ca}\label{classBoard_adb976b5a8c2ff65db446679a821ea9ca}} 
-int {\bfseries is\+Position\+Valid} (\mbox{\hyperlink{classTetromino}{Tetromino}} $\ast$\mbox{\hyperlink{classTetromino}{Tetromino}})
-\item 
-\mbox{\Hypertarget{classBoard_adf64e2d102149eea7d15ec6aaffdf105}\label{classBoard_adf64e2d102149eea7d15ec6aaffdf105}} 
-int {\bfseries lock\+Tetromino} (\mbox{\hyperlink{classTetromino}{Tetromino}} $\ast$\mbox{\hyperlink{classTetromino}{Tetromino}})
-\item 
-\mbox{\Hypertarget{classBoard_a4e809121230c7d19f9e44145313ecf3f}\label{classBoard_a4e809121230c7d19f9e44145313ecf3f}} 
-int {\bfseries clean\+Rows} (\mbox{\hyperlink{classTetromino}{Tetromino}} $\ast$\mbox{\hyperlink{classTetromino}{Tetromino}})
-\item 
-\mbox{\Hypertarget{classBoard_a2c081208cabe2ae0ad77d4b2b30f0a13}\label{classBoard_a2c081208cabe2ae0ad77d4b2b30f0a13}} 
-void {\bfseries add\+Rows} (int n)
-\item 
-\mbox{\Hypertarget{classBoard_ac1e95a09c2f7a57c5dbe37ded64a6051}\label{classBoard_ac1e95a09c2f7a57c5dbe37ded64a6051}} 
-void {\bfseries add\+Score} (int n)
-\item 
-\mbox{\Hypertarget{classBoard_aa7015f6a4c2e9cbe210d73ff6bcd8781}\label{classBoard_aa7015f6a4c2e9cbe210d73ff6bcd8781}} 
-bool {\bfseries check\+If\+Ended} ()
-\item 
+int \mbox{\hyperlink{classBoard_adb976b5a8c2ff65db446679a821ea9ca}{is\+Position\+Valid}} (\mbox{\hyperlink{classTetromino}{Tetromino}} $\ast$\mbox{\hyperlink{classTetromino}{Tetromino}})
+\begin{DoxyCompactList}\small\item\em implement function to validate \mbox{\hyperlink{classTetromino}{Tetromino}}\textquotesingle{}s position on the board \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBoard_adf64e2d102149eea7d15ec6aaffdf105}{lock\+Tetromino}} (\mbox{\hyperlink{classTetromino}{Tetromino}} $\ast$\mbox{\hyperlink{classTetromino}{Tetromino}})
+\begin{DoxyCompactList}\small\item\em implement function to lock \mbox{\hyperlink{classTetromino}{Tetromino}} on the board and clean rows \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBoard_a4e809121230c7d19f9e44145313ecf3f}{clean\+Rows}} (\mbox{\hyperlink{classTetromino}{Tetromino}} $\ast$\mbox{\hyperlink{classTetromino}{Tetromino}})
+\begin{DoxyCompactList}\small\item\em add function to clear full rows and update score \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a2c081208cabe2ae0ad77d4b2b30f0a13}{add\+Rows}} (int n)
+\begin{DoxyCompactList}\small\item\em implement function to add penalty rows with random gaps \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_ac1e95a09c2f7a57c5dbe37ded64a6051}{add\+Score}} (int n)
+\begin{DoxyCompactList}\small\item\em feat(board)\+: add scoring mechanism based on cleared rows \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBoard_aa7015f6a4c2e9cbe210d73ff6bcd8781}{check\+If\+Ended}} ()
+\begin{DoxyCompactList}\small\item\em add function to check if the game has ended \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classBoard_a5f62fc57578a2569373e67f41241783b}\label{classBoard_a5f62fc57578a2569373e67f41241783b}} 
 int {\bfseries get\+Level} ()
 \item 
@@ -41,7 +35,109 @@ int {\bfseries get\+Rows} ()
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBoard_a2c081208cabe2ae0ad77d4b2b30f0a13}\label{classBoard_a2c081208cabe2ae0ad77d4b2b30f0a13}} 
+\index{Board@{Board}!addRows@{addRows}}
+\index{addRows@{addRows}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{addRows()}{addRows()}}
+{\footnotesize\ttfamily void Board\+::add\+Rows (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+implement function to add penalty rows with random gaps 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBoard_ac1e95a09c2f7a57c5dbe37ded64a6051}\label{classBoard_ac1e95a09c2f7a57c5dbe37ded64a6051}} 
+\index{Board@{Board}!addScore@{addScore}}
+\index{addScore@{addScore}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{addScore()}{addScore()}}
+{\footnotesize\ttfamily void Board\+::add\+Score (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+feat(board)\+: add scoring mechanism based on cleared rows 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBoard_aa7015f6a4c2e9cbe210d73ff6bcd8781}\label{classBoard_aa7015f6a4c2e9cbe210d73ff6bcd8781}} 
+\index{Board@{Board}!checkIfEnded@{checkIfEnded}}
+\index{checkIfEnded@{checkIfEnded}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{checkIfEnded()}{checkIfEnded()}}
+{\footnotesize\ttfamily bool Board\+::check\+If\+Ended (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+add function to check if the game has ended 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBoard_a4e809121230c7d19f9e44145313ecf3f}\label{classBoard_a4e809121230c7d19f9e44145313ecf3f}} 
+\index{Board@{Board}!cleanRows@{cleanRows}}
+\index{cleanRows@{cleanRows}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{cleanRows()}{cleanRows()}}
+{\footnotesize\ttfamily int Board\+::clean\+Rows (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTetromino}{Tetromino}} $\ast$}]{Tetromino }\end{DoxyParamCaption})}
+
+
+
+add function to clear full rows and update score 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classTetromino}{Tetromino}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBoard_adb976b5a8c2ff65db446679a821ea9ca}\label{classBoard_adb976b5a8c2ff65db446679a821ea9ca}} 
+\index{Board@{Board}!isPositionValid@{isPositionValid}}
+\index{isPositionValid@{isPositionValid}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{isPositionValid()}{isPositionValid()}}
+{\footnotesize\ttfamily int Board\+::is\+Position\+Valid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTetromino}{Tetromino}} $\ast$}]{Tetromino }\end{DoxyParamCaption})}
+
+
+
+implement function to validate \mbox{\hyperlink{classTetromino}{Tetromino}}\textquotesingle{}s position on the board 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classTetromino}{Tetromino}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBoard_adf64e2d102149eea7d15ec6aaffdf105}\label{classBoard_adf64e2d102149eea7d15ec6aaffdf105}} 
+\index{Board@{Board}!lockTetromino@{lockTetromino}}
+\index{lockTetromino@{lockTetromino}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{lockTetromino()}{lockTetromino()}}
+{\footnotesize\ttfamily int Board\+::lock\+Tetromino (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTetromino}{Tetromino}} $\ast$}]{Tetromino }\end{DoxyParamCaption})}
+
+
+
+implement function to lock \mbox{\hyperlink{classTetromino}{Tetromino}} on the board and clean rows 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classTetromino}{Tetromino}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 /home/corsi/\+Tetris/include/board.\+hpp\item 
-/home/corsi/\+Tetris/src/board.\+cpp\end{DoxyCompactItemize}
+/home/corsi/\+Tetris/src/\mbox{\hyperlink{board_8cpp}{board.\+cpp}}\end{DoxyCompactItemize}

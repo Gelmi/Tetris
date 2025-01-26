@@ -15,6 +15,15 @@
 #include "constants.hpp"
 #include <stdio.h>
 
+/**
+ * @brief Construct a new Entity:: Entity object
+ implement destructor to free dynamically allocated memory
+ * 
+ * @param x 
+ * @param y 
+ * @param w 
+ * @param h 
+ */
 Entity::Entity(int x, int y, int w, int h){
     this->x = x;
     this->y = y;
@@ -32,22 +41,48 @@ Entity::Entity(int x, int y, int w, int h){
     color.a = 255;
 }
 
+/**
+ * @brief Destroy the Entity:: Entity object
+ * 
+ */
 Entity::~Entity() {
     delete tiles;
 }
 
+/**
+ * @brief add function to get the SDL_Rect of the entity
+ * 
+ * @return SDL_Rect* 
+ */
 SDL_Rect * Entity::getRect() {
     return &(this->rect);
 }
 
+/**
+ * @brief add function to access the entity's tile array
+ * 
+ * @return unsigned int* 
+ */
 unsigned int * Entity::getTiles() {
     return this->tiles;
 }
 
+/**
+ * @brief add helper function to calculate tile position in the array
+ * 
+ * @param x 
+ * @param y 
+ * @return int 
+ */
 int Entity::atPos(int x, int y) {
     return (y*this->w)+x;
 }
 
+/**
+ * @brief add getter functions for entity's x and y positions
+ * 
+ * @return int 
+ */
 int Entity::getX(){
     return this->x;
 }

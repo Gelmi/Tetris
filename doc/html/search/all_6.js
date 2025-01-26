@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pause_24',['Pause',['../classPause.html',1,'']]],
-  ['pause_2ecpp_25',['pause.cpp',['../pause_8cpp.html',1,'']]]
+  ['locktetromino_25',['lockTetromino',['../classBoard.html#adf64e2d102149eea7d15ec6aaffdf105',1,'Board']]]
 ];
