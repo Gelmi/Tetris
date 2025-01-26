@@ -1,7 +1,8 @@
 #include "application.hpp"
 
-int main() {
+int main(int argc, char ** argv) {
     Application app;
-    return app.Run();
+    if(argc==2) return app.Run(argv[1]);
+    return 0;
 }
 

@@ -52,7 +52,7 @@ SDL_Renderer* Application::GetRenderer() const {
     return this->renderer;
 }
 
-int Application::Run(){
+int Application::Run(char * ip){
 
  bool running = true;
 
@@ -77,7 +77,7 @@ int Application::Run(){
             case 1: { // Placeholder para Multiplayer 
                 std::unique_ptr<Multiplayer> multiplayer = std::make_unique<Multiplayer>(this->window, this->renderer);
                 multiplayer->Setup(window, renderer);
-                multiplayer->Run();
+                multiplayer->Run(ip);
                 break;
             }
             case 2: { // Créditos

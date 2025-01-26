@@ -27,7 +27,7 @@ void Multiplayer::Setup(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer
     this->results = false;
 }
 
-int Multiplayer::connect() {
+int Multiplayer::connect(char * ip) {
     if(enet_initialize() != 0) {
         fprintf(stderr, "An error occured while initializing ENet\n");
         return EXIT_FAILURE;
@@ -39,8 +39,8 @@ int Multiplayer::connect() {
         fprintf(stderr, "An error occured while trying to create an ENet server host\n");
         return EXIT_FAILURE;
     } 
- 
-    enet_address_set_host(&address, "localhost");
+    printf("ip: %s\n", ip);
+    enet_address_set_host(&address, ip);
     address.port = 1234;
 
     peer = enet_host_connect(client, &address, 2, 0);
@@ -173,11 +173,11 @@ void Multiplayer::gameEndMenu() {
     }
 }
 
-int Multiplayer::Run() {  
+int Multiplayer::Run(char * ip) {  
    
     MultiGameView * gameView = new MultiGameView(this->window, this->renderer);
 
-    if(Multiplayer::connect() == EXIT_FAILURE) return 0;
+    if(Multiplayer::connect(ip) == EXIT_FAILURE) return 0;
 
     while(!(this->close)) {  
         Multiplayer::pollSDLEvent(peer);

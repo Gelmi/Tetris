@@ -23,7 +23,7 @@ class Multiplayer : public View {
             : View(sharedWindow, sharedRenderer) {};
         ~Multiplayer();
         void Setup(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer);
-        int Run();
+        int Run(char * ip);
 
     private:
         SDL_Window * window;
@@ -41,7 +41,7 @@ class Multiplayer : public View {
         uint32_t connectID;
 
         void pollSDLEvent(ENetPeer * peer);
-        int connect();
+        int connect(char * ip);
         void handleServer();
         void clientToGame(ClientData * clientData);
         void gameEndMenu();

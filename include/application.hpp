@@ -12,7 +12,7 @@ public:
     // Application(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) : View(sharedWindow, sharedRenderer) {};
     Application();
     ~Application();
-    int Run();
+    int Run(char * ip);
 
     SDL_Window* GetWindow() const;
     SDL_Renderer* GetRenderer() const;
