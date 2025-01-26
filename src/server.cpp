@@ -77,7 +77,7 @@ bool Server::initServer() {
 }
 
 void Server::lockAndLoad(int index) {
-    this->boards[index]->lockTetromino(this->tetrominos[index]);
+    boards[(index+1)%2]->addRows(this->boards[index]->lockTetromino(this->tetrominos[index]));
     if(!Server::checkIfEnded()) {
         this->tetrominos[index] = this->nextTetrominos[index];
         this->nextIndex[index] = rand() % 7 + 2;
@@ -203,6 +203,7 @@ bool Server::checkIfEnded() {
         enet_host_broadcast(server, 0, packet);
         printf("Enviei\n");
     }
+    printf("Result: %d, %d\n", clientData->m6, clientData->m7);
     return gameEnd;
 }
 
@@ -228,27 +229,6 @@ void Server::restartGame() {
 
     this->gameEnd = false;
 };
-
-ClientData * Server::createClientData(){
-    ClientData * clientData = (ClientData *) malloc(sizeof(ClientData));
-    clientData->messageType = 0; 
-    clientData->m1 = 0;
-    clientData->m2 = 0;
-    clientData->m3 = 0;
-    clientData->m6 = 0;
-    clientData->m7 = 0;
-    clientData->m8 = 0;
-    clientData->m9 = 0;
-    clientData->m10 = 0;
-    clientData->m11 = 0;
-    clientData->padding[0] = 0;
-    clientData->padding[1] = 0;
-    for(int i = 0; i < 200; i++){
-        clientData->m4[i] = 0;
-        clientData->m5[i] = 0;
-    }
-    return clientData;
-}
 
 void Server::sendStateToClients() {
     std::unique_ptr<ClientData> clientData = std::make_unique<ClientData>();

@@ -4,6 +4,7 @@
 #include "credits.hpp"
 #include <iostream>
 #include "multiplayer.hpp"
+#include <memory>
 
 Application::Application() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -37,8 +38,8 @@ Application::Application() {
 }
 
 Application::~Application() {
-    if (this->renderer) SDL_DestroyRenderer(this->renderer);
-    if (this->window) SDL_DestroyWindow(this->window);
+    SDL_DestroyRenderer(this->renderer);
+    SDL_DestroyWindow(this->window);
     TTF_Quit();
     SDL_Quit();
 }
@@ -56,8 +57,8 @@ int Application::Run(){
  bool running = true;
 
     // Criação dos objetos fora do loop
-    Menu * menu = new Menu(this->window, this->renderer);
-    Credits * credits = new Credits(this->window, this->renderer);
+    std::unique_ptr<Menu> menu = std::make_unique<Menu>(this->window, this->renderer);
+    std::unique_ptr<Credits> credits = std::make_unique<Credits>(this->window, this->renderer);
 
     // Loop principal de navegação entre telas
     menu->Setup(window, renderer);
@@ -68,17 +69,15 @@ int Application::Run(){
 
         switch (menuChoice) {
             case 0: { // Jogo Single Player    
-                Game * game = new Game(this->window, this->renderer);
+                std::unique_ptr<Game> game = std::make_unique<Game>(this->window, this->renderer);
                 game->Setup(window, renderer);
                 game->Run();
-                delete game;
                 break;
             }
             case 1: { // Placeholder para Multiplayer 
-                Multiplayer * multiplayer = new Multiplayer(this->window, this->renderer);
+                std::unique_ptr<Multiplayer> multiplayer = std::make_unique<Multiplayer>(this->window, this->renderer);
                 multiplayer->Setup(window, renderer);
                 multiplayer->Run();
-                delete multiplayer;
                 break;
             }
             case 2: { // Créditos
@@ -96,8 +95,6 @@ int Application::Run(){
                 break;
         }
     }
-    delete menu;
-    delete credits;
     return 0;
 }
 

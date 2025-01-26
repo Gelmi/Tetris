@@ -64,8 +64,7 @@ int atPos(int x, int y, int h) {
 
 void GameView::DrawStats(GameData data) {
     std::string score_text = "Score: " + std::to_string(data.score) + ", " +
-                             "Level: " + std::to_string(data.level) + ", " +
-                             "Rows: " + std::to_string(data.rows);
+                             "Level: " + std::to_string(data.level);
     SDL_Color textColor = { 255, 255, 255, 255 };
     SDL_Surface* textSurface = TTF_RenderText_Solid(this->font, score_text.c_str(), textColor);
     SDL_Texture* text = SDL_CreateTextureFromSurface(this->renderer, textSurface);

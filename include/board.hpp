@@ -10,8 +10,9 @@ class Board : public Entity {
     public:
         Board():Entity(10, 20), level(0), score(0), rows(0){};
         int isPositionValid(Tetromino * Tetromino);
-        void lockTetromino(Tetromino * Tetromino);
-        void cleanRows(Tetromino * Tetromino);
+        int lockTetromino(Tetromino * Tetromino);
+        int cleanRows(Tetromino * Tetromino);
+        void addRows(int n);
         void addScore(int n);
         bool checkIfEnded();
         int getLevel() { return level; };

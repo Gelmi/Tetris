@@ -53,6 +53,7 @@ void MultiGameView::DrawWaitStart() {
 }
 
 void MultiGameView::DrawResults(GameData data) {
+    printf("Resultado: %s\n", data.result ? "true": "false");
     std::string score_text;
     if(data.result) score_text = "You win!";
     else score_text = "You lose!";

@@ -25,7 +25,7 @@ bool Board::checkIfEnded(){
     return false;
 }
 
-void Board::lockTetromino(Tetromino * Tetromino) {
+int Board::lockTetromino(Tetromino * Tetromino) {
     for(int j = 0; j < 4; j++) {
         for(int i = 0; i < 4; i++) {
             if(Tetromino->getTiles()[Tetromino->atPos(i, j)] != 0)  
@@ -33,10 +33,10 @@ void Board::lockTetromino(Tetromino * Tetromino) {
                     = Tetromino->getTiles()[Tetromino->atPos(i,j)];
         }
     }
-    this->cleanRows(Tetromino);
+    return this->cleanRows(Tetromino);
 }
 
-void Board::cleanRows(Tetromino * Tetromino) {
+int Board::cleanRows(Tetromino * Tetromino) {
     bool fullRow;
     int n = 0;
     for(int i = 0; i < 4; i++) {
@@ -59,7 +59,24 @@ void Board::cleanRows(Tetromino * Tetromino) {
         this->level++;
         rows = rows - 10;
     }
+    return n;
 } 
+
+void Board::addRows(int n) {
+    for(int i = 0; i < 20 - n; i++) {
+        for(int j = 0; j < 10; j++) {
+            this->tiles[this->atPos(j, i)] =
+                this->tiles[this->atPos(j, i+n)]; 
+        }
+    }
+    int empty = rand() % 9 + 1;
+    for(int i = 20 - n; i < 20; i++) {
+        for(int j = 0; j < 10; j++) {
+            if(j == empty) this->tiles[this->atPos(j, i)] = 0;
+            else this->tiles[this->atPos(j, i)] = 8;
+        }
+    } 
+}
 
 void Board::addScore(int n) {
     int p;

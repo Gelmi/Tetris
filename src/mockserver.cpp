@@ -41,12 +41,39 @@ void MockServer::update(int command, GameData data) {
         case ARROW_UP: 
             tetromino->rotateLeft();
             position = board->isPositionValid(tetromino.get());
-            if(position != 0) tetromino->rotateRight();
+            if(position != 0) {
+                tetromino->moveDir(1);
+                position = board->isPositionValid(tetromino.get());
+                if(position != 0) {
+                    tetromino->moveDir(-1);
+                    tetromino->moveDir(-1);
+                    position = board->isPositionValid(tetromino.get());
+                    if(position != 0) {
+                        tetromino->moveDir(1);
+                        tetromino->rotateRight();
+                    }
+                }
+            }
             break;
         case ARROW_DOWN:
-            tetromino->rotateRight();         
+            //tetromino->rotateRight();         
+            //position = board->isPositionValid(tetromino.get());
+            //if(position != 0) tetromino->rotateLeft();
+            tetromino->rotateRight();
             position = board->isPositionValid(tetromino.get());
-            if(position != 0) tetromino->rotateLeft();
+            if(position != 0) {
+                tetromino->moveDir(1);
+                position = board->isPositionValid(tetromino.get());
+                if(position != 0) {
+                    tetromino->moveDir(-1);
+                    tetromino->moveDir(-1);
+                    position = board->isPositionValid(tetromino.get());
+                    if(position != 0) {
+                        tetromino->moveDir(1);
+                        tetromino->rotateLeft();
+                    }
+                }
+            }
             break;
         case SWAP:
             if(!hasSwaped) { 
@@ -59,7 +86,7 @@ void MockServer::update(int command, GameData data) {
     }
     if(SDL_GetTicks() - this->counter >= pow(0.8-((data.level)*0.007), data.level)*1000){
         counter = SDL_GetTicks();
-        tetromino->moveDir(0);
+        //tetromino->moveDir(0);
         int position = board->isPositionValid(tetromino.get());
         if(position != 0) {
             tetromino->moveDir(3);

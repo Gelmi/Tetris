@@ -112,7 +112,10 @@ void Multiplayer::handleServer() {
                 }
                 if(clientData->messageType == WIN_MESSAGE) printf("Ganhei\n");
                 if(clientData->messageType == LOSE_MESSAGE) printf("Perdi\n");
-                if(clientData->messageType == RESULTS_MESSAGE) this->results = true;
+                if(clientData->messageType == RESULTS_MESSAGE) {
+                    this->results = true;
+                    Multiplayer::clientToGame(clientData);
+                }
                 enet_packet_destroy(event.packet);
                 break;
             }
@@ -137,6 +140,7 @@ void Multiplayer::clientToGame(ClientData * clientData){
             this->gameData->board[i] = clientData->m4[i];
             this->gameData->boardOp[i] = clientData->m5[i];
         } 
+        if(clientData->messageType == RESULTS_MESSAGE && clientData->m6 == 0) this->gameData->result = true;
     } else {
         this->gameData->level = static_cast<int>(clientData->m7);
         this->gameData->score = clientData->m9;
@@ -145,6 +149,7 @@ void Multiplayer::clientToGame(ClientData * clientData){
             this->gameData->board[i] = clientData->m5[i];
             this->gameData->boardOp[i] = clientData->m4[i];
         }
+        if(clientData->messageType == RESULTS_MESSAGE && clientData->m7 == 0) this->gameData->result = true;
     }
     for(int i = 0; i < 16; i++) this->gameData->tiles[i] = tetromino->getTiles()[i];
 }

@@ -41,7 +41,6 @@ class Server {
         void tryDescend();
         bool checkIfEnded();
         void restartGame();
-        ClientData * createClientData();
         void sendStateToClients();
         void sendConnectMessage(ENetPeer * peer);
         void sendStartMessage();
