@@ -1,35 +1,142 @@
-\hypertarget{classGameEnd}{}\doxysection{Game\+End Class Reference}
-\label{classGameEnd}\index{GameEnd@{GameEnd}}
+\doxysection{Game\+End Class Reference}
+\hypertarget{classGameEnd}{}\label{classGameEnd}\index{GameEnd@{GameEnd}}
+
+
+{\ttfamily \#include $<$gameend.\+hpp$>$}
+
 
 
 Inheritance diagram for Game\+End\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classGameEnd__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for Game\+End\+:
-% FIG 1
-\doxysubsection*{Public Member Functions}
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameEnd__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGameEnd_a47333c831fbdfb21894d3d6b80ef4ceb}\label{classGameEnd_a47333c831fbdfb21894d3d6b80ef4ceb}} 
-{\bfseries Game\+End} (SDL\+\_\+\+Window $\ast$shared\+Window, SDL\+\_\+\+Renderer $\ast$shared\+Renderer)
+\mbox{\hyperlink{classGameEnd_a47333c831fbdfb21894d3d6b80ef4ceb}{Game\+End}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
 \item 
-\mbox{\Hypertarget{classGameEnd_a71ace4e2959f80e3c98e97c8e915cf7a}\label{classGameEnd_a71ace4e2959f80e3c98e97c8e915cf7a}} 
-{\bfseries Game\+End} (SDL\+\_\+\+Window $\ast$shared\+Window, SDL\+\_\+\+Renderer $\ast$shared\+Renderer, std\+::string text)
+\mbox{\hyperlink{classGameEnd_a71ace4e2959f80e3c98e97c8e915cf7a}{Game\+End}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer, std\+::string \mbox{\hyperlink{classGameEnd_a88dce60f3a709ab7dbb800078714e99d}{text}})
 \item 
-\mbox{\Hypertarget{classGameEnd_a46d864392104b07b69b859cd0f060cf2}\label{classGameEnd_a46d864392104b07b69b859cd0f060cf2}} 
-void {\bfseries Setup} (SDL\+\_\+\+Window $\ast$shared\+Window, SDL\+\_\+\+Renderer $\ast$shared\+Renderer)
+void \mbox{\hyperlink{classGameEnd_a46d864392104b07b69b859cd0f060cf2}{Setup}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
 \item 
-\mbox{\Hypertarget{classGameEnd_a448b5cd5d1c911cf764a42083334ec55}\label{classGameEnd_a448b5cd5d1c911cf764a42083334ec55}} 
-void {\bfseries change\+Text} (std\+::string text)
+void \mbox{\hyperlink{classGameEnd_a448b5cd5d1c911cf764a42083334ec55}{change\+Text}} (std\+::string \mbox{\hyperlink{classGameEnd_a88dce60f3a709ab7dbb800078714e99d}{text}})
 \item 
-\mbox{\Hypertarget{classGameEnd_ad80968c4037067c3bbf00792795d2ecc}\label{classGameEnd_ad80968c4037067c3bbf00792795d2ecc}} 
-int {\bfseries showgameend} ()
+int \mbox{\hyperlink{classGameEnd_ad80968c4037067c3bbf00792795d2ecc}{showgameend}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classView}{View}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classView_acdf0bf0b3c398da6efa7ca5fd63160e9}{View}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
+\item 
+virtual \mbox{\hyperlink{classView_aa02a820358e1a7bf7e34d205212ae8f3}{\texorpdfstring{$\sim$}{\string~}\+View}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classGameEnd_aeb47b6997420ede2147b01d51d19ac2a}{close}} \{0\}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameEnd_af3077649708c95ee4d8c36b849933e81}{window}} \{nullptr\}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameEnd_ab3511dbe4cbc09cc6345f07d263fe27c}{renderer}} \{nullptr\}
+\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameEnd_a230d90c835c44c27f9c3b9a1d3905ec7}{font}}
+\item 
+std\+::string \mbox{\hyperlink{classGameEnd_a88dce60f3a709ab7dbb800078714e99d}{text}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classView}{View}}}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classView_a35f57e296a4643edae6424c7f9569f8d}{window}}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classView_ab42eeb58ccbf7556b297cc80a83bc181}{renderer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameEnd_a47333c831fbdfb21894d3d6b80ef4ceb}\label{classGameEnd_a47333c831fbdfb21894d3d6b80ef4ceb} 
+\index{GameEnd@{GameEnd}!GameEnd@{GameEnd}}
+\index{GameEnd@{GameEnd}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{GameEnd()}{GameEnd()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Game\+End\+::\+Game\+End (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{shared\+Window,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{shared\+Renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classGameEnd_a71ace4e2959f80e3c98e97c8e915cf7a}\label{classGameEnd_a71ace4e2959f80e3c98e97c8e915cf7a} 
+\index{GameEnd@{GameEnd}!GameEnd@{GameEnd}}
+\index{GameEnd@{GameEnd}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{GameEnd()}{GameEnd()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Game\+End\+::\+Game\+End (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{shared\+Window,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{shared\+Renderer,  }\item[{std\+::string}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameEnd_a448b5cd5d1c911cf764a42083334ec55}\label{classGameEnd_a448b5cd5d1c911cf764a42083334ec55} 
+\index{GameEnd@{GameEnd}!changeText@{changeText}}
+\index{changeText@{changeText}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{changeText()}{changeText()}}
+{\footnotesize\ttfamily void Game\+End\+::change\+Text (\begin{DoxyParamCaption}\item[{std\+::string}]{text }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameEnd_a46d864392104b07b69b859cd0f060cf2}\label{classGameEnd_a46d864392104b07b69b859cd0f060cf2} 
+\index{GameEnd@{GameEnd}!Setup@{Setup}}
+\index{Setup@{Setup}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{Setup()}{Setup()}}
+{\footnotesize\ttfamily void Game\+End\+::\+Setup (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{shared\+Window,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{shared\+Renderer }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameEnd_ad80968c4037067c3bbf00792795d2ecc}\label{classGameEnd_ad80968c4037067c3bbf00792795d2ecc} 
+\index{GameEnd@{GameEnd}!showgameend@{showgameend}}
+\index{showgameend@{showgameend}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{showgameend()}{showgameend()}}
+{\footnotesize\ttfamily int Game\+End\+::showgameend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameEnd_aeb47b6997420ede2147b01d51d19ac2a}\label{classGameEnd_aeb47b6997420ede2147b01d51d19ac2a} 
+\index{GameEnd@{GameEnd}!close@{close}}
+\index{close@{close}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{close}{close}}
+{\footnotesize\ttfamily int Game\+End\+::close \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameEnd_a230d90c835c44c27f9c3b9a1d3905ec7}\label{classGameEnd_a230d90c835c44c27f9c3b9a1d3905ec7} 
+\index{GameEnd@{GameEnd}!font@{font}}
+\index{font@{font}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*} Game\+End\+::font\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameEnd_ab3511dbe4cbc09cc6345f07d263fe27c}\label{classGameEnd_ab3511dbe4cbc09cc6345f07d263fe27c} 
+\index{GameEnd@{GameEnd}!renderer@{renderer}}
+\index{renderer@{renderer}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} Game\+End\+::renderer \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameEnd_a88dce60f3a709ab7dbb800078714e99d}\label{classGameEnd_a88dce60f3a709ab7dbb800078714e99d} 
+\index{GameEnd@{GameEnd}!text@{text}}
+\index{text@{text}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily std\+::string Game\+End\+::text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameEnd_af3077649708c95ee4d8c36b849933e81}\label{classGameEnd_af3077649708c95ee4d8c36b849933e81} 
+\index{GameEnd@{GameEnd}!window@{window}}
+\index{window@{window}!GameEnd@{GameEnd}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} Game\+End\+::window \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/corsi/\+Tetris/include/gameend.\+hpp\item 
-/home/corsi/\+Tetris/src/\mbox{\hyperlink{gameend_8cpp}{gameend.\+cpp}}\end{DoxyCompactItemize}
+/home/gelmi/\+Tetris/include/\mbox{\hyperlink{gameend_8hpp}{gameend.\+hpp}}\item 
+/home/gelmi/\+Tetris/src/\mbox{\hyperlink{gameend_8cpp}{gameend.\+cpp}}\end{DoxyCompactItemize}

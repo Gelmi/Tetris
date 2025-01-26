@@ -1,0 +1,27 @@
+<map id="/home/gelmi/Tetris/include/gamedata.hpp" name="/home/gelmi/Tetris/include/gamedata.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="346,5,517,45"/>
+<area shape="rect" id="Node000002" href="$gameview_8hpp.html" title=" " alt="" coords="221,93,393,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="394,55,336,95,333,91,391,51"/>
+<area shape="rect" id="Node000003" href="$multigameview_8hpp.html" title=" " alt="" coords="5,181,212,221"/>
+<area shape="poly" id="edge10_Node000001_Node000003" title=" " alt="" coords="333,47,270,67,210,96,183,115,160,139,124,183,120,179,156,135,180,111,207,91,268,62,331,42"/>
+<area shape="rect" id="Node000006" href="$game_8cpp.html" title="This file handles the settings of the game looping." alt="" coords="403,181,545,221"/>
+<area shape="poly" id="edge14_Node000001_Node000006" title=" " alt="" coords="441,58,459,133,471,180,466,181,454,134,436,60"/>
+<area shape="rect" id="Node000008" href="$mockserver_8hpp.html" title=" " alt="" coords="469,93,650,133"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="473,51,532,91,530,95,470,56"/>
+<area shape="rect" id="Node000010" href="$multiplayer_8hpp.html" title=" " alt="" coords="674,93,853,133"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="518,46,691,91,690,96,517,51"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="252,141,153,184,151,179,250,136"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="357,137,439,179,436,184,355,142"/>
+<area shape="rect" id="Node000007" href="$gameview_8cpp.html" title="This file handles the game screen of single player mode." alt="" coords="236,181,379,221"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="310,147,310,181,305,181,305,147"/>
+<area shape="rect" id="Node000004" href="$multigameview_8cpp.html" title="This file handles the screen of multiplayer mode." alt="" coords="20,269,197,309"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="111,235,111,269,106,269,106,235"/>
+<area shape="rect" id="Node000005" href="$multiplayer_8cpp.html" title="This file handles the conexion of multiplayer mode." alt="" coords="452,269,603,309"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="214,221,452,270,451,275,213,227"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="533,145,495,183,491,179,529,141"/>
+<area shape="rect" id="Node000009" href="$mockserver_8cpp.html" title="This file handles all the data of the program." alt="" coords="570,181,722,221"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="590,141,629,179,625,183,586,145"/>
+<area shape="poly" id="edge13_Node000010_Node000005" title=" " alt="" coords="765,147,757,186,748,206,736,223,707,247,673,264,638,276,604,284,603,279,637,271,671,259,704,242,732,219,744,203,752,185,760,146"/>
+<area shape="rect" id="Node000011" href="$application_8cpp.html" title="This file handles the start of the main looping." alt="" coords="797,181,945,221"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="800,140,849,179,846,183,796,144"/>
+</map>

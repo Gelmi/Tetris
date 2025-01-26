@@ -1,0 +1,30 @@
+\doxysection{mockserver.\+hpp}
+\hypertarget{mockserver_8hpp_source}{}\label{mockserver_8hpp_source}\index{/home/gelmi/Tetris/include/mockserver.hpp@{/home/gelmi/Tetris/include/mockserver.hpp}}
+\mbox{\hyperlink{mockserver_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MOCKSERVER\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MOCKSERVER\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{board_8hpp}{board.hpp}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tetromino_8hpp}{tetromino.hpp}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gamedata_8hpp}{gamedata.hpp}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMockServer}{MockServer}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ std::shared\_ptr<Board>\ \mbox{\hyperlink{classMockServer_a462c24803657ce91d009d8e06a0475d2}{board}};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ std::shared\_ptr<Tetromino>\ \mbox{\hyperlink{classMockServer_a59a7c45c2ee573be8d91b1af0ddc0dca}{tetromino}},\ \mbox{\hyperlink{classMockServer_adec3db20d71d34a67a8468b26d3c3258}{nextTetromino}};}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMockServer_a5c262a87a6ac642bbe381e0f9a03a1e4}{hasSwaped}};}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMockServer_a3ae9658b6545e031d6bcde48434bc08e}{counter}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMockServer_a133edacdabb1bf9d858dd27bb82f581d}{MockServer}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMockServer_abe6b5167b4bf7cd24933c48e1df01ffe}{update}}(\textcolor{keywordtype}{int}\ command,\ \mbox{\hyperlink{classGameData}{GameData}}\ data);}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameData}{GameData}}\ \mbox{\hyperlink{classMockServer_ae1087a43cb2319ac10f1587a512df986}{getState}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMockServer_a2339200b78918da2b6c0eec00fffb31b}{lockAndLoad}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

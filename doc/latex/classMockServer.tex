@@ -1,20 +1,109 @@
-\hypertarget{classMockServer}{}\doxysection{Mock\+Server Class Reference}
-\label{classMockServer}\index{MockServer@{MockServer}}
-\doxysubsection*{Public Member Functions}
+\doxysection{Mock\+Server Class Reference}
+\hypertarget{classMockServer}{}\label{classMockServer}\index{MockServer@{MockServer}}
+
+
+{\ttfamily \#include $<$mockserver.\+hpp$>$}
+
+
+
+Collaboration diagram for Mock\+Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMockServer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classMockServer_abe6b5167b4bf7cd24933c48e1df01ffe}\label{classMockServer_abe6b5167b4bf7cd24933c48e1df01ffe}} 
-bool {\bfseries update} (int command, \mbox{\hyperlink{classGameData}{Game\+Data}} data)
+\mbox{\hyperlink{classMockServer_a133edacdabb1bf9d858dd27bb82f581d}{Mock\+Server}} ()
 \item 
-\mbox{\Hypertarget{classMockServer_ae1087a43cb2319ac10f1587a512df986}\label{classMockServer_ae1087a43cb2319ac10f1587a512df986}} 
-\mbox{\hyperlink{classGameData}{Game\+Data}} {\bfseries get\+State} ()
+bool \mbox{\hyperlink{classMockServer_abe6b5167b4bf7cd24933c48e1df01ffe}{update}} (int command, \mbox{\hyperlink{classGameData}{Game\+Data}} data)
 \item 
-\mbox{\Hypertarget{classMockServer_a2339200b78918da2b6c0eec00fffb31b}\label{classMockServer_a2339200b78918da2b6c0eec00fffb31b}} 
-bool {\bfseries lock\+And\+Load} ()
+\mbox{\hyperlink{classGameData}{Game\+Data}} \mbox{\hyperlink{classMockServer_ae1087a43cb2319ac10f1587a512df986}{get\+State}} ()
+\item 
+bool \mbox{\hyperlink{classMockServer_a2339200b78918da2b6c0eec00fffb31b}{lock\+And\+Load}} ()
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBoard}{Board}} $>$ \mbox{\hyperlink{classMockServer_a462c24803657ce91d009d8e06a0475d2}{board}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTetromino}{Tetromino}} $>$ \mbox{\hyperlink{classMockServer_a59a7c45c2ee573be8d91b1af0ddc0dca}{tetromino}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTetromino}{Tetromino}} $>$ \mbox{\hyperlink{classMockServer_adec3db20d71d34a67a8468b26d3c3258}{next\+Tetromino}}
+\item 
+bool \mbox{\hyperlink{classMockServer_a5c262a87a6ac642bbe381e0f9a03a1e4}{has\+Swaped}}
+\item 
+int \mbox{\hyperlink{classMockServer_a3ae9658b6545e031d6bcde48434bc08e}{counter}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMockServer_a133edacdabb1bf9d858dd27bb82f581d}\label{classMockServer_a133edacdabb1bf9d858dd27bb82f581d} 
+\index{MockServer@{MockServer}!MockServer@{MockServer}}
+\index{MockServer@{MockServer}!MockServer@{MockServer}}
+\doxysubsubsection{\texorpdfstring{MockServer()}{MockServer()}}
+{\footnotesize\ttfamily Mock\+Server\+::\+Mock\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMockServer_ae1087a43cb2319ac10f1587a512df986}\label{classMockServer_ae1087a43cb2319ac10f1587a512df986} 
+\index{MockServer@{MockServer}!getState@{getState}}
+\index{getState@{getState}!MockServer@{MockServer}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGameData}{Game\+Data}} Mock\+Server\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classMockServer_a2339200b78918da2b6c0eec00fffb31b}\label{classMockServer_a2339200b78918da2b6c0eec00fffb31b} 
+\index{MockServer@{MockServer}!lockAndLoad@{lockAndLoad}}
+\index{lockAndLoad@{lockAndLoad}!MockServer@{MockServer}}
+\doxysubsubsection{\texorpdfstring{lockAndLoad()}{lockAndLoad()}}
+{\footnotesize\ttfamily bool Mock\+Server\+::lock\+And\+Load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classMockServer_abe6b5167b4bf7cd24933c48e1df01ffe}\label{classMockServer_abe6b5167b4bf7cd24933c48e1df01ffe} 
+\index{MockServer@{MockServer}!update@{update}}
+\index{update@{update}!MockServer@{MockServer}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily bool Mock\+Server\+::update (\begin{DoxyParamCaption}\item[{int}]{command,  }\item[{\mbox{\hyperlink{classGameData}{Game\+Data}}}]{data }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMockServer_a462c24803657ce91d009d8e06a0475d2}\label{classMockServer_a462c24803657ce91d009d8e06a0475d2} 
+\index{MockServer@{MockServer}!board@{board}}
+\index{board@{board}!MockServer@{MockServer}}
+\doxysubsubsection{\texorpdfstring{board}{board}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classBoard}{Board}}$>$ Mock\+Server\+::board\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMockServer_a3ae9658b6545e031d6bcde48434bc08e}\label{classMockServer_a3ae9658b6545e031d6bcde48434bc08e} 
+\index{MockServer@{MockServer}!counter@{counter}}
+\index{counter@{counter}!MockServer@{MockServer}}
+\doxysubsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily int Mock\+Server\+::counter\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMockServer_a5c262a87a6ac642bbe381e0f9a03a1e4}\label{classMockServer_a5c262a87a6ac642bbe381e0f9a03a1e4} 
+\index{MockServer@{MockServer}!hasSwaped@{hasSwaped}}
+\index{hasSwaped@{hasSwaped}!MockServer@{MockServer}}
+\doxysubsubsection{\texorpdfstring{hasSwaped}{hasSwaped}}
+{\footnotesize\ttfamily bool Mock\+Server\+::has\+Swaped\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMockServer_adec3db20d71d34a67a8468b26d3c3258}\label{classMockServer_adec3db20d71d34a67a8468b26d3c3258} 
+\index{MockServer@{MockServer}!nextTetromino@{nextTetromino}}
+\index{nextTetromino@{nextTetromino}!MockServer@{MockServer}}
+\doxysubsubsection{\texorpdfstring{nextTetromino}{nextTetromino}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classTetromino}{Tetromino}}$>$ Mock\+Server\+::next\+Tetromino\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMockServer_a59a7c45c2ee573be8d91b1af0ddc0dca}\label{classMockServer_a59a7c45c2ee573be8d91b1af0ddc0dca} 
+\index{MockServer@{MockServer}!tetromino@{tetromino}}
+\index{tetromino@{tetromino}!MockServer@{MockServer}}
+\doxysubsubsection{\texorpdfstring{tetromino}{tetromino}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classTetromino}{Tetromino}}$>$ Mock\+Server\+::tetromino\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/corsi/\+Tetris/include/mockserver.\+hpp\item 
-/home/corsi/\+Tetris/src/\mbox{\hyperlink{mockserver_8cpp}{mockserver.\+cpp}}\end{DoxyCompactItemize}
+/home/gelmi/\+Tetris/include/\mbox{\hyperlink{mockserver_8hpp}{mockserver.\+hpp}}\item 
+/home/gelmi/\+Tetris/src/\mbox{\hyperlink{mockserver_8cpp}{mockserver.\+cpp}}\end{DoxyCompactItemize}

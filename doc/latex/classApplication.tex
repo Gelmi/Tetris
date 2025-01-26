@@ -1,30 +1,82 @@
-\hypertarget{classApplication}{}\doxysection{Application Class Reference}
-\label{classApplication}\index{Application@{Application}}
-\doxysubsection*{Public Member Functions}
+\doxysection{Application Class Reference}
+\hypertarget{classApplication}{}\label{classApplication}\index{Application@{Application}}
+
+
+{\ttfamily \#include $<$application.\+hpp$>$}
+
+
+
+Collaboration diagram for Application\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{classApplication__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classApplication_afa8cc05ce6b6092be5ecdfdae44e05f8}\label{classApplication_afa8cc05ce6b6092be5ecdfdae44e05f8}} 
 \mbox{\hyperlink{classApplication_afa8cc05ce6b6092be5ecdfdae44e05f8}{Application}} ()
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classApplication}{Application}}\+:\+: \mbox{\hyperlink{classApplication}{Application}} object. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classApplication_a748bca84fefb9c12661cfaa2f623748d}\label{classApplication_a748bca84fefb9c12661cfaa2f623748d}} 
-\mbox{\hyperlink{classApplication_a748bca84fefb9c12661cfaa2f623748d}{$\sim$\+Application}} ()
-\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classApplication}{Application}}\+:\+: \mbox{\hyperlink{classApplication}{Application}} object. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{classApplication_ab8bb8eafa9c49f217c6ec9d3ea14ccb9}{Run}} (char $\ast$ip)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classApplication}{Application}\+:\+: \doxylink{classApplication}{Application} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classApplication_a748bca84fefb9c12661cfaa2f623748d}{\texorpdfstring{$\sim$}{\string~}\+Application}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classApplication}{Application}\+:\+: \doxylink{classApplication}{Application} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classApplication_ab8bb8eafa9c49f217c6ec9d3ea14ccb9}{Run}} (char \texorpdfstring{$\ast$}{*}ip)
 \begin{DoxyCompactList}\small\item\em This function deals with the main looping and the choice of menu. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classApplication_afcb1b6457780a1c0b5b15ac5465f0ae8}\label{classApplication_afcb1b6457780a1c0b5b15ac5465f0ae8}} 
-SDL\+\_\+\+Window $\ast$ {\bfseries Get\+Window} () const
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classApplication_afcb1b6457780a1c0b5b15ac5465f0ae8}{Get\+Window}} () const
 \item 
-\mbox{\Hypertarget{classApplication_a635c735b6aed14f95cda783461bab75c}\label{classApplication_a635c735b6aed14f95cda783461bab75c}} 
-SDL\+\_\+\+Renderer $\ast$ {\bfseries Get\+Renderer} () const
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classApplication_a635c735b6aed14f95cda783461bab75c}{Get\+Renderer}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classApplication_a8bb84755dcfc99f71bd2504626179af2}{window}}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classApplication_add4c013a58de1820aa05c44ac1514c93}{renderer}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classApplication_afa8cc05ce6b6092be5ecdfdae44e05f8}\label{classApplication_afa8cc05ce6b6092be5ecdfdae44e05f8} 
+\index{Application@{Application}!Application@{Application}}
+\index{Application@{Application}!Application@{Application}}
+\doxysubsubsection{\texorpdfstring{Application()}{Application()}}
+{\footnotesize\ttfamily Application\+::\+Application (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classApplication}{Application}\+:\+: \doxylink{classApplication}{Application} object. 
+
+\Hypertarget{classApplication_a748bca84fefb9c12661cfaa2f623748d}\label{classApplication_a748bca84fefb9c12661cfaa2f623748d} 
+\index{Application@{Application}!````~Application@{\texorpdfstring{$\sim$}{\string~}Application}}
+\index{````~Application@{\texorpdfstring{$\sim$}{\string~}Application}!Application@{Application}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Application()}{\string~Application()}}
+{\footnotesize\ttfamily Application\+::\texorpdfstring{$\sim$}{\string~}\+Application (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \doxylink{classApplication}{Application}\+:\+: \doxylink{classApplication}{Application} object. 
+
+
+
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classApplication_ab8bb8eafa9c49f217c6ec9d3ea14ccb9}\label{classApplication_ab8bb8eafa9c49f217c6ec9d3ea14ccb9}} 
+\Hypertarget{classApplication_a635c735b6aed14f95cda783461bab75c}\label{classApplication_a635c735b6aed14f95cda783461bab75c} 
+\index{Application@{Application}!GetRenderer@{GetRenderer}}
+\index{GetRenderer@{GetRenderer}!Application@{Application}}
+\doxysubsubsection{\texorpdfstring{GetRenderer()}{GetRenderer()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} Application\+::\+Get\+Renderer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classApplication_afcb1b6457780a1c0b5b15ac5465f0ae8}\label{classApplication_afcb1b6457780a1c0b5b15ac5465f0ae8} 
+\index{Application@{Application}!GetWindow@{GetWindow}}
+\index{GetWindow@{GetWindow}!Application@{Application}}
+\doxysubsubsection{\texorpdfstring{GetWindow()}{GetWindow()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} Application\+::\+Get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classApplication_ab8bb8eafa9c49f217c6ec9d3ea14ccb9}\label{classApplication_ab8bb8eafa9c49f217c6ec9d3ea14ccb9} 
 \index{Application@{Application}!Run@{Run}}
 \index{Run@{Run}!Application@{Application}}
 \doxysubsubsection{\texorpdfstring{Run()}{Run()}}
-{\footnotesize\ttfamily int Application\+::\+Run (\begin{DoxyParamCaption}\item[{char $\ast$}]{ip }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Application\+::\+Run (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{ip }\end{DoxyParamCaption})}
 
 
 
@@ -38,13 +90,28 @@ This function deals with the main looping and the choice of menu.
 \begin{DoxyReturn}{Returns}
 int 
 \end{DoxyReturn}
-\mbox{\hyperlink{classGame}{Game}} (Single player)
+\doxylink{classGame}{Game} (Single player)
 
-\mbox{\hyperlink{classMultiplayer}{Multiplayer}}
+\doxylink{classMultiplayer}{Multiplayer}
 
-\mbox{\hyperlink{classCredits}{Credits}}
+\doxylink{classCredits}{Credits}
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classApplication_add4c013a58de1820aa05c44ac1514c93}\label{classApplication_add4c013a58de1820aa05c44ac1514c93} 
+\index{Application@{Application}!renderer@{renderer}}
+\index{renderer@{renderer}!Application@{Application}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} Application\+::renderer\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classApplication_a8bb84755dcfc99f71bd2504626179af2}\label{classApplication_a8bb84755dcfc99f71bd2504626179af2} 
+\index{Application@{Application}!window@{window}}
+\index{window@{window}!Application@{Application}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} Application\+::window\hspace{0.3cm}{\ttfamily [private]}}
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/corsi/\+Tetris/include/application.\+hpp\item 
-/home/corsi/\+Tetris/src/\mbox{\hyperlink{application_8cpp}{application.\+cpp}}\end{DoxyCompactItemize}
+/home/gelmi/\+Tetris/include/\mbox{\hyperlink{application_8hpp}{application.\+hpp}}\item 
+/home/gelmi/\+Tetris/src/\mbox{\hyperlink{application_8cpp}{application.\+cpp}}\end{DoxyCompactItemize}

@@ -1,63 +1,170 @@
-\hypertarget{classGameView}{}\doxysection{Game\+View Class Reference}
-\label{classGameView}\index{GameView@{GameView}}
+\doxysection{Game\+View Class Reference}
+\hypertarget{classGameView}{}\label{classGameView}\index{GameView@{GameView}}
+
+
+{\ttfamily \#include $<$gameview.\+hpp$>$}
+
 
 
 Inheritance diagram for Game\+View\+:
-% FIG 0
-\doxysubsection*{Public Member Functions}
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classGameView__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Game\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameView__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGameView_a9b3c9ccc7d1ba1daa297286bfcc411c2}\label{classGameView_a9b3c9ccc7d1ba1daa297286bfcc411c2}} 
-{\bfseries Game\+View} (SDL\+\_\+\+Window $\ast$shared\+Window, SDL\+\_\+\+Renderer $\ast$shared\+Renderer)
+\mbox{\hyperlink{classGameView_a9b3c9ccc7d1ba1daa297286bfcc411c2}{Game\+View}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}shared\+Window, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}shared\+Renderer)
 \item 
-\mbox{\Hypertarget{classGameView_a1c4709d412d99bcd59946fd257e66719}\label{classGameView_a1c4709d412d99bcd59946fd257e66719}} 
-void {\bfseries Draw} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+\mbox{\hyperlink{classGameView_a957dca86bb68a729188f167f7d45ab86}{\texorpdfstring{$\sim$}{\string~}\+Game\+View}} ()
+\item 
+void \mbox{\hyperlink{classGameView_a1c4709d412d99bcd59946fd257e66719}{Draw}} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Member Functions}
+\doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGameView_a906afed2573ccc6f4869ebb67cdaa586}\label{classGameView_a906afed2573ccc6f4869ebb67cdaa586}} 
-void {\bfseries Draw\+Entity} (SDL\+\_\+\+Texture $\ast$texture, SDL\+\_\+\+Texture $\ast$tile\+Texture, SDL\+\_\+\+Texture $\ast$back\+Texture, int tile\+Size, int $\ast$tiles, int x, int y, int h, int w)
+void \mbox{\hyperlink{classGameView_a906afed2573ccc6f4869ebb67cdaa586}{Draw\+Entity}} (SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}texture, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}tile\+Texture, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}back\+Texture, int tile\+Size, int \texorpdfstring{$\ast$}{*}tiles, int x, int y, int h, int w)
 \item 
-\mbox{\Hypertarget{classGameView_a41865ef051acd0f8fbae419b12165390}\label{classGameView_a41865ef051acd0f8fbae419b12165390}} 
-void {\bfseries Draw\+Board} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+void \mbox{\hyperlink{classGameView_a41865ef051acd0f8fbae419b12165390}{Draw\+Board}} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
 \item 
-\mbox{\Hypertarget{classGameView_a3e752d274545ae81c1975acf7a58686c}\label{classGameView_a3e752d274545ae81c1975acf7a58686c}} 
-void {\bfseries Draw\+Tetromino} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+void \mbox{\hyperlink{classGameView_a3e752d274545ae81c1975acf7a58686c}{Draw\+Tetromino}} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
 \item 
-\mbox{\Hypertarget{classGameView_a731f633d4e138e0dae1e8a07e3b18d38}\label{classGameView_a731f633d4e138e0dae1e8a07e3b18d38}} 
-void {\bfseries Draw\+Stats} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+void \mbox{\hyperlink{classGameView_a731f633d4e138e0dae1e8a07e3b18d38}{Draw\+Stats}} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
 \item 
-\mbox{\Hypertarget{classGameView_acf7944a165682179a056cb5a7367a8ba}\label{classGameView_acf7944a165682179a056cb5a7367a8ba}} 
-void {\bfseries Draw\+Next\+Tetromino} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
+void \mbox{\hyperlink{classGameView_acf7944a165682179a056cb5a7367a8ba}{Draw\+Next\+Tetromino}} (\mbox{\hyperlink{classGameData}{Game\+Data}} data)
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+\doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGameView_a351fd41c7f6490b8d78bc57cddea2918}\label{classGameView_a351fd41c7f6490b8d78bc57cddea2918}} 
-SDL\+\_\+\+Renderer $\ast$ {\bfseries renderer}
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameView_a351fd41c7f6490b8d78bc57cddea2918}{renderer}}
 \item 
-\mbox{\Hypertarget{classGameView_a50ebc9bb563a22e7d6c91c4e28c428a5}\label{classGameView_a50ebc9bb563a22e7d6c91c4e28c428a5}} 
-SDL\+\_\+\+Window $\ast$ {\bfseries window}
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameView_a50ebc9bb563a22e7d6c91c4e28c428a5}{window}}
 \item 
-\mbox{\Hypertarget{classGameView_a1da283b3c58ddc6c69611ea2f9edb47a}\label{classGameView_a1da283b3c58ddc6c69611ea2f9edb47a}} 
-SDL\+\_\+\+Texture $\ast$ {\bfseries board\+Texture}
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameView_a1da283b3c58ddc6c69611ea2f9edb47a}{board\+Texture}}
 \item 
-\mbox{\Hypertarget{classGameView_afc67b7c93b5d31c867afe03b8a3fbe9d}\label{classGameView_afc67b7c93b5d31c867afe03b8a3fbe9d}} 
-SDL\+\_\+\+Texture $\ast$ {\bfseries board\+Tile\+Texture}
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameView_afc67b7c93b5d31c867afe03b8a3fbe9d}{board\+Tile\+Texture}}
 \item 
-\mbox{\Hypertarget{classGameView_a5f3ed1e9bc4c0406a27959b7bb9ec0c9}\label{classGameView_a5f3ed1e9bc4c0406a27959b7bb9ec0c9}} 
-SDL\+\_\+\+Texture $\ast$ {\bfseries tetromino\+Texture}
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameView_a5f3ed1e9bc4c0406a27959b7bb9ec0c9}{tetromino\+Texture}}
 \item 
-\mbox{\Hypertarget{classGameView_a7e0a1fda7f0574f0be43f62330ca9452}\label{classGameView_a7e0a1fda7f0574f0be43f62330ca9452}} 
-SDL\+\_\+\+Texture $\ast$ {\bfseries tetromino\+Tile\+Texture}
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameView_a7e0a1fda7f0574f0be43f62330ca9452}{tetromino\+Tile\+Texture}}
 \item 
-\mbox{\Hypertarget{classGameView_a2c1560f37bbbec91a11b4c1a154dd84d}\label{classGameView_a2c1560f37bbbec91a11b4c1a154dd84d}} 
-TTF\+\_\+\+Font $\ast$ {\bfseries font}
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameView_a2c1560f37bbbec91a11b4c1a154dd84d}{font}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameView_a9b3c9ccc7d1ba1daa297286bfcc411c2}\label{classGameView_a9b3c9ccc7d1ba1daa297286bfcc411c2} 
+\index{GameView@{GameView}!GameView@{GameView}}
+\index{GameView@{GameView}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{GameView()}{GameView()}}
+{\footnotesize\ttfamily Game\+View\+::\+Game\+View (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{shared\+Window,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{shared\+Renderer }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameView_a957dca86bb68a729188f167f7d45ab86}\label{classGameView_a957dca86bb68a729188f167f7d45ab86} 
+\index{GameView@{GameView}!````~GameView@{\texorpdfstring{$\sim$}{\string~}GameView}}
+\index{````~GameView@{\texorpdfstring{$\sim$}{\string~}GameView}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameView()}{\string~GameView()}}
+{\footnotesize\ttfamily Game\+View\+::\texorpdfstring{$\sim$}{\string~}\+Game\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameView_a1c4709d412d99bcd59946fd257e66719}\label{classGameView_a1c4709d412d99bcd59946fd257e66719} 
+\index{GameView@{GameView}!Draw@{Draw}}
+\index{Draw@{Draw}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Game\+View\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameData}{Game\+Data}}}]{data }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameView_a41865ef051acd0f8fbae419b12165390}\label{classGameView_a41865ef051acd0f8fbae419b12165390} 
+\index{GameView@{GameView}!DrawBoard@{DrawBoard}}
+\index{DrawBoard@{DrawBoard}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{DrawBoard()}{DrawBoard()}}
+{\footnotesize\ttfamily void Game\+View\+::\+Draw\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameData}{Game\+Data}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_a906afed2573ccc6f4869ebb67cdaa586}\label{classGameView_a906afed2573ccc6f4869ebb67cdaa586} 
+\index{GameView@{GameView}!DrawEntity@{DrawEntity}}
+\index{DrawEntity@{DrawEntity}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{DrawEntity()}{DrawEntity()}}
+{\footnotesize\ttfamily void Game\+View\+::\+Draw\+Entity (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{texture,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{tile\+Texture,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{back\+Texture,  }\item[{int}]{tile\+Size,  }\item[{int \texorpdfstring{$\ast$}{*}}]{tiles,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{h,  }\item[{int}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_acf7944a165682179a056cb5a7367a8ba}\label{classGameView_acf7944a165682179a056cb5a7367a8ba} 
+\index{GameView@{GameView}!DrawNextTetromino@{DrawNextTetromino}}
+\index{DrawNextTetromino@{DrawNextTetromino}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{DrawNextTetromino()}{DrawNextTetromino()}}
+{\footnotesize\ttfamily void Game\+View\+::\+Draw\+Next\+Tetromino (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameData}{Game\+Data}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_a731f633d4e138e0dae1e8a07e3b18d38}\label{classGameView_a731f633d4e138e0dae1e8a07e3b18d38} 
+\index{GameView@{GameView}!DrawStats@{DrawStats}}
+\index{DrawStats@{DrawStats}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{DrawStats()}{DrawStats()}}
+{\footnotesize\ttfamily void Game\+View\+::\+Draw\+Stats (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameData}{Game\+Data}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_a3e752d274545ae81c1975acf7a58686c}\label{classGameView_a3e752d274545ae81c1975acf7a58686c} 
+\index{GameView@{GameView}!DrawTetromino@{DrawTetromino}}
+\index{DrawTetromino@{DrawTetromino}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{DrawTetromino()}{DrawTetromino()}}
+{\footnotesize\ttfamily void Game\+View\+::\+Draw\+Tetromino (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameData}{Game\+Data}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameView_a1da283b3c58ddc6c69611ea2f9edb47a}\label{classGameView_a1da283b3c58ddc6c69611ea2f9edb47a} 
+\index{GameView@{GameView}!boardTexture@{boardTexture}}
+\index{boardTexture@{boardTexture}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{boardTexture}{boardTexture}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*} Game\+View\+::board\+Texture\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_afc67b7c93b5d31c867afe03b8a3fbe9d}\label{classGameView_afc67b7c93b5d31c867afe03b8a3fbe9d} 
+\index{GameView@{GameView}!boardTileTexture@{boardTileTexture}}
+\index{boardTileTexture@{boardTileTexture}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{boardTileTexture}{boardTileTexture}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*} Game\+View\+::board\+Tile\+Texture\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_a2c1560f37bbbec91a11b4c1a154dd84d}\label{classGameView_a2c1560f37bbbec91a11b4c1a154dd84d} 
+\index{GameView@{GameView}!font@{font}}
+\index{font@{font}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*} Game\+View\+::font\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_a351fd41c7f6490b8d78bc57cddea2918}\label{classGameView_a351fd41c7f6490b8d78bc57cddea2918} 
+\index{GameView@{GameView}!renderer@{renderer}}
+\index{renderer@{renderer}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} Game\+View\+::renderer\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_a5f3ed1e9bc4c0406a27959b7bb9ec0c9}\label{classGameView_a5f3ed1e9bc4c0406a27959b7bb9ec0c9} 
+\index{GameView@{GameView}!tetrominoTexture@{tetrominoTexture}}
+\index{tetrominoTexture@{tetrominoTexture}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{tetrominoTexture}{tetrominoTexture}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*} Game\+View\+::tetromino\+Texture\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_a7e0a1fda7f0574f0be43f62330ca9452}\label{classGameView_a7e0a1fda7f0574f0be43f62330ca9452} 
+\index{GameView@{GameView}!tetrominoTileTexture@{tetrominoTileTexture}}
+\index{tetrominoTileTexture@{tetrominoTileTexture}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{tetrominoTileTexture}{tetrominoTileTexture}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*} Game\+View\+::tetromino\+Tile\+Texture\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classGameView_a50ebc9bb563a22e7d6c91c4e28c428a5}\label{classGameView_a50ebc9bb563a22e7d6c91c4e28c428a5} 
+\index{GameView@{GameView}!window@{window}}
+\index{window@{window}!GameView@{GameView}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} Game\+View\+::window\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/corsi/\+Tetris/include/gameview.\+hpp\item 
-/home/corsi/\+Tetris/src/\mbox{\hyperlink{gameview_8cpp}{gameview.\+cpp}}\end{DoxyCompactItemize}
+/home/gelmi/\+Tetris/include/\mbox{\hyperlink{gameview_8hpp}{gameview.\+hpp}}\item 
+/home/gelmi/\+Tetris/src/\mbox{\hyperlink{gameview_8cpp}{gameview.\+cpp}}\end{DoxyCompactItemize}

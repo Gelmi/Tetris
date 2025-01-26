@@ -1,0 +1,29 @@
+\doxysection{view.\+hpp}
+\hypertarget{view_8hpp_source}{}\label{view_8hpp_source}\index{/home/gelmi/Tetris/include/view.hpp@{/home/gelmi/Tetris/include/view.hpp}}
+\mbox{\hyperlink{view_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VIEW\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VIEW\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classView}{View}}\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00008\ \ \ \ \ SDL\_Window*\ \mbox{\hyperlink{classView_a35f57e296a4643edae6424c7f9569f8d}{window}};}
+\DoxyCodeLine{00009\ \ \ \ \ SDL\_Renderer*\ \mbox{\hyperlink{classView_ab42eeb58ccbf7556b297cc80a83bc181}{renderer}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classView_acdf0bf0b3c398da6efa7ca5fd63160e9}{View}}(SDL\_Window*\ sharedWindow,\ SDL\_Renderer*\ sharedRenderer)\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classView_a35f57e296a4643edae6424c7f9569f8d}{window}}\ =\ sharedWindow;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classView_ab42eeb58ccbf7556b297cc80a83bc181}{renderer}}\ =\ sharedRenderer;}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classView_aa02a820358e1a7bf7e34d205212ae8f3}{\string~View}}()\ \{\}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ virtual\ void\ HandleEvent(const\ SDL\_Event\&\ event)\ =\ 0;\ //\ Processa\ eventos}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ virtual\ void\ Render()\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Renderiza\ a\ tela}}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

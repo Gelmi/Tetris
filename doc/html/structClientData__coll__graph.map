@@ -1,0 +1,9 @@
+<map id="ClientData" name="ClientData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="121,221,204,287"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="30,71,34,133,43,166,58,196,80,217,107,233,104,237,77,221,54,199,38,168,29,133,25,71"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="129,5,196,71"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,71,165,205,160,205,160,71"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="220,5,279,71"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="247,72,233,132,208,198,202,209,197,207,203,196,228,130,242,70"/>
+</map>

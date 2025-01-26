@@ -1,0 +1,16 @@
+<map id="/home/gelmi/Tetris/src/credits.cpp" name="/home/gelmi/Tetris/src/credits.cpp">
+<area shape="rect" id="Node000001" title="This file handles the credits screen." alt="" coords="93,5,236,45"/>
+<area shape="rect" id="Node000002" href="$credits_8hpp.html" title=" " alt="" coords="61,93,156,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,47,127,84,123,80,149,44"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="181,93,261,119"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="180,44,207,80,202,84,176,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="87,240,146,265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,121,48,134,24,150,9,170,8,180,12,191,24,206,40,219,75,237,73,242,37,223,21,210,8,193,3,180,5,168,20,147,46,129,74,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="22,167,102,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="103,120,79,157,75,154,99,118"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="126,167,185,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="119,118,142,154,138,157,114,120"/>
+<area shape="rect" id="Node000006" href="$view_8hpp.html" title=" " alt="" coords="209,167,289,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="132,116,215,158,213,163,130,121"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="229,194,151,236,149,231,226,190"/>
+</map>
