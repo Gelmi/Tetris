@@ -1,0 +1,9 @@
+<map id="View" name="View">
+<area shape="rect" id="node1" title=" " alt="" coords="247,5,301,32"/>
+<area shape="rect" id="node2" href="$classCredits.html" title=" " alt="" coords="5,80,73,107"/>
+<area shape="rect" id="node3" href="$classGame.html" title=" " alt="" coords="98,80,159,107"/>
+<area shape="rect" id="node4" href="$classGameEnd.html" title=" " alt="" coords="183,80,269,107"/>
+<area shape="rect" id="node5" href="$classMenu.html" title=" " alt="" coords="293,80,351,107"/>
+<area shape="rect" id="node6" href="$classMultiplayer.html" title=" " alt="" coords="375,80,471,107"/>
+<area shape="rect" id="node7" href="$classPause.html" title=" " alt="" coords="496,80,556,107"/>
+</map>

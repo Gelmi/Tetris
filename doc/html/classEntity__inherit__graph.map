@@ -1,0 +1,12 @@
+<map id="Entity" name="Entity">
+<area shape="rect" id="node1" title=" " alt="" coords="323,5,383,32"/>
+<area shape="rect" id="node2" href="$classBoard.html" title=" " alt="" coords="275,80,335,107"/>
+<area shape="rect" id="node3" href="$classTetromino.html" title=" " alt="" coords="359,80,446,107"/>
+<area shape="rect" id="node4" href="$classTetrominoI.html" title=" " alt="" coords="5,155,96,181"/>
+<area shape="rect" id="node5" href="$classTetrominoJ.html" title=" " alt="" coords="120,155,211,181"/>
+<area shape="rect" id="node6" href="$classTetrominoL.html" title=" " alt="" coords="235,155,330,181"/>
+<area shape="rect" id="node7" href="$classTetrominoO.html" title=" " alt="" coords="354,155,451,181"/>
+<area shape="rect" id="node8" href="$classTetrominoS.html" title=" " alt="" coords="475,155,570,181"/>
+<area shape="rect" id="node9" href="$classTetrominoT.html" title=" " alt="" coords="594,155,689,181"/>
+<area shape="rect" id="node10" href="$classTetrominoZ.html" title=" " alt="" coords="713,155,809,181"/>
+</map>

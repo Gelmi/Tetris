@@ -75,21 +75,29 @@ $(function() {
 Inheritance diagram for GameView:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGameView__inherit__graph.png" border="0" usemap="#aGameView_inherit__map" alt="Inheritance graph"/></div>
+<map name="aGameView_inherit__map" id="aGameView_inherit__map">
+<area shape="rect" title=" " alt="" coords="22,5,115,32"/>
+<area shape="rect" href="classMultiGameView.html" title=" " alt="" coords="5,80,132,107"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9b3c9ccc7d1ba1daa297286bfcc411c2"><td class="memItemLeft" align="right" valign="top"><a id="a9b3c9ccc7d1ba1daa297286bfcc411c2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GameView</b> (SDL_Window *sharedWindow, SDL_Renderer *sharedRenderer)</td></tr>
+<tr class="memitem:a9b3c9ccc7d1ba1daa297286bfcc411c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameView.html#a9b3c9ccc7d1ba1daa297286bfcc411c2">GameView</a> (SDL_Window *sharedWindow, SDL_Renderer *sharedRenderer)</td></tr>
+<tr class="memdesc:a9b3c9ccc7d1ba1daa297286bfcc411c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">implement constructor to initialize textures and load resources  <a href="classGameView.html#a9b3c9ccc7d1ba1daa297286bfcc411c2">More...</a><br /></td></tr>
 <tr class="separator:a9b3c9ccc7d1ba1daa297286bfcc411c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c4709d412d99bcd59946fd257e66719"><td class="memItemLeft" align="right" valign="top"><a id="a1c4709d412d99bcd59946fd257e66719"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Draw</b> (<a class="el" href="classGameData.html">GameData</a> data)</td></tr>
+<tr class="memitem:a957dca86bb68a729188f167f7d45ab86"><td class="memItemLeft" align="right" valign="top"><a id="a957dca86bb68a729188f167f7d45ab86"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameView.html#a957dca86bb68a729188f167f7d45ab86">~GameView</a> ()</td></tr>
+<tr class="memdesc:a957dca86bb68a729188f167f7d45ab86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classGame.html">Game</a> <a class="el" href="classView.html">View</a>:: <a class="el" href="classGame.html">Game</a> <a class="el" href="classView.html">View</a> object. <br /></td></tr>
+<tr class="separator:a957dca86bb68a729188f167f7d45ab86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c4709d412d99bcd59946fd257e66719"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameView.html#a1c4709d412d99bcd59946fd257e66719">Draw</a> (<a class="el" href="classGameData.html">GameData</a> data)</td></tr>
+<tr class="memdesc:a1c4709d412d99bcd59946fd257e66719"><td class="mdescLeft">&#160;</td><td class="mdescRight">implement main draw method to render game entities  <a href="classGameView.html#a1c4709d412d99bcd59946fd257e66719">More...</a><br /></td></tr>
 <tr class="separator:a1c4709d412d99bcd59946fd257e66719"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a906afed2573ccc6f4869ebb67cdaa586"><td class="memItemLeft" align="right" valign="top"><a id="a906afed2573ccc6f4869ebb67cdaa586"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawEntity</b> (SDL_Texture *texture, SDL_Texture *tileTexture, SDL_Texture *backTexture, int tileSize, int *tiles, int x, int y, int h, int w)</td></tr>
+<tr class="memitem:a906afed2573ccc6f4869ebb67cdaa586"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameView.html#a906afed2573ccc6f4869ebb67cdaa586">DrawEntity</a> (SDL_Texture *texture, SDL_Texture *tileTexture, SDL_Texture *backTexture, int tileSize, int *tiles, int x, int y, int h, int w)</td></tr>
+<tr class="memdesc:a906afed2573ccc6f4869ebb67cdaa586"><td class="mdescLeft">&#160;</td><td class="mdescRight">implement entity drawing method with tile-based rendering  <a href="classGameView.html#a906afed2573ccc6f4869ebb67cdaa586">More...</a><br /></td></tr>
 <tr class="separator:a906afed2573ccc6f4869ebb67cdaa586"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41865ef051acd0f8fbae419b12165390"><td class="memItemLeft" align="right" valign="top"><a id="a41865ef051acd0f8fbae419b12165390"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawBoard</b> (<a class="el" href="classGameData.html">GameData</a> data)</td></tr>
@@ -97,8 +105,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawBoard</b> (<a cla
 <tr class="memitem:a3e752d274545ae81c1975acf7a58686c"><td class="memItemLeft" align="right" valign="top"><a id="a3e752d274545ae81c1975acf7a58686c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawTetromino</b> (<a class="el" href="classGameData.html">GameData</a> data)</td></tr>
 <tr class="separator:a3e752d274545ae81c1975acf7a58686c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a731f633d4e138e0dae1e8a07e3b18d38"><td class="memItemLeft" align="right" valign="top"><a id="a731f633d4e138e0dae1e8a07e3b18d38"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawStats</b> (<a class="el" href="classGameData.html">GameData</a> data)</td></tr>
+<tr class="memitem:a731f633d4e138e0dae1e8a07e3b18d38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameView.html#a731f633d4e138e0dae1e8a07e3b18d38">DrawStats</a> (<a class="el" href="classGameData.html">GameData</a> data)</td></tr>
+<tr class="memdesc:a731f633d4e138e0dae1e8a07e3b18d38"><td class="mdescLeft">&#160;</td><td class="mdescRight">add method to render game statistics on screen  <a href="classGameView.html#a731f633d4e138e0dae1e8a07e3b18d38">More...</a><br /></td></tr>
 <tr class="separator:a731f633d4e138e0dae1e8a07e3b18d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf7944a165682179a056cb5a7367a8ba"><td class="memItemLeft" align="right" valign="top"><a id="acf7944a165682179a056cb5a7367a8ba"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawNextTetromino</b> (<a class="el" href="classGameData.html">GameData</a> data)</td></tr>
@@ -128,6 +136,200 @@ SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>tetrominoTil
 TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><b>font</b></td></tr>
 <tr class="separator:a2c1560f37bbbec91a11b4c1a154dd84d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9b3c9ccc7d1ba1daa297286bfcc411c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b3c9ccc7d1ba1daa297286bfcc411c2">&#9670;&nbsp;</a></span>GameView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameView::GameView </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>sharedWindow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>sharedRenderer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>implement constructor to initialize textures and load resources </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sharedWindow</td><td></td></tr>
+    <tr><td class="paramname">sharedRenderer</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1c4709d412d99bcd59946fd257e66719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c4709d412d99bcd59946fd257e66719">&#9670;&nbsp;</a></span>Draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameView::Draw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGameData.html">GameData</a>&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>implement main draw method to render game entities </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a906afed2573ccc6f4869ebb67cdaa586"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a906afed2573ccc6f4869ebb67cdaa586">&#9670;&nbsp;</a></span>DrawEntity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameView::DrawEntity </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>tileTexture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>backTexture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tileSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>tiles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>implement entity drawing method with tile-based rendering </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texture</td><td></td></tr>
+    <tr><td class="paramname">tileTexture</td><td></td></tr>
+    <tr><td class="paramname">backTexture</td><td></td></tr>
+    <tr><td class="paramname">tileSize</td><td></td></tr>
+    <tr><td class="paramname">tiles</td><td></td></tr>
+    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramname">y</td><td></td></tr>
+    <tr><td class="paramname">h</td><td></td></tr>
+    <tr><td class="paramname">w</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>add utility function to calculate index based on grid position</p>
+
+</div>
+</div>
+<a id="a731f633d4e138e0dae1e8a07e3b18d38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731f633d4e138e0dae1e8a07e3b18d38">&#9670;&nbsp;</a></span>DrawStats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameView::DrawStats </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGameData.html">GameData</a>&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>add method to render game statistics on screen </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/corsi/Tetris/include/<a class="el" href="gameview_8hpp_source.html">gameview.hpp</a></li>
 <li>/home/corsi/Tetris/src/<a class="el" href="gameview_8cpp.html">gameview.cpp</a></li>

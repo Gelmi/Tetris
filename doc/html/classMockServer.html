@@ -72,16 +72,103 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abe6b5167b4bf7cd24933c48e1df01ffe"><td class="memItemLeft" align="right" valign="top"><a id="abe6b5167b4bf7cd24933c48e1df01ffe"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (int command, <a class="el" href="classGameData.html">GameData</a> data)</td></tr>
+<tr class="memitem:a133edacdabb1bf9d858dd27bb82f581d"><td class="memItemLeft" align="right" valign="top"><a id="a133edacdabb1bf9d858dd27bb82f581d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMockServer.html#a133edacdabb1bf9d858dd27bb82f581d">MockServer</a> ()</td></tr>
+<tr class="memdesc:a133edacdabb1bf9d858dd27bb82f581d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Mock <a class="el" href="classServer.html">Server</a>:: Mock <a class="el" href="classServer.html">Server</a> object. <br /></td></tr>
+<tr class="separator:a133edacdabb1bf9d858dd27bb82f581d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe6b5167b4bf7cd24933c48e1df01ffe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMockServer.html#abe6b5167b4bf7cd24933c48e1df01ffe">update</a> (int command, <a class="el" href="classGameData.html">GameData</a> data)</td></tr>
+<tr class="memdesc:abe6b5167b4bf7cd24933c48e1df01ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes player commands and updates the game state.  <a href="classMockServer.html#abe6b5167b4bf7cd24933c48e1df01ffe">More...</a><br /></td></tr>
 <tr class="separator:abe6b5167b4bf7cd24933c48e1df01ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1087a43cb2319ac10f1587a512df986"><td class="memItemLeft" align="right" valign="top"><a id="ae1087a43cb2319ac10f1587a512df986"></a>
-<a class="el" href="classGameData.html">GameData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getState</b> ()</td></tr>
+<tr class="memitem:ae1087a43cb2319ac10f1587a512df986"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGameData.html">GameData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMockServer.html#ae1087a43cb2319ac10f1587a512df986">getState</a> ()</td></tr>
+<tr class="memdesc:ae1087a43cb2319ac10f1587a512df986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a snapshot of the current game state (<a class="el" href="classGameData.html">GameData</a>), including the score, level, and tetromino positions on the board.  <a href="classMockServer.html#ae1087a43cb2319ac10f1587a512df986">More...</a><br /></td></tr>
 <tr class="separator:ae1087a43cb2319ac10f1587a512df986"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2339200b78918da2b6c0eec00fffb31b"><td class="memItemLeft" align="right" valign="top"><a id="a2339200b78918da2b6c0eec00fffb31b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>lockAndLoad</b> ()</td></tr>
+<tr class="memitem:a2339200b78918da2b6c0eec00fffb31b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMockServer.html#a2339200b78918da2b6c0eec00fffb31b">lockAndLoad</a> ()</td></tr>
+<tr class="memdesc:a2339200b78918da2b6c0eec00fffb31b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the current tetromino in place, loads the next tetromino, and checks for game over conditions.  <a href="classMockServer.html#a2339200b78918da2b6c0eec00fffb31b">More...</a><br /></td></tr>
 <tr class="separator:a2339200b78918da2b6c0eec00fffb31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae1087a43cb2319ac10f1587a512df986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1087a43cb2319ac10f1587a512df986">&#9670;&nbsp;</a></span>getState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classGameData.html">GameData</a> MockServer::getState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates a snapshot of the current game state (<a class="el" href="classGameData.html">GameData</a>), including the score, level, and tetromino positions on the board. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classGameData.html">GameData</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2339200b78918da2b6c0eec00fffb31b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2339200b78918da2b6c0eec00fffb31b">&#9670;&nbsp;</a></span>lockAndLoad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MockServer::lockAndLoad </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Locks the current tetromino in place, loads the next tetromino, and checks for game over conditions. </p>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+</div>
+</div>
+<a id="abe6b5167b4bf7cd24933c48e1df01ffe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe6b5167b4bf7cd24933c48e1df01ffe">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MockServer::update </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classGameData.html">GameData</a>&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Processes player commands and updates the game state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command</td><td></td></tr>
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/corsi/Tetris/include/<a class="el" href="mockserver_8hpp_source.html">mockserver.hpp</a></li>
 <li>/home/corsi/Tetris/src/<a class="el" href="mockserver_8cpp.html">mockserver.cpp</a></li>

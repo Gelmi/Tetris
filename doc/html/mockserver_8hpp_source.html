@@ -86,16 +86,20 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">int</span> counter;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classMockServer.html">MockServer</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">bool</span> update(<span class="keywordtype">int</span> command, <a class="code" href="classGameData.html">GameData</a> data);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classGameData.html">GameData</a> getState();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">bool</span> lockAndLoad();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classMockServer.html#a133edacdabb1bf9d858dd27bb82f581d">MockServer</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classMockServer.html#abe6b5167b4bf7cd24933c48e1df01ffe">update</a>(<span class="keywordtype">int</span> command, <a class="code" href="classGameData.html">GameData</a> data);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classGameData.html">GameData</a> <a class="code" href="classMockServer.html#ae1087a43cb2319ac10f1587a512df986">getState</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classMockServer.html#a2339200b78918da2b6c0eec00fffb31b">lockAndLoad</a>();</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassGameData_html"><div class="ttname"><a href="classGameData.html">GameData</a></div><div class="ttdef"><b>Definition:</b> gamedata.hpp:6</div></div>
 <div class="ttc" id="aclassMockServer_html"><div class="ttname"><a href="classMockServer.html">MockServer</a></div><div class="ttdef"><b>Definition:</b> mockserver.hpp:9</div></div>
+<div class="ttc" id="aclassMockServer_html_a133edacdabb1bf9d858dd27bb82f581d"><div class="ttname"><a href="classMockServer.html#a133edacdabb1bf9d858dd27bb82f581d">MockServer::MockServer</a></div><div class="ttdeci">MockServer()</div><div class="ttdoc">Construct a new Mock Server:: Mock Server object.</div><div class="ttdef"><b>Definition:</b> mockserver.cpp:21</div></div>
+<div class="ttc" id="aclassMockServer_html_a2339200b78918da2b6c0eec00fffb31b"><div class="ttname"><a href="classMockServer.html#a2339200b78918da2b6c0eec00fffb31b">MockServer::lockAndLoad</a></div><div class="ttdeci">bool lockAndLoad()</div><div class="ttdoc">Locks the current tetromino in place, loads the next tetromino, and checks for game over conditions.</div><div class="ttdef"><b>Definition:</b> mockserver.cpp:35</div></div>
+<div class="ttc" id="aclassMockServer_html_abe6b5167b4bf7cd24933c48e1df01ffe"><div class="ttname"><a href="classMockServer.html#abe6b5167b4bf7cd24933c48e1df01ffe">MockServer::update</a></div><div class="ttdeci">bool update(int command, GameData data)</div><div class="ttdoc">Processes player commands and updates the game state.</div><div class="ttdef"><b>Definition:</b> mockserver.cpp:55</div></div>
+<div class="ttc" id="aclassMockServer_html_ae1087a43cb2319ac10f1587a512df986"><div class="ttname"><a href="classMockServer.html#ae1087a43cb2319ac10f1587a512df986">MockServer::getState</a></div><div class="ttdeci">GameData getState()</div><div class="ttdoc">Generates a snapshot of the current game state (GameData), including the score, level,...</div><div class="ttdef"><b>Definition:</b> mockserver.cpp:133</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

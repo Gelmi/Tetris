@@ -87,23 +87,28 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        SDL_Texture * tetrominoTileTexture;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        TTF_Font * font;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> DrawEntity(SDL_Texture * texture, SDL_Texture * tileTexture, </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classGameView.html#a906afed2573ccc6f4869ebb67cdaa586">DrawEntity</a>(SDL_Texture * texture, SDL_Texture * tileTexture, </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            SDL_Texture * backTexture, <span class="keywordtype">int</span> tileSize, <span class="keywordtype">int</span> * tiles, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> h, <span class="keywordtype">int</span> w);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">void</span> DrawBoard(<a class="code" href="classGameData.html">GameData</a> data);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> DrawTetromino(<a class="code" href="classGameData.html">GameData</a> data);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> DrawStats(<a class="code" href="classGameData.html">GameData</a> data);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classGameView.html#a731f633d4e138e0dae1e8a07e3b18d38">DrawStats</a>(<a class="code" href="classGameData.html">GameData</a> data);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> DrawNextTetromino(<a class="code" href="classGameData.html">GameData</a> data);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="classGameView.html">GameView</a>(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        ~<a class="code" href="classGameView.html">GameView</a>();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> Draw(<a class="code" href="classGameData.html">GameData</a> data);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="classGameView.html#a9b3c9ccc7d1ba1daa297286bfcc411c2">GameView</a>(SDL_Window * sharedWindow, SDL_Renderer * sharedRenderer);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classGameView.html#a957dca86bb68a729188f167f7d45ab86">~GameView</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classGameView.html#a1c4709d412d99bcd59946fd257e66719">Draw</a>(<a class="code" href="classGameData.html">GameData</a> data);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassGameData_html"><div class="ttname"><a href="classGameData.html">GameData</a></div><div class="ttdef"><b>Definition:</b> gamedata.hpp:6</div></div>
 <div class="ttc" id="aclassGameView_html"><div class="ttname"><a href="classGameView.html">GameView</a></div><div class="ttdef"><b>Definition:</b> gameview.hpp:8</div></div>
+<div class="ttc" id="aclassGameView_html_a1c4709d412d99bcd59946fd257e66719"><div class="ttname"><a href="classGameView.html#a1c4709d412d99bcd59946fd257e66719">GameView::Draw</a></div><div class="ttdeci">void Draw(GameData data)</div><div class="ttdoc">implement main draw method to render game entities</div><div class="ttdef"><b>Definition:</b> gameview.cpp:75</div></div>
+<div class="ttc" id="aclassGameView_html_a731f633d4e138e0dae1e8a07e3b18d38"><div class="ttname"><a href="classGameView.html#a731f633d4e138e0dae1e8a07e3b18d38">GameView::DrawStats</a></div><div class="ttdeci">void DrawStats(GameData data)</div><div class="ttdoc">add method to render game statistics on screen</div><div class="ttdef"><b>Definition:</b> gameview.cpp:95</div></div>
+<div class="ttc" id="aclassGameView_html_a906afed2573ccc6f4869ebb67cdaa586"><div class="ttname"><a href="classGameView.html#a906afed2573ccc6f4869ebb67cdaa586">GameView::DrawEntity</a></div><div class="ttdeci">void DrawEntity(SDL_Texture *texture, SDL_Texture *tileTexture, SDL_Texture *backTexture, int tileSize, int *tiles, int x, int y, int h, int w)</div><div class="ttdoc">implement entity drawing method with tile-based rendering</div><div class="ttdef"><b>Definition:</b> gameview.cpp:122</div></div>
+<div class="ttc" id="aclassGameView_html_a957dca86bb68a729188f167f7d45ab86"><div class="ttname"><a href="classGameView.html#a957dca86bb68a729188f167f7d45ab86">GameView::~GameView</a></div><div class="ttdeci">~GameView()</div><div class="ttdoc">Destroy the Game View:: Game View object.</div><div class="ttdef"><b>Definition:</b> gameview.cpp:63</div></div>
+<div class="ttc" id="aclassGameView_html_a9b3c9ccc7d1ba1daa297286bfcc411c2"><div class="ttname"><a href="classGameView.html#a9b3c9ccc7d1ba1daa297286bfcc411c2">GameView::GameView</a></div><div class="ttdeci">GameView(SDL_Window *sharedWindow, SDL_Renderer *sharedRenderer)</div><div class="ttdoc">implement constructor to initialize textures and load resources</div><div class="ttdef"><b>Definition:</b> gameview.cpp:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
