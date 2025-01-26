@@ -14,6 +14,10 @@
 #include <math.h>
 #include <memory>
 
+/**
+ * @brief Construct a new Mock Server:: Mock Server object
+ * 
+ */
 MockServer::MockServer() {
     this->board = std::make_unique<Board>();
     this->tetromino.reset(Tetromino::create(rand() % 7 + 2));
@@ -22,6 +26,12 @@ MockServer::MockServer() {
     this->hasSwaped = false; 
 }
 
+/**
+ * @brief Locks the current tetromino in place, loads the next tetromino, and checks for game over conditions.
+ * 
+ * @return true 
+ * @return false 
+ */
 bool MockServer::lockAndLoad() {
     this->board->lockTetromino(this->tetromino.get());
     this->tetromino.swap(this->nextTetromino);
@@ -33,6 +43,15 @@ bool MockServer::lockAndLoad() {
     return false;
 }
 
+
+/**
+ * @brief Processes player commands and updates the game state.
+ * 
+ * @param command 
+ * @param data 
+ * @return true 
+ * @return false 
+ */
 bool MockServer::update(int command, GameData data) { 
     int position;
     bool gameEnd = false;
@@ -69,9 +88,6 @@ bool MockServer::update(int command, GameData data) {
             }
             break;
         case ARROW_DOWN:
-            //tetromino->rotateRight();         
-            //position = board->isPositionValid(tetromino.get());
-            //if(position != 0) tetromino->rotateLeft();
             tetromino->rotateRight();
             position = board->isPositionValid(tetromino.get());
             if(position != 0) {
@@ -109,6 +125,11 @@ bool MockServer::update(int command, GameData data) {
     return gameEnd;
 }
 
+/**
+ * @brief Generates a snapshot of the current game state (GameData), including the score, level, and tetromino positions on the board.
+ * 
+ * @return GameData 
+ */
 GameData MockServer::getState(){
     GameData gameData;
     gameData.score = this->board->getScore();

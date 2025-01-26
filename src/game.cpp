@@ -19,6 +19,12 @@
 #include "pause.hpp"
 #include <memory>
 
+/**
+ * @brief implement setup function to initialize window and renderer
+ * 
+ * @param sharedWindow 
+ * @param sharedRenderer 
+ */
 void Game::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer; 
@@ -27,6 +33,11 @@ void Game::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     if(!renderer) std::cerr << "Game Didnt Receive Renderer" << SDL_GetError() << std::endl;
 }
 
+/**
+ * @brief implement input handling function for key and quit events
+ * 
+ * @return int 
+ */
 int Game::GetInput() {
     SDL_Event event;
     while(SDL_PollEvent(&event)) {
@@ -68,6 +79,10 @@ int Game::GetInput() {
     return 0;
 }
 
+/**
+ * @brief add pause menu functionality with unique pause handling
+ * 
+ */
 void Game::PauseMenu() {
     std::unique_ptr<Pause> pause = std::make_unique<Pause>(this->window, this->renderer);
     pause->Setup(this->window, this->renderer);
@@ -83,6 +98,10 @@ void Game::PauseMenu() {
     }
 }
 
+/**
+ * @brief add game over menu handling
+ * 
+ */
 void Game::gameEndMenu() {
     std::unique_ptr<GameEnd> gameEnd = std::make_unique<GameEnd>(this->window, this->renderer);
     gameEnd->Setup(this->window, this->renderer);
@@ -95,6 +114,12 @@ void Game::gameEndMenu() {
     }
 }
 
+
+/**
+ * @brief implement main game loop with server and game state handling
+ * 
+ * @return int 
+ */
 int Game::Run(){ 
     GameData gameData;
     std::unique_ptr<GameView> gameView = std::make_unique<GameView>(this->window, this->renderer);

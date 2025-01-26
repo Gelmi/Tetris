@@ -14,6 +14,12 @@
 #include "constants.hpp"
 #include <SDL_ttf.h>
 
+/**
+ * @brief implement constructor to initialize textures and load resources
+ * 
+ * @param sharedWindow 
+ * @param sharedRenderer 
+ */
 GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer;
@@ -50,6 +56,10 @@ GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     }
 }
 
+/**
+ * @brief Destroy the Game View:: Game View object
+ * 
+ */
 GameView::~GameView() {
     SDL_DestroyTexture(this->boardTileTexture);
     SDL_DestroyTexture(this->boardTexture);
@@ -57,6 +67,11 @@ GameView::~GameView() {
     SDL_DestroyTexture(this->tetrominoTileTexture);
 }
 
+/**
+ * @brief implement main draw method to render game entities
+ * 
+ * @param data 
+ */
 void GameView::Draw(GameData data) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);        
@@ -72,6 +87,11 @@ int atPos(int x, int y, int h) {
     return (y*h)+x;
 }
 
+/**
+ * @brief add method to render game statistics on screen
+ * 
+ * @param data 
+ */
 void GameView::DrawStats(GameData data) {
     std::string score_text = "Score: " + std::to_string(data.score) + ", " +
                              "Level: " + std::to_string(data.level);
@@ -86,6 +106,19 @@ void GameView::DrawStats(GameData data) {
     SDL_DestroyTexture(text);
 }
 
+/**
+ * @brief implement entity drawing method with tile-based rendering
+ * 
+ * @param texture 
+ * @param tileTexture 
+ * @param backTexture 
+ * @param tileSize 
+ * @param tiles 
+ * @param x 
+ * @param y 
+ * @param h 
+ * @param w 
+ */
 void GameView::DrawEntity(SDL_Texture * texture, SDL_Texture * tileTexture, 
         SDL_Texture * backTexture, int tileSize, int * tiles, int x, int y, int h, int w) {
     SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
@@ -96,6 +129,8 @@ void GameView::DrawEntity(SDL_Texture * texture, SDL_Texture * tileTexture,
     SDL_Rect tileRect;
     tileRect.w = tileSize;
     tileRect.h = tileSize;
+
+    ///add utility function to calculate index based on grid position
     for(int j = 0; j < h; j++) {
         for(int i = 0; i < w; i++) {
             tileRect.x = i * tileSize;

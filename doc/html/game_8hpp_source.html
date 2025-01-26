@@ -77,13 +77,13 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classGame.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGame.html">Game</a> : <span class="keyword">public</span> <a class="code" href="classView.html">View</a> {</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordtype">int</span> Run();</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordtype">void</span> Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">int</span> GetInput();</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classGame.html#a1880d9816a978b82bb91e4679743173d">Run</a>();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classGame.html#a4597118bd09eea62c4c1da1205bc3362">Setup</a>(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classGame.html#a85388d0c050191d6ae13d7f078bf82f8">GetInput</a>();</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classGame.html">Game</a>(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        : <a class="code" href="classView.html">View</a>(sharedWindow, sharedRenderer), close(<span class="keyword">false</span>), running(<span class="keyword">true</span>), lose(<span class="keyword">false</span>) {}</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> PauseMenu();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> gameEndMenu();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classGame.html#afdcfa40cfb9c960d798fb624e1e75f0a">PauseMenu</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classGame.html#abe3050a64dfd3ff8a161bfe29cb66f19">gameEndMenu</a>();</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">bool</span> close{<span class="keyword">false</span>};</div>
@@ -95,6 +95,11 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif </span></div>
 <div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdef"><b>Definition:</b> game.hpp:6</div></div>
+<div class="ttc" id="aclassGame_html_a1880d9816a978b82bb91e4679743173d"><div class="ttname"><a href="classGame.html#a1880d9816a978b82bb91e4679743173d">Game::Run</a></div><div class="ttdeci">int Run()</div><div class="ttdoc">implement main game loop with server and game state handling</div><div class="ttdef"><b>Definition:</b> game.cpp:123</div></div>
+<div class="ttc" id="aclassGame_html_a4597118bd09eea62c4c1da1205bc3362"><div class="ttname"><a href="classGame.html#a4597118bd09eea62c4c1da1205bc3362">Game::Setup</a></div><div class="ttdeci">void Setup(SDL_Window *sharedWindow, SDL_Renderer *sharedRenderer)</div><div class="ttdoc">implement setup function to initialize window and renderer</div><div class="ttdef"><b>Definition:</b> game.cpp:28</div></div>
+<div class="ttc" id="aclassGame_html_a85388d0c050191d6ae13d7f078bf82f8"><div class="ttname"><a href="classGame.html#a85388d0c050191d6ae13d7f078bf82f8">Game::GetInput</a></div><div class="ttdeci">int GetInput()</div><div class="ttdoc">implement input handling function for key and quit events</div><div class="ttdef"><b>Definition:</b> game.cpp:41</div></div>
+<div class="ttc" id="aclassGame_html_abe3050a64dfd3ff8a161bfe29cb66f19"><div class="ttname"><a href="classGame.html#abe3050a64dfd3ff8a161bfe29cb66f19">Game::gameEndMenu</a></div><div class="ttdeci">void gameEndMenu()</div><div class="ttdoc">add game over menu handling</div><div class="ttdef"><b>Definition:</b> game.cpp:105</div></div>
+<div class="ttc" id="aclassGame_html_afdcfa40cfb9c960d798fb624e1e75f0a"><div class="ttname"><a href="classGame.html#afdcfa40cfb9c960d798fb624e1e75f0a">Game::PauseMenu</a></div><div class="ttdeci">void PauseMenu()</div><div class="ttdoc">add pause menu functionality with unique pause handling</div><div class="ttdef"><b>Definition:</b> game.cpp:86</div></div>
 <div class="ttc" id="aclassView_html"><div class="ttname"><a href="classView.html">View</a></div><div class="ttdef"><b>Definition:</b> view.hpp:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

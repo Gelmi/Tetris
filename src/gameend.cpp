@@ -13,21 +13,35 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @brief implement setup function to initialize window and renderer
+ * 
+ * @param sharedWindow 
+ * @param sharedRenderer 
+ */
 void GameEnd::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->window = sharedWindow;
     this->renderer = sharedRenderer;
 
-    // Configura a cor padrão do renderer
     SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 255);
 
-    // screen = SDL_GetWindowSurface(this->window);
 }
 
+/**
+ * @brief  add function to change menu text dynamically
+ * 
+ * @param text 
+ */
 void GameEnd::changeText(std::string text) {
     this->text = text;
 }
 
 
+/**
+ * @brief add texture creation function for menu items
+ * 
+ * @return int 
+ */
 int GameEnd::showgameend() {
     font = TTF_OpenFont("./assets/stocky.ttf", 36);
     if (!font) {
@@ -40,9 +54,9 @@ int GameEnd::showgameend() {
     SDL_Texture* menus[NUMMENU] = {nullptr};
     SDL_Rect pos[NUMMENU];
 
-    SDL_Color color[2] = {{255, 255, 255, 255}, {255, 0, 0, 255}}; // Branco e vermelho
+    SDL_Color color[2] = {{255, 255, 255, 255}, {255, 0, 0, 255}}; 
 
-    // Função para recriar texturas
+
     auto createMenuTextures = [&]() {
         for (int i = 0; i < NUMMENU; ++i) {
             if (menus[i]) {
@@ -53,6 +67,7 @@ int GameEnd::showgameend() {
                 std::cerr << "Erro ao criar superfície: " << TTF_GetError() << std::endl;
                 return -1;
             }
+            /// add texture creation function for menu items
             menus[i] = SDL_CreateTextureFromSurface(renderer, surface);
             SDL_FreeSurface(surface);
 
@@ -64,7 +79,7 @@ int GameEnd::showgameend() {
         return 0;
     };
 
-    // Criação inicial das texturas
+
     if (createMenuTextures() != 0) {
         return -1;
     }
@@ -75,7 +90,7 @@ int GameEnd::showgameend() {
     while (running) {
         int windowWidth = 800, windowHeight = 640;
 
-        // Calcula dinamicamente as posições dos menus
+
         for (int i = 0; i < NUMMENU; ++i) {
             int texWidth, texHeight;
             SDL_QueryTexture(menus[i], nullptr, nullptr, &texWidth, &texHeight);
@@ -85,7 +100,7 @@ int GameEnd::showgameend() {
             pos[i].h = texHeight;
         }
 
-        // Processa eventos
+
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
                 case SDL_QUIT:
@@ -93,7 +108,7 @@ int GameEnd::showgameend() {
                     break;
                 case SDL_WINDOWEVENT:
                     if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-                        // Recria texturas após redimensionamento
+
                         if (createMenuTextures() != 0) {
                             running = false;
                         }
@@ -115,7 +130,7 @@ int GameEnd::showgameend() {
             }
         }
 
-        // Renderiza o menu
+
         SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
@@ -125,10 +140,10 @@ int GameEnd::showgameend() {
         }
 
         SDL_RenderPresent(renderer);
-        SDL_Delay(16); // Limita a 60 FPS
+        SDL_Delay(16); 
     }
 
-    // Libera recursos
+
     for (int i = 0; i < NUMMENU; ++i) {
         SDL_DestroyTexture(menus[i]);
     }
