@@ -20,6 +20,7 @@ private:
     SDL_Surface* screen{nullptr};
     SDL_Renderer* renderer{nullptr};
     TTF_Font * font;
+    TTF_Font * fontTitle;
 };
 
 #endif

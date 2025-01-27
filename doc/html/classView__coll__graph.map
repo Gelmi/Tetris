@@ -1,7 +1,7 @@
 <map id="View" name="View">
-<area shape="rect" id="Node000001" title=" " alt="" coords="87,133,169,219"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="11,133,245,248"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,115,71"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,70,102,117,97,120,73,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,70,98,117,93,119,72,72"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="139,5,255,71"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,72,168,111,163,120,158,118,163,108,181,70"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,72,163,120,158,117,180,70"/>
 </map>

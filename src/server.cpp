@@ -257,6 +257,9 @@ void Server::handleCommands(int command, uint32_t connectID) {
 void Server::tryDescend() {
     const auto now{std::chrono::steady_clock::now()};
     const auto elapsed_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds> (now - this->counter);
+    int level = static_cast<int> ((boards[0]->getLevel() + boards[1]->getLevel())/2);
+    int downTimeInt = static_cast<int> (pow(0.8-((level)*0.007), level)*1000);
+    const auto downTime = std::chrono::milliseconds(downTimeInt);
     if(elapsed_milliseconds >= std::chrono::milliseconds(1000)) {
         counter = std::chrono::steady_clock::now();
         for(int id = 0; id < 2; id++) {
@@ -421,7 +424,6 @@ int Server::Run() {
 
     int eventStatus;
     ENetEvent event;
-    int limite = 1;
     while(1) {
         eventStatus = enet_host_service(server, &event, 0);
 

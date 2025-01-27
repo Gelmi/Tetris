@@ -1,14 +1,14 @@
 <map id="MultiGameView" name="MultiGameView">
-<area shape="rect" id="Node000001" title=" " alt="" coords="347,432,521,597"/>
-<area shape="rect" id="Node000002" href="$classGameView.html" title=" " alt="" coords="229,177,399,383"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="375,394,394,431,390,433,370,396"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="313,608,555,832"/>
+<area shape="rect" id="Node000002" href="$classGameView.html" title=" " alt="" coords="197,177,431,559"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="386,571,398,607,393,609,381,573"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,5,121,71"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,70,110,110,144,152,179,184,217,214,214,218,176,188,140,155,106,113,79,72"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,70,147,152,189,206,184,210,143,155,83,73"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="146,5,255,71"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="212,70,243,152,248,161,243,164,238,154,207,72"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="214,70,242,152,245,161,240,163,237,154,209,72"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="280,5,385,71"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="324,72,318,95,312,161,307,160,313,94,318,71"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="324,72,318,95,311,161,306,161,313,94,318,71"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="481,5,565,71"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="534,70,538,94,540,124,538,154,526,223,509,293,472,417,467,416,504,292,520,222,533,153,535,124,533,95,529,71"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="509,72,496,96,483,126,465,155,413,209,409,205,461,152,478,124,492,94,504,70"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="534,70,538,94,540,124,538,154,525,270,506,388,466,593,461,592,501,387,519,270,533,153,535,124,533,95,529,71"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="509,72,496,96,466,155,443,191,438,188,461,152,492,93,504,70"/>
 </map>

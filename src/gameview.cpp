@@ -49,7 +49,7 @@ GameView::GameView(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
         std::cout << "Error creating texture: " << SDL_GetError() << std::endl;
     }
     SDL_FreeSurface(imageT);
-    this->font = TTF_OpenFont("./assets/Roboto.ttf", 20);
+    this->font = TTF_OpenFont("./assets/stocky.ttf", 20);
     if (font == NULL) {
         fprintf(stderr, "error: font not found\n");
         exit(EXIT_FAILURE);
@@ -93,14 +93,22 @@ int atPos(int x, int y, int h) {
  * @param data 
  */
 void GameView::DrawStats(GameData data) {
-    std::string score_text = "Score: " + std::to_string(data.score) + ", " +
-                             "Level: " + std::to_string(data.level);
+    std::string score_text = "Score: " + std::to_string(data.score);
     SDL_Color textColor = { 255, 255, 255, 255 };
     SDL_Surface* textSurface = TTF_RenderText_Solid(this->font, score_text.c_str(), textColor);
     SDL_Texture* text = SDL_CreateTextureFromSurface(this->renderer, textSurface);
     int text_width = textSurface->w;
     int text_height = textSurface->h;
-    SDL_Rect renderQuad = { 325, 20, text_width, text_height };
+    SDL_Rect renderQuad = { 340, 20, text_width, text_height };
+    SDL_RenderCopy(this->renderer, text, NULL, &renderQuad);
+    SDL_FreeSurface(textSurface);
+    SDL_DestroyTexture(text);
+    score_text = "Level: " + std::to_string(data.score);
+    textSurface = TTF_RenderText_Solid(this->font, score_text.c_str(), textColor);
+    text = SDL_CreateTextureFromSurface(this->renderer, textSurface);
+    text_width = textSurface->w;
+    text_height = textSurface->h;
+    renderQuad = { 340, 40, text_width, text_height };
     SDL_RenderCopy(this->renderer, text, NULL, &renderQuad);
     SDL_FreeSurface(textSurface);
     SDL_DestroyTexture(text);

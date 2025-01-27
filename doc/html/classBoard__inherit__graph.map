@@ -1,5 +1,5 @@
 <map id="Board" name="Board">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,379,139,664"/>
-<area shape="rect" id="Node000002" href="$classEntity.html" title=" " alt="" coords="27,5,117,331"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,344,75,378,69,378,69,344"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,393,217,723"/>
+<area shape="rect" id="Node000002" href="$classEntity.html" title=" " alt="" coords="19,5,204,345"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,359,114,393,109,393,109,359"/>
 </map>

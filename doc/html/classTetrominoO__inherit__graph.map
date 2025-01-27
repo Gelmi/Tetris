@@ -1,7 +1,7 @@
 <map id="TetrominoO" name="TetrominoO">
-<area shape="rect" id="Node000001" title=" " alt="" coords="16,692,129,797"/>
-<area shape="rect" id="Node000002" href="$classTetromino.html" title=" " alt="" coords="5,379,140,644"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,658,75,692,70,692,70,658"/>
-<area shape="rect" id="Node000003" href="$classEntity.html" title=" " alt="" coords="27,5,118,331"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="75,344,75,378,70,378,70,344"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="15,765,205,871"/>
+<area shape="rect" id="Node000002" href="$classTetromino.html" title=" " alt="" coords="5,393,215,717"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,731,113,765,107,765,107,731"/>
+<area shape="rect" id="Node000003" href="$classEntity.html" title=" " alt="" coords="17,5,203,345"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="113,359,113,393,107,393,107,359"/>
 </map>

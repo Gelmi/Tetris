@@ -1,5 +1,5 @@
 <map id="Pause" name="Pause">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,159,117,324"/>
-<area shape="rect" id="Node000002" href="$classView.html" title=" " alt="" coords="19,5,103,111"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,125,64,159,59,159,59,125"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,188,304,397"/>
+<area shape="rect" id="Node000002" href="$classView.html" title=" " alt="" coords="37,5,272,140"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,154,157,188,152,188,152,154"/>
 </map>

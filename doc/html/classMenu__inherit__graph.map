@@ -1,5 +1,5 @@
 <map id="Menu" name="Menu">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,159,115,364"/>
-<area shape="rect" id="Node000002" href="$classView.html" title=" " alt="" coords="18,5,102,111"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,124,63,159,57,159,57,124"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,188,240,452"/>
+<area shape="rect" id="Node000002" href="$classView.html" title=" " alt="" coords="5,5,240,140"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,154,125,188,120,188,120,154"/>
 </map>

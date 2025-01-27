@@ -28,10 +28,12 @@ void Menu::Setup(SDL_Window* sharedWindow, SDL_Renderer* sharedRenderer) {
     this->screen = SDL_GetWindowSurface(this->window);
 
     this->font = TTF_OpenFont("./assets/stocky.ttf", 36);
-
+    
     if (!font) {
         std::cout << "Error loading font: " << TTF_GetError() << std::endl;
     }
+
+    this->fontTitle = TTF_OpenFont("./assets/stocky.ttf", 60);
 }
 
 /**
@@ -50,8 +52,8 @@ Menu::~Menu() {
 int Menu::showmenu() {
     Uint32 time;
     int x, y;
-    const int NUMMENU = 4;
-    const char* labels[NUMMENU] = {"Single Player", "Multiplayer", "Credits", "Exit"};
+    const int NUMMENU = 5;
+    const char* labels[NUMMENU] = {"Tetris", "Single Player", "Multiplayer", "Credits", "Exit"};
     SDL_Color color[2] = {{255, 255, 255, 255}, {255, 0, 0, 255}};
 
     int windowWidth = 800, windowHeight = 640;
@@ -60,11 +62,14 @@ int Menu::showmenu() {
 /// @brief This loop creates the proportional place for the options
     SDL_Rect pos[NUMMENU];
     for (int i = 0; i < NUMMENU; ++i) {
-        SDL_Surface * surface = TTF_RenderText_Solid(font, labels[i], color[0]);
+        SDL_Surface * surface;
+        if(i == 0) surface = TTF_RenderText_Solid(fontTitle, labels[i], color[0]);
+        else surface = TTF_RenderText_Solid(font, labels[i], color[0]);
         SDL_Texture* buttonTexture = SDL_CreateTextureFromSurface(renderer, surface);
         int texWidth, texHeight;
         SDL_QueryTexture(buttonTexture, nullptr, nullptr, &texWidth, &texHeight);
-        pos[i] = {windowWidth / 2 - texWidth / 2, windowHeight / 2 - texHeight * (2 - i) * 2, texWidth, texHeight};
+        if(i == 0) pos[i] = {windowWidth / 2 - (texWidth*1.2) / 2, windowHeight / 2 - (texHeight) * (1.5 - i) * 2, texWidth*1.2, texHeight*1.2};
+        else pos[i] = {windowWidth / 2 - texWidth / 2, windowHeight / 2 - texHeight * (2 - i) * 2, texWidth, texHeight};
         SDL_FreeSurface(surface);
     }
 
@@ -80,9 +85,9 @@ int Menu::showmenu() {
                 case SDL_MOUSEBUTTONDOWN:
                     x = event.button.x;
                     y = event.button.y;
-                    for (int i = 0; i < NUMMENU; i++) {
+                    for (int i = 1; i < NUMMENU; i++) {
                         if (x >= pos[i].x && x <= pos[i].x + pos[i].w && y >= pos[i].y && y <= pos[i].y + pos[i].h) {
-                            return i;
+                            return i-1;
                         }
                     }
                     break;
@@ -93,7 +98,10 @@ int Menu::showmenu() {
         SDL_RenderClear(renderer);
 
         for (int i = 0; i < NUMMENU; i++) {
-            SDL_Surface * surface = TTF_RenderText_Solid(font, labels[i], color[0]);
+             SDL_Surface * surface;
+            if(i == 0) surface = TTF_RenderText_Solid(fontTitle, labels[i], color[0]);
+            else surface = TTF_RenderText_Solid(font, labels[i], color[0]);
+
             if(!surface) {
                 std::cerr << "Error creating surface: " << TTF_GetError() << std::endl;
                 return -1;

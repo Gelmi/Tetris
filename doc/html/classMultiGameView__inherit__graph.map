@@ -1,5 +1,5 @@
 <map id="MultiGameView" name="MultiGameView">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,379,180,544"/>
-<area shape="rect" id="Node000002" href="$classGameView.html" title=" " alt="" coords="8,5,177,331"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,344,95,379,90,379,90,344"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,569,248,793"/>
+<area shape="rect" id="Node000002" href="$classGameView.html" title=" " alt="" coords="9,5,245,521"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,535,129,569,124,569,124,535"/>
 </map>
